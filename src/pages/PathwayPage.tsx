@@ -27,7 +27,7 @@ export const PathwayPage: React.FC = () => {
         </div>
 
         {/* Page Hero Banner */}
-        <div className="relative rounded-2xl bg-gradient-to-r from-slate-900/90 via-slate-950 to-emerald-950/20 border border-emerald-500/30 p-8 sm:p-12 mb-10 shadow-2xl overflow-hidden">
+        <div className="relative rounded-2xl bg-slate-900 border border-emerald-500/30 p-8 sm:p-12 mb-10 shadow-2xl overflow-hidden">
           <div className="absolute top-0 right-0 w-96 h-96 bg-emerald-500/10 rounded-full blur-[100px] pointer-events-none" />
           <div className="relative z-10 max-w-3xl space-y-4">
             <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-emerald-500/10 border border-emerald-500/30 text-emerald-300 font-mono text-xs uppercase tracking-widest">
@@ -37,7 +37,7 @@ export const PathwayPage: React.FC = () => {
 
             <h1 className="font-orbitron font-black text-3xl sm:text-4xl lg:text-5xl text-white tracking-wide">
               From Accra to the <br className="hidden sm:inline" />
-              <span className="text-transparent bg-clip-text bg-gradient-to-r from-emerald-400 via-teal-300 to-cyan-300">
+              <span className="text-emerald-400">
                 World Championship Stage
               </span>
             </h1>

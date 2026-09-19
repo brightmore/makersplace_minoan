@@ -106,13 +106,7 @@ export const CircuitBackground: React.FC = () => {
       {/* Animated canvas network */}
       <canvas ref={canvasRef} className="absolute inset-0 opacity-40" />
 
-      {/* Subtle Scanline Overlay */}
-      <div 
-        className="absolute inset-0 opacity-[0.03] pointer-events-none" 
-        style={{
-          backgroundImage: 'repeating-linear-gradient(0deg, #000, #000 2px, transparent 2px, transparent 4px)',
-        }}
-      />
+
     </div>
   );
 };

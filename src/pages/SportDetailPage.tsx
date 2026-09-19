@@ -147,7 +147,7 @@ export const SportDetailPage: React.FC<SportDetailPageProps> = ({ onOpenRegister
         </div>
 
         {/* Page Hero Header Banner */}
-        <div className="relative rounded-2xl bg-gradient-to-r from-slate-900/95 via-slate-950 to-slate-900/90 border border-cyan-500/40 p-6 sm:p-10 mb-8 shadow-2xl overflow-hidden">
+        <div className="relative rounded-2xl bg-slate-900 border border-cyan-500/40 p-6 sm:p-10 mb-8 shadow-2xl overflow-hidden">
           <div className="absolute top-0 right-0 w-96 h-96 bg-cyan-500/10 rounded-full blur-[100px] pointer-events-none" />
           
           <div className="relative z-10 space-y-5">
@@ -201,7 +201,7 @@ export const SportDetailPage: React.FC<SportDetailPageProps> = ({ onOpenRegister
             <div className="flex flex-wrap items-center gap-3 pt-3">
               <button
                 onClick={() => onOpenRegister(sport.id)}
-                className="px-6 py-3 rounded-lg bg-gradient-to-r from-cyan-400 via-cyan-300 to-teal-300 text-slate-950 font-orbitron font-bold text-xs sm:text-sm uppercase tracking-wider shadow-[0_0_20px_rgba(0,240,255,0.4)] hover:shadow-[0_0_30px_rgba(0,240,255,0.6)] transition-all flex items-center gap-2 active:scale-95"
+                className="px-6 py-3 rounded-lg bg-cyan-400 hover:bg-cyan-300 text-slate-950 font-orbitron font-bold text-xs sm:text-sm uppercase tracking-wider shadow-[0_0_20px_rgba(0,240,255,0.4)] hover:shadow-[0_0_30px_rgba(0,240,255,0.6)] transition-all flex items-center gap-2 active:scale-95"
               >
                 <Sparkles className="w-4 h-4" />
                 <span>Register Team for this Sport</span>
@@ -267,7 +267,7 @@ export const SportDetailPage: React.FC<SportDetailPageProps> = ({ onOpenRegister
               {sport.videos.map((vid, vIdx) => (
                 <div
                   key={vIdx}
-                  className="rounded-2xl bg-gradient-to-b from-slate-900/95 via-slate-950 to-slate-900/90 border border-cyan-500/30 overflow-hidden shadow-2xl shadow-cyan-950/20 flex flex-col group hover:border-cyan-400/70 transition-all duration-300"
+                  className="rounded-2xl bg-slate-900 border border-cyan-500/30 overflow-hidden shadow-2xl shadow-cyan-950/20 flex flex-col group hover:border-cyan-400/70 transition-all duration-300"
                 >
                   {/* High-Tech Reticle Top Bar */}
                   <div className="px-4 py-2.5 bg-slate-950/90 border-b border-slate-800/80 flex items-center justify-between text-xs font-mono">
@@ -391,7 +391,7 @@ export const SportDetailPage: React.FC<SportDetailPageProps> = ({ onOpenRegister
               {/* Sidebar Quick Info */}
               <div className="lg:col-span-4 space-y-6">
                 {/* Rule Zero Callout */}
-                <div className="p-6 rounded-2xl bg-gradient-to-br from-amber-950/30 via-slate-900 to-slate-950 border border-amber-500/40 space-y-3">
+                <div className="p-6 rounded-2xl bg-slate-900 border border-amber-500/40 space-y-3">
                   <div className="flex items-center gap-2 text-amber-400 font-mono text-xs font-bold uppercase">
                     <AlertTriangle className="w-4 h-4" />
                     <span>Rule Zero Directive</span>
@@ -737,7 +737,7 @@ export const SportDetailPage: React.FC<SportDetailPageProps> = ({ onOpenRegister
         )}
 
         {/* Persistent Bottom Registration CTA Banner */}
-        <div className="mt-16 rounded-2xl bg-gradient-to-r from-cyan-950/40 via-slate-900 to-slate-950 border border-cyan-500/40 p-6 sm:p-10 flex flex-col sm:flex-row items-center justify-between gap-6 shadow-2xl">
+        <div className="mt-16 rounded-2xl bg-slate-900 border border-cyan-500/40 p-6 sm:p-10 flex flex-col sm:flex-row items-center justify-between gap-6 shadow-2xl">
           <div className="space-y-2 text-center sm:text-left">
             <span className="font-mono text-[10px] text-amber-400 uppercase tracking-widest font-bold">
               Tournament Matchday: January 30, 2027

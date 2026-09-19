@@ -204,7 +204,7 @@ export const Hero: React.FC<HeroProps> = ({ onOpenRegister }) => {
       case 'amber':
         return {
           glowText: 'text-glow-amber text-amber-400',
-          gradientText: 'from-amber-400 via-amber-300 to-yellow-200',
+          solidText: 'text-amber-400',
           badgeBorder: 'border-amber-500/40 text-amber-300',
           badgeBg: 'bg-amber-500/10',
           dotBg: 'bg-amber-400 shadow-[0_0_10px_#f59e0b]',
@@ -213,7 +213,7 @@ export const Hero: React.FC<HeroProps> = ({ onOpenRegister }) => {
       case 'emerald':
         return {
           glowText: 'text-emerald-400',
-          gradientText: 'from-emerald-400 via-teal-300 to-emerald-200',
+          solidText: 'text-emerald-400',
           badgeBorder: 'border-emerald-500/40 text-emerald-300',
           badgeBg: 'bg-emerald-500/10',
           dotBg: 'bg-emerald-400 shadow-[0_0_10px_#10b981]',
@@ -222,7 +222,7 @@ export const Hero: React.FC<HeroProps> = ({ onOpenRegister }) => {
       case 'blue':
         return {
           glowText: 'text-glow-cyan text-cyan-300',
-          gradientText: 'from-cyan-300 via-blue-400 to-cyan-100',
+          solidText: 'text-cyan-300',
           badgeBorder: 'border-blue-500/40 text-blue-300',
           badgeBg: 'bg-blue-500/10',
           dotBg: 'bg-blue-400 shadow-[0_0_10px_#3b82f6]',
@@ -231,7 +231,7 @@ export const Hero: React.FC<HeroProps> = ({ onOpenRegister }) => {
       case 'magenta':
         return {
           glowText: 'text-pink-400',
-          gradientText: 'from-pink-400 via-rose-300 to-amber-200',
+          solidText: 'text-pink-400',
           badgeBorder: 'border-pink-500/40 text-pink-300',
           badgeBg: 'bg-pink-500/10',
           dotBg: 'bg-pink-400 shadow-[0_0_10px_#ec4899]',
@@ -241,7 +241,7 @@ export const Hero: React.FC<HeroProps> = ({ onOpenRegister }) => {
       default:
         return {
           glowText: 'text-glow-cyan text-cyan-400',
-          gradientText: 'from-cyan-400 via-teal-300 to-cyan-100',
+          solidText: 'text-cyan-400',
           badgeBorder: 'border-cyan-500/40 text-cyan-300',
           badgeBg: 'bg-cyan-500/10',
           dotBg: 'bg-cyan-400 shadow-[0_0_10px_#00f0ff]',
@@ -269,18 +269,8 @@ export const Hero: React.FC<HeroProps> = ({ onOpenRegister }) => {
           />
         </AnimatePresence>
 
-        {/* Cyber Dark Gradient Overlays */}
-        <div className="absolute inset-0 bg-gradient-to-r from-[#070a12] via-[#070a12]/90 to-[#070a12]/75" />
-        <div className="absolute inset-0 bg-gradient-to-b from-transparent via-[#070a12]/60 to-[#070a12]" />
-
-        {/* Dynamic Scanline & Reticle Overlay */}
-        <div 
-          className="absolute inset-0 opacity-15"
-          style={{
-            backgroundImage: 'radial-gradient(rgba(0, 240, 255, 0.15) 1px, transparent 1px)',
-            backgroundSize: '32px 32px'
-          }}
-        />
+        {/* Dark Overlays */}
+        <div className="absolute inset-0 bg-[#070a12]/80" />
       </div>
 
       {/* Main Content Container */}
@@ -362,7 +352,7 @@ export const Hero: React.FC<HeroProps> = ({ onOpenRegister }) => {
                 {/* Main Headline */}
                 <h1 className="font-orbitron font-black text-4xl sm:text-5xl lg:text-6xl tracking-tight leading-[1.08] text-white">
                   {activeSlide.headlineMain} <br className="hidden sm:inline" />
-                  <span className={`text-transparent bg-clip-text bg-gradient-to-r ${currentTheme.gradientText} text-glow-cyan`}>
+                  <span className={`${currentTheme.solidText} text-glow-cyan`}>
                     {activeSlide.headlineAccent}
                   </span> <br />
                   <span className="text-white">
@@ -393,7 +383,7 @@ export const Hero: React.FC<HeroProps> = ({ onOpenRegister }) => {
                 <div className="flex flex-wrap items-center gap-4 pt-1">
                   <button
                     onClick={onOpenRegister}
-                    className="group relative inline-flex items-center justify-center px-7 py-3.5 font-orbitron text-xs sm:text-sm font-bold uppercase tracking-wider text-slate-950 bg-gradient-to-r from-cyan-400 via-cyan-300 to-teal-300 rounded-lg shadow-[0_0_25px_rgba(0,240,255,0.5)] hover:shadow-[0_0_35px_rgba(0,240,255,0.8)] transition-all duration-300 hover:scale-[1.02] active:scale-[0.98]"
+                    className="group relative inline-flex items-center justify-center px-7 py-3.5 font-orbitron text-xs sm:text-sm font-bold uppercase tracking-wider text-slate-950 bg-cyan-400 hover:bg-cyan-300 rounded-lg shadow-[0_0_25px_rgba(0,240,255,0.5)] hover:shadow-[0_0_35px_rgba(0,240,255,0.8)] transition-all duration-300 hover:scale-[1.02] active:scale-[0.98]"
                   >
                     <span>Register Your Team</span>
                     <ArrowRight className="w-4 h-4 ml-2 transition-transform group-hover:translate-x-1" />
@@ -414,7 +404,7 @@ export const Hero: React.FC<HeroProps> = ({ onOpenRegister }) => {
 
           {/* Right Column (5 cols): Live Tournament Clock Card (HUD Card) */}
           <div className="lg:col-span-5">
-            <div className="relative rounded-2xl bg-gradient-to-b from-slate-900/95 via-slate-900/80 to-slate-950/95 border border-cyan-500/30 p-6 sm:p-7 shadow-2xl shadow-black/80 backdrop-blur-xl hud-corner-tl hud-corner-br">
+            <div className="relative rounded-2xl bg-slate-900/95 border border-cyan-500/30 p-6 sm:p-7 shadow-2xl shadow-black/80 backdrop-blur-xl hud-corner-tl hud-corner-br">
               
               {/* Header HUD Reticle */}
               <div className="flex items-center justify-between border-b border-slate-800/80 pb-4 mb-5">
@@ -552,7 +542,7 @@ export const Hero: React.FC<HeroProps> = ({ onOpenRegister }) => {
                       initial={{ width: '0%' }}
                       animate={{ width: '100%' }}
                       transition={{ duration: slideDuration / 1000, ease: 'linear' }}
-                      className="absolute bottom-0 left-0 h-1 bg-gradient-to-r from-cyan-400 to-amber-400"
+                      className="absolute bottom-0 left-0 h-1 bg-cyan-400"
                     />
                   )}
                   {isActive && isPaused && (

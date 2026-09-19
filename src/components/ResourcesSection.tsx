@@ -99,7 +99,7 @@ export const ResourcesSection: React.FC = () => {
             </div>
             <h2 className="font-orbitron font-extrabold text-2xl sm:text-3xl lg:text-4xl text-white tracking-wide">
               Official Downloads & <br className="hidden sm:inline" />
-              <span className="text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 via-teal-300 to-amber-300">
+              <span className="text-cyan-400">
                 Resource Library
               </span>
             </h2>
@@ -215,7 +215,7 @@ export const ResourcesSection: React.FC = () => {
         </div>
 
         {/* Global Zip Archive Bundle Callout */}
-        <div className="mt-8 p-6 rounded-2xl bg-gradient-to-r from-cyan-950/20 via-slate-900/60 to-slate-900/40 border border-cyan-500/30 flex flex-col sm:flex-row items-center justify-between gap-4">
+        <div className="mt-8 p-6 rounded-2xl bg-slate-900 border border-cyan-500/30 flex flex-col sm:flex-row items-center justify-between gap-4">
           <div className="flex items-center gap-4">
             <div className="p-3 rounded-xl bg-cyan-500/10 border border-cyan-500/30 text-cyan-400 shrink-0">
               <FolderDown className="w-6 h-6" />

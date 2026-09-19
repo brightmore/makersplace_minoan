@@ -29,7 +29,7 @@ export const RulesPage: React.FC = () => {
         </div>
 
         {/* Page Hero Banner */}
-        <div className="relative rounded-2xl bg-gradient-to-r from-slate-900/90 via-slate-950 to-amber-950/20 border border-amber-500/30 p-8 sm:p-12 mb-10 shadow-2xl overflow-hidden">
+        <div className="relative rounded-2xl bg-slate-900 border border-amber-500/30 p-8 sm:p-12 mb-10 shadow-2xl overflow-hidden">
           <div className="absolute top-0 right-0 w-96 h-96 bg-amber-500/10 rounded-full blur-[100px] pointer-events-none" />
           <div className="relative z-10 max-w-3xl space-y-4">
             <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-amber-500/10 border border-amber-500/30 text-amber-300 font-mono text-xs uppercase tracking-widest">
@@ -39,7 +39,7 @@ export const RulesPage: React.FC = () => {
 
             <h1 className="font-orbitron font-black text-3xl sm:text-4xl lg:text-5xl text-white tracking-wide">
               Rule Zero & <br className="hidden sm:inline" />
-              <span className="text-transparent bg-clip-text bg-gradient-to-r from-amber-400 via-amber-200 to-cyan-300">
+              <span className="text-amber-400">
                 Pre-Flight Inspection
               </span>
             </h1>
@@ -63,9 +63,9 @@ export const RulesPage: React.FC = () => {
 
         {/* Rule Zero HUD Deep Dive Directive */}
         <div className="mb-12">
-          <div className="relative rounded-2xl bg-gradient-to-r from-slate-950 via-amber-950/20 to-slate-950 border border-amber-500/40 p-6 sm:p-8 shadow-2xl shadow-amber-950/20 overflow-hidden">
+          <div className="relative rounded-2xl bg-slate-900 border border-amber-500/40 p-6 sm:p-8 shadow-2xl shadow-amber-950/20 overflow-hidden">
             <div className="absolute -right-20 -top-20 w-80 h-80 bg-amber-500/10 rounded-full blur-[100px] pointer-events-none" />
-            <div className="absolute left-0 top-0 w-1.5 h-full bg-gradient-to-b from-amber-400 via-amber-500 to-amber-600 shadow-[0_0_15px_#f59e0b]" />
+            <div className="absolute left-0 top-0 w-1.5 h-full bg-amber-400 shadow-[0_0_15px_#f59e0b]" />
 
             <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 items-center">
               <div className="lg:col-span-4 flex flex-col items-start space-y-3">
@@ -81,7 +81,7 @@ export const RulesPage: React.FC = () => {
 
                 <h2 className="font-orbitron font-bold text-xl sm:text-2xl text-white tracking-wide">
                   The Rule Above All Rules: <br />
-                  <span className="text-transparent bg-clip-text bg-gradient-to-r from-amber-400 via-amber-300 to-yellow-100">
+                  <span className="text-amber-400">
                     Rule Zero
                   </span>
                 </h2>

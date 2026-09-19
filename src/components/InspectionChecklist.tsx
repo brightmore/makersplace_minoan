@@ -54,7 +54,7 @@ export const InspectionChecklist: React.FC = () => {
 
           <h2 className="font-orbitron font-extrabold text-2xl sm:text-3xl lg:text-4xl text-white tracking-wide">
             Pre-Flight Technical <br />
-            <span className="text-transparent bg-clip-text bg-gradient-to-r from-amber-400 via-amber-200 to-cyan-300">
+            <span className="text-amber-400">
               Inspection Checklist
             </span>
           </h2>
@@ -65,7 +65,7 @@ export const InspectionChecklist: React.FC = () => {
         </div>
 
         {/* Readiness Meter Card */}
-        <div className="rounded-2xl bg-gradient-to-r from-slate-900 via-slate-900/90 to-slate-950 border border-slate-800 p-6 mb-8 shadow-xl">
+        <div className="rounded-2xl bg-slate-900 border border-slate-800 p-6 mb-8 shadow-xl">
           <div className="flex flex-col sm:flex-row items-center justify-between gap-4 mb-4">
             <div>
               <span className="font-mono text-xs uppercase tracking-wider text-slate-400 block">
@@ -115,7 +115,7 @@ export const InspectionChecklist: React.FC = () => {
             <div className="h-2.5 rounded-full bg-slate-950 border border-slate-800 overflow-hidden">
               <div
                 className={`h-full transition-all duration-500 ${
-                  isReady ? 'bg-gradient-to-r from-emerald-500 to-cyan-400 shadow-[0_0_12px_#10b981]' : 'bg-gradient-to-r from-amber-500 to-amber-400'
+                  isReady ? 'bg-emerald-400 shadow-[0_0_12px_#10b981]' : 'bg-amber-400'
                 }`}
                 style={{ width: `${progressPercent}%` }}
               />

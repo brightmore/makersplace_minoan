@@ -756,7 +756,7 @@ export const RegistrationModal: React.FC<RegistrationModalProps> = ({
                 ) : (
                   <button
                     type="submit"
-                    className="inline-flex items-center gap-2 px-6 py-3 rounded-lg bg-gradient-to-r from-cyan-400 via-teal-300 to-emerald-400 hover:from-cyan-300 hover:to-emerald-300 text-slate-950 font-orbitron font-black text-xs uppercase tracking-wider shadow-[0_0_25px_rgba(0,240,255,0.6)] transition-all"
+                    className="inline-flex items-center gap-2 px-6 py-3 rounded-lg bg-cyan-400 hover:bg-cyan-300 text-slate-950 font-orbitron font-black text-xs uppercase tracking-wider shadow-[0_0_25px_rgba(0,240,255,0.6)] transition-all"
                   >
                     <Sparkles className="w-4 h-4" />
                     <span>Submit Official Registration</span>

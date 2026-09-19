@@ -105,7 +105,7 @@ export const SportsGrid: React.FC<SportsGridProps> = ({ onOpenRegisterWithSport 
 
           <h2 className="font-orbitron font-extrabold text-3xl sm:text-4xl lg:text-5xl text-white tracking-wide">
             Seven Official <br className="hidden sm:inline" />
-            <span className="text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 via-teal-300 to-amber-400">
+            <span className="text-cyan-400">
               RobotSports Disciplines
             </span>
           </h2>

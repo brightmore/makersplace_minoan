@@ -38,7 +38,7 @@ export const MediaHub: React.FC = () => {
             </div>
             <h2 className="font-orbitron font-extrabold text-2xl sm:text-3xl lg:text-4xl text-white tracking-wide">
               Interactive Media Hub & <br className="hidden sm:inline" />
-              <span className="text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 via-teal-300 to-amber-300">
+              <span className="text-cyan-400">
                 Arena Visualizer
               </span>
             </h2>
@@ -266,7 +266,7 @@ export const MediaHub: React.FC = () => {
                       alt={item.title}
                       className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
                     />
-                    <div className="absolute inset-0 bg-gradient-to-t from-slate-950 via-slate-950/40 to-transparent opacity-80 group-hover:opacity-60 transition-opacity" />
+                    <div className="absolute inset-0 bg-slate-950/60 opacity-80 group-hover:opacity-40 transition-opacity" />
                     
                     {/* Hover Zoom Icon */}
                     <div className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity">

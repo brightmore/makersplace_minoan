@@ -113,8 +113,8 @@ export const SPORTS_DATA: SportChallenge[] = [
       {
         title: 'Drone Slalom & Ring Traversal - Arena Flight Run',
         subtitle: 'Sub-millimeter flight path tracking and pilot station perspectives',
-        url: 'https://youtu.be/Fm-ZlJQ3OQM',
-        embedUrl: 'https://www.youtube-nocookie.com/embed/Fm-ZlJQ3OQM',
+        url: 'https://youtu.be/iG8R8jg7fUw',
+        embedUrl: 'https://www.youtube-nocookie.com/embed/iG8R8jg7fUw',
         badge: 'FLIGHT DEMONSTRATION 02',
       },
     ],
@@ -218,6 +218,16 @@ export const SPORTS_DATA: SportChallenge[] = [
         url: 'https://images.unsplash.com/photo-1511512578047-dfb367046420?auto=format&fit=crop&w=1000&q=80',
         badge: 'ESPORTS BAY',
       },
+    ],
+    videos: [
+      {
+        title: 'Minoan Drone  Soccer- Official Match Demo',
+        subtitle: 'Official gate slalom, hover elevation control & landing sequence demonstration',
+        url: 'https://youtu.be/Ug7rW05WcGE',
+        embedUrl: 'https://www.youtube-nocookie.com/embed/Ug7rW05WcGE',
+        badge: 'Drone Soccer 3x3 - Official Match Demo',
+      },
+    
     ],
   },
   {
@@ -419,105 +429,7 @@ export const SPORTS_DATA: SportChallenge[] = [
       },
     ],
   },
-  // {
-  //   id: 'wrestling',
-  //   name: 'Mega Wrestling & Combat Sumo',
-  //   code: 'WRS-05',
-  //   mrcCategory: 'Robotic Combat',
-  //   officialHROStandard: 'H.E.R.O. Minoan RobotSports Mega Wrestling (3kg) & Robot Sumo Standards',
-  //   controlBoxDimensions: '200mm × 200mm base envelope (Weight classes: 500g, 1kg, 1.5kg, 3kg Mega)',
-  //   ruleZeroClause: 'Robots must achieve victory through strategic pushing, lifting, and ring ejection. Jamming radio frequencies, toxic adhesives, liquids, flame devices, or flying untethered projectiles are strictly forbidden and will incur immediate disqualification and removal from the venue.',
-  //   matchFormatDetails: 'Best of 3 rounds (90 seconds maximum per round). First robot to force any part of the opponent’s robot to touch outside the circular Dohyo ring wins the round (Yuhko point).',
-  //   shortTagline: 'High-torque autonomous combat rovers battling to push and eject rivals from the circular Dohyo ring.',
-  //   fullDescription: 'Inspired by centuries of athletic wrestling and robotic engineering excellence. Two autonomous or RC combat robots face off inside a circular elevated ring. Using high-traction magnetic or silicone tires, precision ground scrapers, and ultrasonic search algorithms, robots locate the opponent and drive them off the platform. Official Minoan RobotSports weight class protocols.',
-  //   maxPoints: 'Best of 3 Rounds (Yuhko Points)',
-  //   attemptsOrDuration: '3 Rounds (90 seconds max per round)',
-  //   teamCapacity: '2 - 3 Team Members',
-  //   divisions: ['Junior (10-14)', 'Senior (15-18)', 'University / Open'],
-  //   divisionSlugs: ['junior', 'senior', 'open'],
-  //   primaryColor: 'amber',
-  //   icon: 'Zap',
-  //   heroSnippet: '3kg Mega & 1kg Sumo • Dohyo ring ejection • 5s safety start delay',
-  //   arenaSpecs: {
-  //     dimensions: '154cm diameter circular Dohyo ring, 5cm elevation above arena floor',
-  //     surfaceType: 'Hardened steel plate or high-density matte black composite with 5cm white border line (Tawara)',
-  //     lighting: 'Overhead anti-glare sports lighting',
-  //   },
-  //   techSpecs: {
-  //     microcontrollers: ['STM32', 'Arduino Nano Every', 'ESP32', 'Teensy 4.0'],
-  //     maxWeight: 'Mega: 3.0kg | Standard: 1.0kg | Mini: 500g',
-  //     maxDimensions: '200mm × 200mm footprint (height unlimited once round starts)',
-  //     voltageLimit: 'Max 4S LiPo (16.8V)',
-  //     controlMode: 'Autonomous Only',
-  //     failsafeRequirements: [
-  //       'Mandatory 5.0-second delay between button press and first movement',
-  //       'Physical safety power kill switch reachable without tipping robot',
-  //       'Beveled front scoop edge with minimum 0.5mm safety radius',
-  //     ],
-  //     safetyRating: 'Heavyweight Kinetic Impact Certified',
-  //   },
-  //   rubric: [
-  //     { criteria: 'Round Win (Yuhko)', points: '1 Point', notes: 'Awarded when opponent touches floor outside the border ring' },
-  //     { criteria: 'Full Match Victory', points: '2 Yuhko Pts', notes: 'First robot to accumulate 2 round wins takes the duel' },
-  //     { criteria: 'Opponent Self-Ejection', points: '1 Yuhko Pt', notes: 'Opponent drives itself off the ring without contact' },
-  //     { criteria: 'Technical Default', points: 'Disqualification', notes: 'Failure to start within 5 seconds or deliberate arena damage' },
-  //   ],
-  //   keyRulesSummary: [
-  //     'Robots must incorporate an automated 5.0-second safety delay after referee signal before movement initiates.',
-  //     'No sticky substances, vacuum suction cups on non-ferrous rings, entanglement nets, or liquid weapons allowed.',
-  //     'A robot is considered eliminated the instant any part touches the exterior arena floor outside the white ring.',
-  //     'Blade/scoop edges must adhere to safety inspections and must not gouge the official Dohyo surface.',
-  //     'Technicians must step back at least 1.0m from the Dohyo perimeter during active rounds.',
-  //   ],
-  //   penaltiesAndFouls: [
-  //     { violation: 'Starting before the 5.0-second safety delay elapsed', consequence: 'False start warning; second false start forfeits round' },
-  //     { violation: 'Chassis separation or dropping parts in ring', consequence: 'Round forfeiture if part causes opponent traction loss' },
-  //     { violation: 'Damaging Dohyo ring surface with sharpened blades', consequence: 'Disqualification from tournament' },
-  //   ],
-  //   scrutineeringChecklist: [
-  //     'Digital scale weight class certification (3.0kg / 1.0kg / 500g)',
-  //     'Box template test: 200mm × 200mm relaxed dimensions',
-  //     'Electronic timer check of mandatory 5.0-second countdown delay',
-  //     'Blade edge safety check (no razor-sharp edges < 0.5mm)',
-  //   ],
-  //   faq: [
-  //     { q: 'How does the robot detect the ring border?', a: 'Robots typically use downward-facing optical reflectance sensors to distinguish the 5cm white border line (Tawara) from the black arena surface.' },
-  //     { q: 'Can magnets be used for downforce?', a: 'In the Mega Wrestling steel-ring class, neodymium magnets may be used if permitted by the specific division addendum.' },
-  //     { q: 'What happens if both robots exit simultaneously?', a: 'The Chief Referee calls a Torinaoshi (rematch round) if it is impossible to determine who touched the ground first.' },
-  //   ],
-  //   pdfRulebook: {
-  //     fileName: 'MRC27-Official-Rules-Mega-Wrestling-Sumo-v2.0.pdf',
-  //     fileSize: '2.7 MB',
-  //     version: 'v2027.2',
-  //     lastUpdated: 'Jan 2026',
-  //   },
-  //   gallery: [
-  //     {
-  //       title: 'Official Dohyo Wrestling Ring',
-  //       subtitle: '154cm elevated platform with high-contrast white boundary line and safety perimeter',
-  //       url: 'https://images.unsplash.com/photo-1518770660439-4636190af475?auto=format&fit=crop&w=1000&q=80',
-  //       badge: 'RING SCHEMATIC',
-  //     },
-  //     {
-  //       title: 'CNC Sloped Steel Scoop',
-  //       subtitle: 'Precision wedge scraper designed to get beneath opponent chassis and lift drive wheels',
-  //       url: 'https://images.unsplash.com/photo-1581092160607-ee22621dd758?auto=format&fit=crop&w=1000&q=80',
-  //       badge: 'CHASSIS ARMOR',
-  //     },
-  //     {
-  //       title: 'High-Torque Dual Brushless Drive',
-  //       subtitle: 'Custom planetary gearboxes delivering immense pushing torque and instant reverse',
-  //       url: 'https://images.unsplash.com/photo-1581092335397-9583fe92d232?auto=format&fit=crop&w=1000&q=80',
-  //       badge: 'POWER TRAIN',
-  //     },
-  //     {
-  //       title: 'Multi-Sensor Ring Detection Array',
-  //       subtitle: 'Ultra-fast phototransistors responding in sub-milliseconds to avoid ring boundary falls',
-  //       url: 'https://images.unsplash.com/photo-1508614589041-895b88991e3e?auto=format&fit=crop&w=1000&q=80',
-  //       badge: 'SENSORS',
-  //     },
-  //   ],
-  // },
+  
   {
     id: 'archery',
     name: 'Precision Robot Archery',
@@ -616,6 +528,18 @@ export const SPORTS_DATA: SportChallenge[] = [
         url: 'https://images.unsplash.com/photo-1518770660439-4636190af475?auto=format&fit=crop&w=1000&q=80',
         badge: 'ELECTRONIC SCORING',
       },
+
+     
+    ],
+    videos: [
+      {
+        title: 'Precision Robot Archery',
+        subtitle: 'Mechanical tension bow mechanics, laser sight calculation, and environmental wind compensation.',
+        url: ' https://youtu.be/uai4x6XWNdc',
+        embedUrl: 'https://www.youtube-nocookie.com/embed/uai4x6XWNdc',
+        badge: 'Precision Robot Archery - Official Match Demo',
+      },
+    
     ],
   },
   // {
@@ -911,6 +835,16 @@ export const SPORTS_DATA: SportChallenge[] = [
         url: 'https://images.unsplash.com/photo-1581092160607-ee22621dd758?auto=format&fit=crop&w=1000&q=80',
         badge: 'SAFETY PROTOCOL',
       },
+    ],
+    videos: [
+      {
+        title: 'Minoan Shooting- Official Match Demo',
+        subtitle: 'Official gate slalom, hover elevation control & landing sequence demonstration',
+        url: 'https://youtu.be/-t1rnDkqBBA',
+        embedUrl: 'https://www.youtube-nocookie.com/embed/-t1rnDkqBBA',
+        badge: 'Shooting Demo',
+      },
+    
     ],
   },
 ];

@@ -63,7 +63,7 @@ export const PathwaySection: React.FC = () => {
 
           <h2 className="font-orbitron font-extrabold text-3xl sm:text-4xl lg:text-5xl text-white tracking-wide">
             The Global Pathway to the <br className="hidden sm:inline" />
-            <span className="text-transparent bg-clip-text bg-gradient-to-r from-emerald-400 via-teal-300 to-cyan-400">
+            <span className="text-emerald-400">
               World Championship Finals
             </span>
           </h2>
@@ -77,7 +77,7 @@ export const PathwaySection: React.FC = () => {
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8 relative">
           
           {/* Connector Line (Desktop) */}
-          <div className="hidden md:block absolute top-1/3 left-[15%] right-[15%] h-0.5 bg-gradient-to-r from-cyan-500/50 via-amber-500/50 to-emerald-500/50 z-0" />
+          <div className="hidden md:block absolute top-1/3 left-[15%] right-[15%] h-0.5 bg-slate-700 z-0" />
 
           {steps.map((item, idx) => {
             const Icon = item.icon;

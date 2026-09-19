@@ -17,7 +17,7 @@ export const TickerBar: React.FC = () => {
   return (
     <section className="relative z-20 overflow-hidden border-y border-slate-800/80 bg-slate-950/90 backdrop-blur-md">
       {/* Infinite Ticker Ribbon */}
-      <div className="py-2.5 bg-gradient-to-r from-slate-950 via-slate-900 to-slate-950 border-b border-cyan-500/20 overflow-hidden flex whitespace-nowrap">
+      <div className="py-2.5 bg-slate-950 border-b border-cyan-500/20 overflow-hidden flex whitespace-nowrap">
         <div className="flex items-center space-x-8 animate-ticker">
           {[...tickerItems, ...tickerItems, ...tickerItems].map((item, idx) => (
             <div key={idx} className="flex items-center space-x-6 text-xs font-mono font-bold tracking-[0.2em]">
@@ -32,11 +32,11 @@ export const TickerBar: React.FC = () => {
 
       {/* Rule Zero HUD Section */}
       <div id="rules" className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 lg:py-10">
-        <div className="relative rounded-2xl bg-gradient-to-r from-slate-950 via-amber-950/20 to-slate-950 border border-amber-500/40 p-6 sm:p-8 shadow-2xl shadow-amber-950/20 overflow-hidden">
+        <div className="relative rounded-2xl bg-slate-950 border border-amber-500/40 p-6 sm:p-8 shadow-2xl shadow-amber-950/20 overflow-hidden">
           
           {/* Subtle Ambient Amber Glow */}
           <div className="absolute -right-20 -top-20 w-80 h-80 bg-amber-500/10 rounded-full blur-[100px] pointer-events-none" />
-          <div className="absolute left-0 top-0 w-1 h-full bg-gradient-to-b from-amber-400 via-amber-500 to-amber-600 shadow-[0_0_15px_#f59e0b]" />
+          <div className="absolute left-0 top-0 w-1 h-full bg-amber-400 shadow-[0_0_15px_#f59e0b]" />
 
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 items-center">
             
@@ -54,7 +54,7 @@ export const TickerBar: React.FC = () => {
 
               <h2 className="font-orbitron font-bold text-xl sm:text-2xl text-white tracking-wide">
                 The Rule Above All Rules: <br />
-                <span className="text-transparent bg-clip-text bg-gradient-to-r from-amber-400 via-amber-300 to-yellow-100 text-glow-amber">
+                <span className="text-amber-400 text-glow-amber">
                   Rule Zero
                 </span>
               </h2>

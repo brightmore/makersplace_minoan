@@ -66,7 +66,7 @@ export const HomePage: React.FC<HomePageProps> = ({ onOpenRegister }) => {
               </div>
               <h2 className="font-orbitron font-extrabold text-2xl sm:text-3xl lg:text-4xl text-white tracking-wide">
                 Seven Engineering Challenges. <br />
-                <span className="text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 via-teal-300 to-amber-300">
+                <span className="text-cyan-400">
                   One National Arena.
                 </span>
               </h2>
@@ -143,7 +143,7 @@ export const HomePage: React.FC<HomePageProps> = ({ onOpenRegister }) => {
           <div className="mt-10 text-center">
             <Link
               to="/sports"
-              className="inline-flex items-center gap-2 px-6 py-3 rounded-lg bg-gradient-to-r from-cyan-400 to-teal-400 text-slate-950 font-orbitron font-bold text-xs uppercase tracking-wider shadow-[0_0_20px_rgba(0,240,255,0.4)] hover:shadow-[0_0_30px_rgba(0,240,255,0.6)] transition-all"
+              className="inline-flex items-center gap-2 px-6 py-3 rounded-lg bg-cyan-400 hover:bg-cyan-300 text-slate-950 font-orbitron font-bold text-xs uppercase tracking-wider shadow-[0_0_20px_rgba(0,240,255,0.4)] hover:shadow-[0_0_30px_rgba(0,240,255,0.6)] transition-all"
             >
               <span>View Full Rulebooks & Technical Specifications</span>
               <ArrowRight className="w-4 h-4" />
@@ -175,7 +175,7 @@ export const HomePage: React.FC<HomePageProps> = ({ onOpenRegister }) => {
             {/* Card 1: Media Hub & Arena Visualizer */}
             <Link
               to="/media"
-              className="group p-6 rounded-2xl bg-gradient-to-b from-slate-900/90 to-slate-950 border border-slate-800 hover:border-cyan-500/50 transition-all duration-300 hover:-translate-y-1 hover:shadow-xl hover:shadow-cyan-950/30 flex flex-col justify-between"
+              className="group p-6 rounded-2xl bg-slate-900 border border-slate-800 hover:border-cyan-500/50 transition-all duration-300 hover:-translate-y-1 hover:shadow-xl hover:shadow-cyan-950/30 flex flex-col justify-between"
             >
               <div className="space-y-3">
                 <div className="p-3 rounded-xl bg-cyan-500/10 border border-cyan-500/30 text-cyan-400 w-fit group-hover:scale-110 transition-transform">
@@ -197,7 +197,7 @@ export const HomePage: React.FC<HomePageProps> = ({ onOpenRegister }) => {
             {/* Card 2: Rule Zero & Pre-Flight Inspection */}
             <Link
               to="/rules"
-              className="group p-6 rounded-2xl bg-gradient-to-b from-slate-900/90 to-slate-950 border border-slate-800 hover:border-amber-500/50 transition-all duration-300 hover:-translate-y-1 hover:shadow-xl hover:shadow-amber-950/30 flex flex-col justify-between"
+              className="group p-6 rounded-2xl bg-slate-900 border border-slate-800 hover:border-amber-500/50 transition-all duration-300 hover:-translate-y-1 hover:shadow-xl hover:shadow-amber-950/30 flex flex-col justify-between"
             >
               <div className="space-y-3">
                 <div className="p-3 rounded-xl bg-amber-500/10 border border-amber-500/30 text-amber-400 w-fit group-hover:scale-110 transition-transform">
@@ -219,7 +219,7 @@ export const HomePage: React.FC<HomePageProps> = ({ onOpenRegister }) => {
             {/* Card 3: Global Pathway */}
             <Link
               to="/pathway"
-              className="group p-6 rounded-2xl bg-gradient-to-b from-slate-900/90 to-slate-950 border border-slate-800 hover:border-emerald-500/50 transition-all duration-300 hover:-translate-y-1 hover:shadow-xl hover:shadow-emerald-950/30 flex flex-col justify-between"
+              className="group p-6 rounded-2xl bg-slate-900 border border-slate-800 hover:border-emerald-500/50 transition-all duration-300 hover:-translate-y-1 hover:shadow-xl hover:shadow-emerald-950/30 flex flex-col justify-between"
             >
               <div className="space-y-3">
                 <div className="p-3 rounded-xl bg-emerald-500/10 border border-emerald-500/30 text-emerald-400 w-fit group-hover:scale-110 transition-transform">
@@ -241,7 +241,7 @@ export const HomePage: React.FC<HomePageProps> = ({ onOpenRegister }) => {
             {/* Card 4: Official Downloads */}
             <Link
               to="/resources"
-              className="group p-6 rounded-2xl bg-gradient-to-b from-slate-900/90 to-slate-950 border border-slate-800 hover:border-cyan-500/50 transition-all duration-300 hover:-translate-y-1 hover:shadow-xl hover:shadow-cyan-950/30 flex flex-col justify-between"
+              className="group p-6 rounded-2xl bg-slate-900 border border-slate-800 hover:border-cyan-500/50 transition-all duration-300 hover:-translate-y-1 hover:shadow-xl hover:shadow-cyan-950/30 flex flex-col justify-between"
             >
               <div className="space-y-3">
                 <div className="p-3 rounded-xl bg-cyan-500/10 border border-cyan-500/30 text-cyan-400 w-fit group-hover:scale-110 transition-transform">
@@ -263,7 +263,7 @@ export const HomePage: React.FC<HomePageProps> = ({ onOpenRegister }) => {
             {/* Card 5: Partners & Academic Alliance */}
             <Link
               to="/sponsors"
-              className="group p-6 rounded-2xl bg-gradient-to-b from-slate-900/90 to-slate-950 border border-slate-800 hover:border-pink-500/50 transition-all duration-300 hover:-translate-y-1 hover:shadow-xl hover:shadow-pink-950/30 flex flex-col justify-between"
+              className="group p-6 rounded-2xl bg-slate-900 border border-slate-800 hover:border-pink-500/50 transition-all duration-300 hover:-translate-y-1 hover:shadow-xl hover:shadow-pink-950/30 flex flex-col justify-between"
             >
               <div className="space-y-3">
                 <div className="p-3 rounded-xl bg-pink-500/10 border border-pink-500/30 text-pink-400 w-fit group-hover:scale-110 transition-transform">
@@ -283,7 +283,7 @@ export const HomePage: React.FC<HomePageProps> = ({ onOpenRegister }) => {
             </Link>
 
             {/* Card 6: Direct Team Registration CTA Card */}
-            <div className="p-6 rounded-2xl bg-gradient-to-br from-cyan-950/50 via-slate-900 to-slate-950 border border-cyan-500/50 flex flex-col justify-between shadow-[0_0_20px_rgba(0,240,255,0.2)]">
+            <div className="p-6 rounded-2xl bg-slate-900 border border-cyan-500/50 flex flex-col justify-between shadow-[0_0_20px_rgba(0,240,255,0.2)]">
               <div className="space-y-3">
                 <div className="p-3 rounded-xl bg-cyan-400 text-slate-950 w-fit font-bold">
                   <Sparkles className="w-6 h-6 animate-spin-slow" />

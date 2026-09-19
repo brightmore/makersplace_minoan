@@ -60,7 +60,7 @@ export const PillarsSection: React.FC = () => {
             </div>
             <h2 className="font-orbitron font-extrabold text-2xl sm:text-3xl lg:text-4xl text-white tracking-wide">
               The Four Pillars of <br className="hidden sm:inline" />
-              <span className="text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 via-teal-300 to-amber-300">
+              <span className="text-cyan-400">
                 RobotSports Excellence
               </span>
             </h2>

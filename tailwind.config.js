@@ -55,10 +55,6 @@ export default {
           '100%': { filter: 'drop-shadow(0 0 20px rgba(0, 240, 255, 0.8))' },
         },
       },
-      backgroundImage: {
-        'cyber-grid': 'linear-gradient(to right, rgba(0, 240, 255, 0.05) 1px, transparent 1px), linear-gradient(to bottom, rgba(0, 240, 255, 0.05) 1px, transparent 1px)',
-        'cyber-dots': 'radial-gradient(rgba(0, 240, 255, 0.15) 1px, transparent 1px)',
-      },
     },
   },
   plugins: [],

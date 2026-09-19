@@ -39,10 +39,7 @@ export const Navbar: React.FC<NavbarProps> = ({ onOpenRegister }) => {
         <div className="flex items-center gap-2 sm:gap-3 min-w-0">
           <Link to="/" className="flex items-center gap-2.5 sm:gap-3.5 group focus:outline-none min-w-0">
             {/* Enhanced MakersPlace Cyber Emblem Bezel */}
-            <div className="relative flex items-center justify-center w-10 h-10 sm:w-12 sm:h-12 rounded-xl bg-gradient-to-br from-slate-900/95 via-slate-950 to-slate-900/90 border border-cyan-500/50 p-1.5 sm:p-2 shadow-[0_0_18px_rgba(0,240,255,0.25)] group-hover:border-cyan-400 group-hover:shadow-[0_0_28px_rgba(0,240,255,0.55)] transition-all duration-300 shrink-0">
-              {/* Subtle Cyber Grid & Ambient Radial Backlight */}
-              <div className="absolute inset-0 bg-gradient-to-tr from-cyan-500/15 via-transparent to-amber-500/10 rounded-xl pointer-events-none" />
-              
+            <div className="relative flex items-center justify-center w-10 h-10 sm:w-12 sm:h-12 rounded-xl bg-slate-900 border border-cyan-500/50 p-1.5 sm:p-2 shadow-[0_0_18px_rgba(0,240,255,0.25)] group-hover:border-cyan-400 group-hover:shadow-[0_0_28px_rgba(0,240,255,0.55)] transition-all duration-300 shrink-0">
               {/* Micro Corner HUD Accents */}
               <div className="absolute top-0 left-0 w-2 h-2 border-t-2 border-l-2 border-cyan-400 rounded-tl-sm pointer-events-none" />
               <div className="absolute bottom-0 right-0 w-2 h-2 border-b-2 border-r-2 border-cyan-400 rounded-br-sm pointer-events-none" />
@@ -114,7 +111,7 @@ export const Navbar: React.FC<NavbarProps> = ({ onOpenRegister }) => {
           {/* Primary CTA: Register Team */}
           <button
             onClick={onOpenRegister}
-            className="relative group inline-flex items-center justify-center px-3 sm:px-5 py-2 text-xs font-orbitron font-bold uppercase tracking-wider text-slate-950 bg-gradient-to-r from-cyan-400 via-cyan-300 to-teal-300 rounded-md overflow-hidden transition-all duration-300 hover:scale-[1.03] active:scale-[0.98] shadow-[0_0_20px_rgba(0,240,255,0.45)] hover:shadow-[0_0_30px_rgba(0,240,255,0.7)] shrink-0"
+            className="relative group inline-flex items-center justify-center px-3 sm:px-5 py-2 text-xs font-orbitron font-bold uppercase tracking-wider text-slate-950 bg-cyan-400 hover:bg-cyan-300 rounded-md overflow-hidden transition-all duration-300 hover:scale-[1.03] active:scale-[0.98] shadow-[0_0_20px_rgba(0,240,255,0.45)] hover:shadow-[0_0_30px_rgba(0,240,255,0.7)] shrink-0"
           >
             <span className="absolute inset-0 w-full h-full bg-white/20 transform -skew-x-12 -translate-x-full group-hover:translate-x-full transition-transform duration-1000" />
             <Sparkles className="w-3.5 h-3.5 mr-1 text-slate-950 animate-spin-slow" />

@@ -51,7 +51,7 @@ export const SponsorsSection: React.FC = () => {
 
           <h2 className="font-orbitron font-extrabold text-3xl sm:text-4xl lg:text-5xl text-white tracking-wide">
             Powered by Leaders in <br className="hidden sm:inline" />
-            <span className="text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 via-teal-300 to-amber-300">
+            <span className="text-cyan-400">
               Robotics & STEAM Education
             </span>
           </h2>
@@ -113,7 +113,7 @@ export const SponsorsSection: React.FC = () => {
         </div>
 
         {/* Call for Sponsorship & Academic Delegations */}
-        <div className="rounded-2xl bg-gradient-to-r from-slate-900/90 via-slate-900/70 to-slate-950/90 border border-cyan-500/30 p-8 sm:p-10 shadow-2xl flex flex-col md:flex-row items-center justify-between gap-6">
+        <div className="rounded-2xl bg-slate-900 border border-cyan-500/30 p-8 sm:p-10 shadow-2xl flex flex-col md:flex-row items-center justify-between gap-6">
           <div className="space-y-2 max-w-xl">
             <span className="font-mono text-xs font-bold text-amber-400 uppercase tracking-widest">
               Join the Movement
