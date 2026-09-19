@@ -29,7 +29,9 @@ import {
   HelpCircle,
   Shield,
   Eye,
-  Check
+  Check,
+  Play,
+  ExternalLink
 } from 'lucide-react';
 
 interface SportDetailPageProps {
@@ -240,6 +242,78 @@ export const SportDetailPage: React.FC<SportDetailPageProps> = ({ onOpenRegister
 
           </div>
         </div>
+
+        {/* Side-by-Side Official Video Broadcasts / Demonstrations */}
+        {sport.videos && sport.videos.length > 0 && (
+          <div className="mb-10">
+            <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-2 mb-4">
+              <div className="flex items-center gap-2.5">
+                <span className="flex h-3 w-3 relative">
+                  <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-red-400 opacity-75" />
+                  <span className="relative inline-flex rounded-full h-3 w-3 bg-red-500 shadow-[0_0_8px_#ef4444]" />
+                </span>
+                <h3 className="font-orbitron font-bold text-base sm:text-lg text-white uppercase tracking-wider flex items-center gap-2">
+                  <Play className="w-4 h-4 text-cyan-400" />
+                  <span>Official Drone Flight Demonstrations</span>
+                </h3>
+              </div>
+              <span className="font-mono text-xs text-slate-400 flex items-center gap-1.5">
+                <span className="w-1.5 h-1.5 rounded-full bg-cyan-400" />
+                Dual Screen Video Feeds
+              </span>
+            </div>
+
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+              {sport.videos.map((vid, vIdx) => (
+                <div
+                  key={vIdx}
+                  className="rounded-2xl bg-gradient-to-b from-slate-900/95 via-slate-950 to-slate-900/90 border border-cyan-500/30 overflow-hidden shadow-2xl shadow-cyan-950/20 flex flex-col group hover:border-cyan-400/70 transition-all duration-300"
+                >
+                  {/* High-Tech Reticle Top Bar */}
+                  <div className="px-4 py-2.5 bg-slate-950/90 border-b border-slate-800/80 flex items-center justify-between text-xs font-mono">
+                    <span className="px-2 py-0.5 rounded bg-cyan-500/10 border border-cyan-500/30 text-cyan-300 font-bold text-[10px] tracking-widest uppercase">
+                      {vid.badge || `FEED 0${vIdx + 1}`}
+                    </span>
+                    <a
+                      href={vid.url}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="inline-flex items-center gap-1 text-[11px] text-slate-400 hover:text-cyan-300 transition-colors"
+                    >
+                      <span>Open on YouTube</span>
+                      <ExternalLink className="w-3 h-3 text-cyan-400" />
+                    </a>
+                  </div>
+
+                  {/* Video Player Embed (16:9 Aspect Ratio) */}
+                  <div className="relative aspect-video w-full bg-slate-950">
+                    <iframe
+                      src={vid.embedUrl}
+                      title={vid.title}
+                      allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                      allowFullScreen
+                      className="absolute inset-0 w-full h-full border-0"
+                    />
+                  </div>
+
+                  {/* Video Meta Information */}
+                  <div className="p-4 sm:p-5 flex flex-col justify-between flex-1 border-t border-slate-800/80 bg-slate-900/60">
+                    <div className="space-y-1">
+                      <h4 className="font-orbitron font-bold text-sm sm:text-base text-white group-hover:text-cyan-300 transition-colors">
+                        {vid.title}
+                      </h4>
+                      {vid.subtitle && (
+                        <p className="text-slate-400 text-xs leading-relaxed font-sans">
+                          {vid.subtitle}
+                        </p>
+                      )}
+                    </div>
+                  </div>
+                </div>
+              ))}
+            </div>
+          </div>
+        )}
 
         {/* Tabbed Section Navigation */}
         <div className="flex border-b border-slate-800 mb-8 overflow-x-auto no-scrollbar gap-2">

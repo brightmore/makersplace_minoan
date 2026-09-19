@@ -102,6 +102,22 @@ export const SPORTS_DATA: SportChallenge[] = [
         badge: 'AVIONICS',
       },
     ],
+    videos: [
+      {
+        title: 'Minoan Drone Precision Obstacle - Official Match Demo',
+        subtitle: 'Official gate slalom, hover elevation control & landing sequence demonstration',
+        url: 'https://youtu.be/Fm-ZlJQ3OQM',
+        embedUrl: 'https://www.youtube-nocookie.com/embed/Fm-ZlJQ3OQM',
+        badge: 'FLIGHT DEMONSTRATION 01',
+      },
+      {
+        title: 'Drone Slalom & Ring Traversal - Arena Flight Run',
+        subtitle: 'Sub-millimeter flight path tracking and pilot station perspectives',
+        url: 'https://youtu.be/Fm-ZlJQ3OQM',
+        embedUrl: 'https://www.youtube-nocookie.com/embed/Fm-ZlJQ3OQM',
+        badge: 'FLIGHT DEMONSTRATION 02',
+      },
+    ],
   },
   {
     id: 'drone-soccer',

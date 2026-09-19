@@ -24,6 +24,14 @@ export interface GalleryItem {
   badge: string;
 }
 
+export interface SportVideoItem {
+  title: string;
+  subtitle?: string;
+  url: string;
+  embedUrl: string;
+  badge?: string;
+}
+
 export interface TechSpecs {
   microcontrollers: string[];
   maxWeight: string;
@@ -73,6 +81,7 @@ export interface SportChallenge {
   matchFormatDetails?: string;
   scrutineeringChecklist?: string[];
   faq?: { q: string; a: string }[];
+  videos?: SportVideoItem[];
 }
 
 export interface RegistrationFormData {
