@@ -1,6 +1,19 @@
 import React, { useState } from 'react';
 import { CalendarDropdown } from './CalendarDropdown';
-import { Bot, Menu, X, Sparkles, ChevronRight, Download, Award, ShieldCheck, Layers, Users } from 'lucide-react';
+import { Link, NavLink } from 'react-router-dom';
+import { 
+  Bot, 
+  Menu, 
+  X, 
+  Sparkles, 
+  ChevronRight, 
+  Download, 
+  Award, 
+  ShieldCheck, 
+  Layers, 
+  Users,
+  Home
+} from 'lucide-react';
 
 interface NavbarProps {
   onOpenRegister: () => void;
@@ -10,21 +23,21 @@ export const Navbar: React.FC<NavbarProps> = ({ onOpenRegister }) => {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
 
   const navLinks = [
-    { label: 'RobotSports', href: '#sports', icon: Bot },
-    { label: 'Media Hub', href: '#media', icon: Layers },
-    { label: 'Rule Zero & Inspection', href: '#rules', icon: ShieldCheck },
-    { label: 'Global Pathway', href: '#pathway', icon: Award },
-    { label: 'Downloads', href: '#resources', icon: Download },
-    { label: 'Partners', href: '#sponsors', icon: Users },
+    { label: 'RobotSports', path: '/sports', icon: Bot },
+    { label: 'Media Hub', path: '/media', icon: Layers },
+    { label: 'Rule Zero & Inspection', path: '/rules', icon: ShieldCheck },
+    { label: 'Global Pathway', path: '/pathway', icon: Award },
+    { label: 'Downloads', path: '/resources', icon: Download },
+    { label: 'Partners', path: '/sponsors', icon: Users },
   ];
 
   return (
     <header className="sticky top-0 z-50 w-full backdrop-blur-xl bg-slate-950/85 border-b border-slate-800/80 transition-all">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between gap-3 sm:gap-4">
+      <div className="px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between gap-3 sm:gap-4">
         
         {/* Brand Lockup */}
         <div className="flex items-center gap-2 sm:gap-3 min-w-0">
-          <a href="#" className="flex items-center gap-2.5 sm:gap-3.5 group focus:outline-none min-w-0">
+          <Link to="/" className="flex items-center gap-2.5 sm:gap-3.5 group focus:outline-none min-w-0">
             {/* Enhanced MakersPlace Cyber Emblem Bezel */}
             <div className="relative flex items-center justify-center w-10 h-10 sm:w-12 sm:h-12 rounded-xl bg-gradient-to-br from-slate-900/95 via-slate-950 to-slate-900/90 border border-cyan-500/50 p-1.5 sm:p-2 shadow-[0_0_18px_rgba(0,240,255,0.25)] group-hover:border-cyan-400 group-hover:shadow-[0_0_28px_rgba(0,240,255,0.55)] transition-all duration-300 shrink-0">
               {/* Subtle Cyber Grid & Ambient Radial Backlight */}
@@ -69,19 +82,25 @@ export const Navbar: React.FC<NavbarProps> = ({ onOpenRegister }) => {
                 </span>
               </div>
             </div>
-          </a>
+          </Link>
         </div>
 
         {/* Desktop Navigation Links */}
         <nav className="hidden lg:flex items-center space-x-1">
           {navLinks.map((link) => (
-            <a
+            <NavLink
               key={link.label}
-              href={link.href}
-              className="px-3 py-2 rounded-md text-xs font-mono uppercase tracking-wider text-slate-300 hover:text-cyan-300 hover:bg-slate-900/60 transition-colors border border-transparent hover:border-slate-800"
+              to={link.path}
+              className={({ isActive }) =>
+                `px-3 py-2 rounded-md text-xs font-mono uppercase tracking-wider transition-all border ${
+                  isActive
+                    ? 'text-cyan-300 bg-cyan-950/60 border-cyan-500/50 font-bold shadow-[0_0_12px_rgba(0,240,255,0.2)]'
+                    : 'text-slate-300 hover:text-cyan-300 hover:bg-slate-900/60 border-transparent hover:border-slate-800'
+                }`
+              }
             >
               {link.label}
-            </a>
+            </NavLink>
           ))}
         </nav>
 
@@ -131,21 +150,49 @@ export const Navbar: React.FC<NavbarProps> = ({ onOpenRegister }) => {
           <div className="px-2 py-1 text-[11px] font-mono uppercase text-slate-400 border-b border-slate-800/80 mb-2">
             Tournament Navigation
           </div>
+
+          {/* Home Link */}
+          <NavLink
+            to="/"
+            end
+            onClick={() => setMobileMenuOpen(false)}
+            className={({ isActive }) =>
+              `flex items-center justify-between px-3 py-2.5 rounded-lg text-sm border font-mono tracking-wide transition-colors ${
+                isActive
+                  ? 'text-cyan-300 bg-cyan-950/60 border-cyan-500/50 font-bold'
+                  : 'text-slate-200 hover:text-cyan-300 hover:bg-slate-900/80 border-transparent hover:border-slate-800'
+              }`
+            }
+          >
+            <div className="flex items-center gap-3">
+              <Home className="w-4 h-4 text-cyan-400" />
+              <span>Home Overview</span>
+            </div>
+            <ChevronRight className="w-4 h-4 text-slate-500" />
+          </NavLink>
+
+          {/* Page Links */}
           {navLinks.map((link) => {
             const Icon = link.icon;
             return (
-              <a
+              <NavLink
                 key={link.label}
-                href={link.href}
+                to={link.path}
                 onClick={() => setMobileMenuOpen(false)}
-                className="flex items-center justify-between px-3 py-2.5 rounded-lg text-sm text-slate-200 hover:text-cyan-300 hover:bg-slate-900/80 border border-transparent hover:border-slate-800 font-mono tracking-wide"
+                className={({ isActive }) =>
+                  `flex items-center justify-between px-3 py-2.5 rounded-lg text-sm border font-mono tracking-wide transition-colors ${
+                    isActive
+                      ? 'text-cyan-300 bg-cyan-950/60 border-cyan-500/50 font-bold'
+                      : 'text-slate-200 hover:text-cyan-300 hover:bg-slate-900/80 border-transparent hover:border-slate-800'
+                  }`
+                }
               >
                 <div className="flex items-center gap-3">
                   <Icon className="w-4 h-4 text-cyan-400" />
                   <span>{link.label}</span>
                 </div>
                 <ChevronRight className="w-4 h-4 text-slate-500" />
-              </a>
+              </NavLink>
             );
           })}
 

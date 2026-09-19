@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { Link } from 'react-router-dom';
 import { SPORTS_DATA } from '../data/sportsData';
 import { GalleryItem, SportChallenge } from '../types';
 import { ImageLightboxModal } from './ImageLightboxModal';
@@ -232,9 +233,9 @@ export const MediaHub: React.FC = () => {
               <span className="text-slate-300">
                 Detailed Arena Specifications & CAD available in the downloads section.
               </span>
-              <a href="#resources" className="text-cyan-400 hover:text-cyan-300 font-bold shrink-0 ml-2">
+              <Link to="/resources" className="text-cyan-400 hover:text-cyan-300 font-bold shrink-0 ml-2">
                 View CAD Files →
-              </a>
+              </Link>
             </div>
           </div>
 

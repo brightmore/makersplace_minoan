@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import { Link } from 'react-router-dom';
 import { motion, AnimatePresence } from 'framer-motion';
 import { 
   ArrowRight, 
@@ -398,13 +399,13 @@ export const Hero: React.FC<HeroProps> = ({ onOpenRegister }) => {
                     <ArrowRight className="w-4 h-4 ml-2 transition-transform group-hover:translate-x-1" />
                   </button>
 
-                  <a
-                    href="#sports"
+                  <Link
+                    to="/sports"
                     className="inline-flex items-center justify-center px-6 py-3.5 font-mono text-xs sm:text-sm font-medium uppercase tracking-wider text-slate-200 bg-slate-900/80 hover:bg-slate-800/90 border border-slate-700/80 hover:border-cyan-500/60 rounded-lg transition-all duration-200 hover:text-cyan-300 backdrop-blur-md"
                   >
                     <span>Explore All 7 Sports</span>
-                    <ChevronDown className="w-4 h-4 ml-2 text-cyan-400 animate-bounce" />
-                  </a>
+                    <ChevronDown className="w-4 h-4 ml-2 text-cyan-400" />
+                  </Link>
                 </div>
 
               </motion.div>

@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { Link } from 'react-router-dom';
 import { 
   ArrowUp, 
   Mail, 
@@ -39,8 +40,8 @@ export const Footer: React.FC = () => {
           
           {/* Col 1 (5 cols): Brand & Host Information */}
           <div className="lg:col-span-5 space-y-4">
-            <div className="flex items-center gap-3">
-              <div className="w-10 h-10 rounded-xl bg-gradient-to-br from-slate-900 to-slate-950 border border-cyan-400/50 p-1.5 flex items-center justify-center shadow-[0_0_15px_rgba(0,240,255,0.3)]">
+            <Link to="/" className="flex items-center gap-3 group focus:outline-none inline-flex">
+              <div className="w-10 h-10 rounded-xl bg-gradient-to-br from-slate-900 to-slate-950 border border-cyan-400/50 p-1.5 flex items-center justify-center shadow-[0_0_15px_rgba(0,240,255,0.3)] group-hover:border-cyan-400 transition-colors">
                 <img 
                   src="/images/makersplace_icon_hires.png" 
                   alt="The MakersPlace Emblem"
@@ -51,11 +52,11 @@ export const Footer: React.FC = () => {
                 <span className="font-mono text-[10px] tracking-[0.2em] text-amber-400 font-bold uppercase block">
                   The MakersPlace Presents
                 </span>
-                <span className="font-orbitron font-bold text-base text-white">
+                <span className="font-orbitron font-bold text-base text-white group-hover:text-cyan-300 transition-colors">
                   MINOAN ROBOTSPORTS GHANA 2027
                 </span>
               </div>
-            </div>
+            </Link>
 
             <p className="text-slate-400 text-xs sm:text-sm leading-relaxed max-w-sm">
               Ghana's premier official RobotSports championship uniting primary, high school, university, and independent makers across seven rigorous technical disciplines.
@@ -86,40 +87,40 @@ export const Footer: React.FC = () => {
             </h4>
             <ul className="space-y-2 text-xs font-mono">
               <li>
-                <a href="#sports" className="hover:text-cyan-300 transition-colors flex items-center gap-1.5">
+                <Link to="/sports" className="hover:text-cyan-300 transition-colors flex items-center gap-1.5">
                   <span className="w-1.5 h-1.5 rounded-full bg-cyan-400" />
                   All 7 RobotSports Disciplines
-                </a>
+                </Link>
               </li>
               <li>
-                <a href="#rules" className="hover:text-amber-300 transition-colors flex items-center gap-1.5">
+                <Link to="/rules" className="hover:text-amber-300 transition-colors flex items-center gap-1.5">
                   <span className="w-1.5 h-1.5 rounded-full bg-amber-400" />
                   Rule Zero & Scrutineering
-                </a>
+                </Link>
               </li>
               <li>
-                <a href="#media" className="hover:text-cyan-300 transition-colors flex items-center gap-1.5">
+                <Link to="/media" className="hover:text-cyan-300 transition-colors flex items-center gap-1.5">
                   <span className="w-1.5 h-1.5 rounded-full bg-slate-500" />
                   Media Hub & Arena Visualizer
-                </a>
+                </Link>
               </li>
               <li>
-                <a href="#pathway" className="hover:text-emerald-300 transition-colors flex items-center gap-1.5">
+                <Link to="/pathway" className="hover:text-emerald-300 transition-colors flex items-center gap-1.5">
                   <span className="w-1.5 h-1.5 rounded-full bg-emerald-400" />
                   Minoan Global Finals Pathway
-                </a>
+                </Link>
               </li>
               <li>
-                <a href="#resources" className="hover:text-cyan-300 transition-colors flex items-center gap-1.5">
+                <Link to="/resources" className="hover:text-cyan-300 transition-colors flex items-center gap-1.5">
                   <span className="w-1.5 h-1.5 rounded-full bg-cyan-400" />
                   CAD Blueprints & Rulebooks
-                </a>
+                </Link>
               </li>
               <li>
-                <a href="#sponsors" className="hover:text-cyan-300 transition-colors flex items-center gap-1.5">
+                <Link to="/sponsors" className="hover:text-cyan-300 transition-colors flex items-center gap-1.5">
                   <span className="w-1.5 h-1.5 rounded-full bg-slate-500" />
                   Sponsors & Educational Partners
-                </a>
+                </Link>
               </li>
             </ul>
           </div>

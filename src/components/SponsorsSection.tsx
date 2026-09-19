@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import { Users, Handshake, Cpu, Globe2, Building, GraduationCap, ShieldCheck } from 'lucide-react';
 
 export const SponsorsSection: React.FC = () => {
@@ -134,12 +135,12 @@ export const SponsorsSection: React.FC = () => {
               <span>Sponsor Inquiry</span>
             </a>
 
-            <a
-              href="#resources"
+            <Link
+              to="/resources"
               className="w-full sm:w-auto px-5 py-3 rounded-lg bg-slate-900 hover:bg-slate-800 text-slate-200 font-mono text-xs text-center border border-slate-700 transition-colors"
             >
               <span>Download Partner Deck</span>
-            </a>
+            </Link>
           </div>
         </div>
 
