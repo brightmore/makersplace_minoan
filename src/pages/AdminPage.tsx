@@ -4,7 +4,6 @@ import {
   Mail, 
   Sparkles, 
   Search, 
-  Download, 
   CheckCircle2, 
   Clock, 
   XCircle, 
@@ -15,11 +14,13 @@ import {
   Trash2, 
   Phone, 
   MapPin, 
-  X,
-  FileSpreadsheet,
-  Layers,
-  Radio,
-  Eye
+  X, 
+  Layers, 
+  Eye, 
+  Loader2, 
+  UserPlus, 
+  ShieldAlert, 
+  UserCheck
 } from 'lucide-react';
 import { 
   RegistrationRecord, 
@@ -36,13 +37,18 @@ import {
   deleteSubscriber, 
   fetchBroadcasts, 
   sendBroadcastBulletin, 
-  getRegistrationCsvUrl, 
-  getNewsletterCsvUrl 
+  fetchAdminStaff,
+  registerAdmin
 } from '../lib/api';
 import { SPORTS_DATA } from '../data/sportsData';
+import { useAuth } from '../context/AuthContext';
+import { AdminAuthView } from '../components/admin/AdminAuthView';
+import { AdminLayout } from '../layouts/AdminLayout';
 
 export const AdminPage: React.FC = () => {
-  const [activeTab, setActiveTab] = useState<'overview' | 'registrations' | 'newsletter' | 'bulletins'>('overview');
+  const { isAuthenticated, loading: authLoading } = useAuth();
+
+  const [activeTab, setActiveTab] = useState<'overview' | 'registrations' | 'newsletter' | 'bulletins' | 'staff'>('overview');
   const [loading, setLoading] = useState<boolean>(true);
   const [error, setError] = useState<string | null>(null);
 
@@ -76,6 +82,16 @@ export const AdminPage: React.FC = () => {
   const [isSendingBroadcast, setIsSendingBroadcast] = useState(false);
   const [broadcastSuccessMessage, setBroadcastSuccessMessage] = useState<string | null>(null);
 
+  // Staff state
+  const [staffList, setStaffList] = useState<{ id: number; email: string; name: string; role: string; created_at: string }[]>([]);
+  const [showAddStaffModal, setShowAddStaffModal] = useState(false);
+  const [newStaffName, setNewStaffName] = useState('');
+  const [newStaffEmail, setNewStaffEmail] = useState('');
+  const [newStaffPassword, setNewStaffPassword] = useState('');
+  const [newStaffRole, setNewStaffRole] = useState('scrutineer');
+  const [isAddingStaff, setIsAddingStaff] = useState(false);
+  const [addStaffError, setAddStaffError] = useState<string | null>(null);
+
   // Notification toast
   const [toastMessage, setToastMessage] = useState<{ text: string; isError?: boolean } | null>(null);
 
@@ -85,10 +101,11 @@ export const AdminPage: React.FC = () => {
   };
 
   const loadData = useCallback(async () => {
+    if (!isAuthenticated) return;
     setLoading(true);
     setError(null);
     try {
-      const [statsData, regsData, subsData, bcastsData] = await Promise.all([
+      const [statsData, regsData, subsData, bcastsData, staffData] = await Promise.all([
         fetchTournamentStats(),
         fetchRegistrations({
           search: regSearch,
@@ -104,19 +121,21 @@ export const AdminPage: React.FC = () => {
           limit: 100,
         }),
         fetchBroadcasts(),
+        fetchAdminStaff().catch(() => []),
       ]);
 
       setStats(statsData);
       setRegistrations(regsData.data);
       setSubscribers(subsData.data);
       setBroadcasts(bcastsData);
+      setStaffList(staffData);
     } catch (err: unknown) {
       console.error('[Admin] Error loading operations data:', err);
       setError(err instanceof Error ? err.message : 'Failed to connect to backend server');
     } finally {
       setLoading(false);
     }
-  }, [regSearch, regSportFilter, regDivisionFilter, regRegionFilter, regStatusFilter, subSearch, subStatusFilter]);
+  }, [isAuthenticated, regSearch, regSportFilter, regDivisionFilter, regRegionFilter, regStatusFilter, subSearch, subStatusFilter]);
 
   useEffect(() => {
     loadData();
@@ -197,6 +216,33 @@ export const AdminPage: React.FC = () => {
     }
   };
 
+  // Handle Add New Staff
+  const handleAddStaffSubmit = async (e: React.FormEvent) => {
+    e.preventDefault();
+    setAddStaffError(null);
+    setIsAddingStaff(true);
+
+    try {
+      await registerAdmin({
+        name: newStaffName,
+        email: newStaffEmail,
+        password: newStaffPassword,
+        role: newStaffRole,
+      });
+
+      showToast(`Staff account for ${newStaffName} created.`);
+      setShowAddStaffModal(false);
+      setNewStaffName('');
+      setNewStaffEmail('');
+      setNewStaffPassword('');
+      loadData();
+    } catch (err: unknown) {
+      setAddStaffError(err instanceof Error ? err.message : 'Failed to register staff member');
+    } finally {
+      setIsAddingStaff(false);
+    }
+  };
+
   const getStatusBadge = (status: RegistrationRecord['status']) => {
     switch (status) {
       case 'approved':
@@ -243,9 +289,33 @@ export const AdminPage: React.FC = () => {
     'Oti', 'Savannah', 'North East', 'Western North',
   ];
 
+  // If checking authentication
+  if (authLoading) {
+    return (
+      <div className="min-h-screen bg-[#05070d] flex flex-col items-center justify-center space-y-4">
+        <Loader2 className="w-8 h-8 text-cyan-400 animate-spin" />
+        <span className="font-mono text-xs text-slate-400 uppercase tracking-widest">
+          Authenticating Enclave Session...
+        </span>
+      </div>
+    );
+  }
+
+  // If unauthenticated, display the dedicated Admin Auth Screen
+  if (!isAuthenticated) {
+    return <AdminAuthView />;
+  }
+
+  // Authenticated - render the dedicated AdminLayout
   return (
-    <div className="min-h-screen bg-[#070a12] text-slate-100 py-10 px-4 sm:px-6 lg:px-8">
-      
+    <AdminLayout
+      activeTab={activeTab}
+      setActiveTab={setActiveTab}
+      teamCount={registrations.length}
+      subscriberCount={subscribers.length}
+      broadcastCount={broadcasts.length}
+      staffCount={staffList.length}
+    >
       {/* Toast Notification */}
       {toastMessage && (
         <div className={`fixed top-20 right-5 z-50 px-4 py-3 rounded-lg border shadow-xl flex items-center gap-2.5 font-mono text-xs animate-in slide-in-from-top-3 ${
@@ -258,56 +328,7 @@ export const AdminPage: React.FC = () => {
         </div>
       )}
 
-      <div className="max-w-7xl mx-auto space-y-8">
-
-        {/* Command Console Top HUD */}
-        <div className="p-6 rounded-2xl bg-slate-900/90 border border-slate-800 shadow-xl flex flex-col md:flex-row md:items-center justify-between gap-6">
-          <div className="space-y-1.5">
-            <div className="flex items-center gap-2">
-              <span className="inline-block w-2.5 h-2.5 rounded-full bg-emerald-400 animate-ping" />
-              <span className="text-[10px] font-mono tracking-[0.25em] text-cyan-400 uppercase font-bold">
-                MakersPlace Ghana Operations Command
-              </span>
-            </div>
-            <h1 className="font-orbitron font-black text-xl sm:text-2xl lg:text-3xl text-white tracking-wide">
-              TOURNAMENT REGISTRATION & BULLETIN VAULT
-            </h1>
-            <p className="text-slate-400 text-xs font-mono">
-              Live Scrutineering, Roster Verification & Direct Athlete Communication System
-            </p>
-          </div>
-
-          <div className="flex flex-wrap items-center gap-3">
-            <button
-              onClick={loadData}
-              disabled={loading}
-              className="inline-flex items-center gap-2 px-3.5 py-2 rounded-lg bg-slate-800 hover:bg-slate-700 text-slate-200 border border-slate-700 font-mono text-xs transition-colors"
-            >
-              <RefreshCw className={`w-3.5 h-3.5 text-cyan-400 ${loading ? 'animate-spin' : ''}`} />
-              <span>Refresh Telemetry</span>
-            </button>
-
-            <a
-              href={getRegistrationCsvUrl()}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="inline-flex items-center gap-2 px-3.5 py-2 rounded-lg bg-slate-800 hover:bg-cyan-950 text-cyan-300 border border-cyan-500/40 font-mono text-xs transition-colors"
-            >
-              <FileSpreadsheet className="w-3.5 h-3.5 text-cyan-400" />
-              <span>Export Teams CSV</span>
-            </a>
-
-            <a
-              href={getNewsletterCsvUrl()}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="inline-flex items-center gap-2 px-3.5 py-2 rounded-lg bg-slate-800 hover:bg-amber-950 text-amber-300 border border-amber-500/40 font-mono text-xs transition-colors"
-            >
-              <Download className="w-3.5 h-3.5 text-amber-400" />
-              <span>Export Subscribers</span>
-            </a>
-          </div>
-        </div>
+      <div className="space-y-6">
 
         {/* Global Operational Error Banner */}
         {error && (
@@ -325,54 +346,28 @@ export const AdminPage: React.FC = () => {
           </div>
         )}
 
-        {/* Primary Navigation Tabs */}
-        <div className="flex border-b border-slate-800 gap-2 overflow-x-auto pb-px font-mono text-xs">
-          <button
-            onClick={() => setActiveTab('overview')}
-            className={`px-5 py-3 border-b-2 font-bold uppercase tracking-wider transition-colors flex items-center gap-2 whitespace-nowrap ${
-              activeTab === 'overview'
-                ? 'border-cyan-400 text-cyan-300 bg-slate-900/50'
-                : 'border-transparent text-slate-400 hover:text-slate-200'
-            }`}
-          >
-            <Radio className="w-4 h-4" />
-            <span>Telemetry Overview</span>
-          </button>
+        {/* Workspace Sub-Header & Live Sync Control */}
+        <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 pb-2 border-b border-slate-800/80">
+          <div>
+            <h2 className="font-orbitron font-bold text-lg text-white tracking-wide">
+              {activeTab === 'overview' && 'TOURNAMENT TELEMETRY OVERVIEW'}
+              {activeTab === 'registrations' && 'ROSTER VERIFICATION & SCRUTINEERING PITS'}
+              {activeTab === 'newsletter' && 'SUBSCRIBER AUDIENCE MANAGEMENT'}
+              {activeTab === 'bulletins' && 'OFFICIAL TOURNAMENT BULLETINS'}
+              {activeTab === 'staff' && 'ORGANIZER ACCESS & STAFF ROSTER'}
+            </h2>
+            <p className="text-xs text-slate-400 font-mono">
+              The MakersPlace Ghana Operations • Minoan RobotSports Ghana 2027
+            </p>
+          </div>
 
           <button
-            onClick={() => setActiveTab('registrations')}
-            className={`px-5 py-3 border-b-2 font-bold uppercase tracking-wider transition-colors flex items-center gap-2 whitespace-nowrap ${
-              activeTab === 'registrations'
-                ? 'border-cyan-400 text-cyan-300 bg-slate-900/50'
-                : 'border-transparent text-slate-400 hover:text-slate-200'
-            }`}
+            onClick={loadData}
+            disabled={loading}
+            className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-lg bg-slate-900 hover:bg-slate-800 text-slate-200 border border-slate-800 font-mono text-xs transition-colors self-start sm:self-auto"
           >
-            <Users className="w-4 h-4" />
-            <span>Registered Teams ({registrations.length})</span>
-          </button>
-
-          <button
-            onClick={() => setActiveTab('newsletter')}
-            className={`px-5 py-3 border-b-2 font-bold uppercase tracking-wider transition-colors flex items-center gap-2 whitespace-nowrap ${
-              activeTab === 'newsletter'
-                ? 'border-amber-400 text-amber-300 bg-slate-900/50'
-                : 'border-transparent text-slate-400 hover:text-slate-200'
-            }`}
-          >
-            <Mail className="w-4 h-4" />
-            <span>Newsletter Subscribers ({subscribers.length})</span>
-          </button>
-
-          <button
-            onClick={() => setActiveTab('bulletins')}
-            className={`px-5 py-3 border-b-2 font-bold uppercase tracking-wider transition-colors flex items-center gap-2 whitespace-nowrap ${
-              activeTab === 'bulletins'
-                ? 'border-emerald-400 text-emerald-300 bg-slate-900/50'
-                : 'border-transparent text-slate-400 hover:text-slate-200'
-            }`}
-          >
-            <Send className="w-4 h-4" />
-            <span>Broadcast Bulletins ({broadcasts.length})</span>
+            <RefreshCw className={`w-3.5 h-3.5 text-cyan-400 ${loading ? 'animate-spin' : ''}`} />
+            <span>{loading ? 'Synchronizing...' : 'Refresh Telemetry'}</span>
           </button>
         </div>
 
@@ -722,16 +717,6 @@ export const AdminPage: React.FC = () => {
                 <option value="active">Active Only</option>
                 <option value="unsubscribed">Unsubscribed</option>
               </select>
-
-              <a
-                href={getNewsletterCsvUrl()}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="inline-flex items-center gap-2 px-4 py-2.5 rounded-lg bg-amber-400 hover:bg-amber-300 text-slate-950 font-orbitron font-bold text-xs uppercase tracking-wider shadow-[0_0_15px_rgba(245,158,11,0.4)] transition-all shrink-0"
-              >
-                <Download className="w-4 h-4" />
-                <span>Download CSV</span>
-              </a>
             </div>
 
             <div className="rounded-2xl bg-slate-900/80 border border-slate-800 overflow-hidden shadow-xl">
@@ -933,6 +918,60 @@ export const AdminPage: React.FC = () => {
           </div>
         )}
 
+        {/* TAB 5: STAFF & ACCESS CONTROL */}
+        {activeTab === 'staff' && (
+          <div className="space-y-6 animate-in fade-in">
+            <div className="p-5 rounded-2xl bg-slate-900/80 border border-slate-800 flex items-center justify-between">
+              <div>
+                <h3 className="font-orbitron font-bold text-sm text-white uppercase tracking-wider flex items-center gap-2">
+                  <UserCheck className="w-4 h-4 text-cyan-400" />
+                  <span>Authorized Tournament Staff & Scrutineers</span>
+                </h3>
+                <p className="text-xs text-slate-400 font-mono mt-0.5">
+                  Organizers with authorized administrative privileges to review rosters, conduct Rule Zero checks, and issue bulletins.
+                </p>
+              </div>
+
+              <button
+                onClick={() => setShowAddStaffModal(true)}
+                className="inline-flex items-center gap-2 px-4 py-2.5 rounded-lg bg-cyan-400 hover:bg-cyan-300 text-slate-950 font-orbitron font-bold text-xs uppercase tracking-wider shadow-[0_0_15px_rgba(0,240,255,0.4)] transition-all shrink-0"
+              >
+                <UserPlus className="w-4 h-4" />
+                <span>Register New Staff</span>
+              </button>
+            </div>
+
+            <div className="rounded-2xl bg-slate-900/80 border border-slate-800 overflow-hidden shadow-xl">
+              <table className="w-full text-left border-collapse text-xs font-mono">
+                <thead>
+                  <tr className="border-b border-slate-800 bg-slate-950/70 text-slate-400 uppercase tracking-wider text-[10px]">
+                    <th className="py-3 px-4">Staff ID</th>
+                    <th className="py-3 px-4">Name</th>
+                    <th className="py-3 px-4">Email</th>
+                    <th className="py-3 px-4">Official Role</th>
+                    <th className="py-3 px-4">Registration Date</th>
+                  </tr>
+                </thead>
+                <tbody className="divide-y divide-slate-800/60">
+                  {staffList.map(staff => (
+                    <tr key={staff.id} className="hover:bg-slate-800/30 transition-colors">
+                      <td className="py-3.5 px-4 text-slate-500">#{staff.id}</td>
+                      <td className="py-3.5 px-4 font-bold text-slate-100">{staff.name}</td>
+                      <td className="py-3.5 px-4 text-cyan-300">{staff.email}</td>
+                      <td className="py-3.5 px-4">
+                        <span className="capitalize px-2 py-0.5 rounded bg-slate-800 text-slate-300 text-[10px] font-bold">
+                          {staff.role.replace('_', ' ')}
+                        </span>
+                      </td>
+                      <td className="py-3.5 px-4 text-slate-400">{staff.created_at}</td>
+                    </tr>
+                  ))}
+                </tbody>
+              </table>
+            </div>
+          </div>
+        )}
+
       </div>
 
       {/* TEAM SCRUTINEERING & DOSSIER MODAL */}
@@ -1096,6 +1135,107 @@ export const AdminPage: React.FC = () => {
         </div>
       )}
 
-    </div>
+      {/* REGISTER NEW STAFF MODAL */}
+      {showAddStaffModal && (
+        <div className="fixed inset-0 z-50 bg-slate-950/80 backdrop-blur-sm flex items-center justify-center p-4 animate-in fade-in">
+          <div className="w-full max-w-md bg-slate-900 border border-cyan-500/40 rounded-2xl shadow-2xl p-6 space-y-5">
+            <div className="flex items-center justify-between border-b border-slate-800 pb-3">
+              <h3 className="font-orbitron font-bold text-base text-white flex items-center gap-2">
+                <UserPlus className="w-4 h-4 text-cyan-400" />
+                <span>Register Tournament Staff</span>
+              </h3>
+              <button onClick={() => setShowAddStaffModal(false)} className="text-slate-400 hover:text-white">
+                <X className="w-5 h-5" />
+              </button>
+            </div>
+
+            {addStaffError && (
+              <div className="p-3 rounded-lg bg-rose-950/80 border border-rose-500/40 text-rose-300 text-xs font-mono flex items-center gap-2">
+                <ShieldAlert className="w-4 h-4 text-rose-400 shrink-0" />
+                <span>{addStaffError}</span>
+              </div>
+            )}
+
+            <form onSubmit={handleAddStaffSubmit} className="space-y-3.5">
+              <div>
+                <label className="text-[10px] font-mono uppercase text-slate-400 block mb-1">
+                  Full Name
+                </label>
+                <input
+                  type="text"
+                  required
+                  placeholder="e.g. Inspector Kwesi Appiah"
+                  value={newStaffName}
+                  onChange={(e) => setNewStaffName(e.target.value)}
+                  className="w-full px-3 py-2 rounded-lg bg-slate-950 border border-slate-800 text-xs font-mono text-slate-200 focus:outline-none focus:border-cyan-400"
+                />
+              </div>
+
+              <div>
+                <label className="text-[10px] font-mono uppercase text-slate-400 block mb-1">
+                  Official Email
+                </label>
+                <input
+                  type="email"
+                  required
+                  placeholder="kappiah@makersplacegh.com"
+                  value={newStaffEmail}
+                  onChange={(e) => setNewStaffEmail(e.target.value)}
+                  className="w-full px-3 py-2 rounded-lg bg-slate-950 border border-slate-800 text-xs font-mono text-slate-200 focus:outline-none focus:border-cyan-400"
+                />
+              </div>
+
+              <div>
+                <label className="text-[10px] font-mono uppercase text-slate-400 block mb-1">
+                  Initial Password
+                </label>
+                <input
+                  type="password"
+                  required
+                  placeholder="Min 6 characters"
+                  value={newStaffPassword}
+                  onChange={(e) => setNewStaffPassword(e.target.value)}
+                  className="w-full px-3 py-2 rounded-lg bg-slate-950 border border-slate-800 text-xs font-mono text-slate-200 focus:outline-none focus:border-cyan-400"
+                />
+              </div>
+
+              <div>
+                <label className="text-[10px] font-mono uppercase text-slate-400 block mb-1">
+                  Designated Role
+                </label>
+                <select
+                  value={newStaffRole}
+                  onChange={(e) => setNewStaffRole(e.target.value)}
+                  className="w-full px-3 py-2 rounded-lg bg-slate-950 border border-slate-800 text-xs font-mono text-slate-200 focus:outline-none focus:border-cyan-400"
+                >
+                  <option value="scrutineer">Hardware Scrutineer & Inspector</option>
+                  <option value="lead_referee">Lead Field Referee</option>
+                  <option value="coordinator">Tournament Operations Coordinator</option>
+                  <option value="superadmin">Tournament Director</option>
+                </select>
+              </div>
+
+              <div className="pt-2 flex items-center justify-end gap-2">
+                <button
+                  type="button"
+                  onClick={() => setShowAddStaffModal(false)}
+                  className="px-4 py-2 rounded-lg bg-slate-800 text-slate-300 text-xs font-mono"
+                >
+                  Cancel
+                </button>
+                <button
+                  type="submit"
+                  disabled={isAddingStaff}
+                  className="px-5 py-2 rounded-lg bg-cyan-400 hover:bg-cyan-300 text-slate-950 font-orbitron font-bold text-xs uppercase tracking-wider transition-all disabled:opacity-50"
+                >
+                  {isAddingStaff ? 'Registering...' : 'Register Staff'}
+                </button>
+              </div>
+            </form>
+          </div>
+        </div>
+      )}
+
+    </AdminLayout>
   );
 };

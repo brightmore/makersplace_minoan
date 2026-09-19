@@ -6,6 +6,7 @@ import { registrationsRouter } from './routes/registrations.js';
 import { newsletterRouter } from './routes/newsletter.js';
 import { broadcastsRouter } from './routes/broadcasts.js';
 import { statsRouter } from './routes/stats.js';
+import { authRouter } from './routes/auth.js';
 
 dotenv.config();
 
@@ -44,6 +45,7 @@ app.get('/api/health', (_req: Request, res: Response) => {
 });
 
 // Mount Routes
+app.use('/api/auth', authRouter);
 app.use('/api/registrations', registrationsRouter);
 app.use('/api/newsletter', newsletterRouter);
 app.use('/api/broadcasts', broadcastsRouter);

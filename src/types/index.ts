@@ -179,3 +179,14 @@ export interface TournamentTelemetryStats {
   recentRegistrations?: RegistrationRecord[];
 }
 
+export type AdminRole = 'superadmin' | 'lead_referee' | 'scrutineer' | 'coordinator';
+
+export interface AdminUser {
+  id: number;
+  email: string;
+  name: string;
+  role: AdminRole;
+  createdAt?: string;
+}
+
+

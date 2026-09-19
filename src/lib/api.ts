@@ -190,3 +190,135 @@ export function getRegistrationCsvUrl(): string {
 export function getNewsletterCsvUrl(): string {
   return `${API_BASE}/newsletter/export/csv`;
 }
+
+// Admin Authentication Helpers & Client Calls
+const AUTH_TOKEN_KEY = 'mrc27_admin_auth_token';
+
+export function getStoredAdminToken(): string | null {
+  try {
+    return localStorage.getItem(AUTH_TOKEN_KEY);
+  } catch {
+    return null;
+  }
+}
+
+export function setStoredAdminToken(token: string): void {
+  try {
+    localStorage.setItem(AUTH_TOKEN_KEY, token);
+  } catch {
+    // Ignore storage errors
+  }
+}
+
+export function clearStoredAdminToken(): void {
+  try {
+    localStorage.removeItem(AUTH_TOKEN_KEY);
+  } catch {
+    // Ignore storage errors
+  }
+}
+
+export async function loginAdmin(credentials: { email: string; password: string }): Promise<{
+  success: boolean;
+  token: string;
+  user: { id: number; email: string; name: string; role: string };
+  message: string;
+}> {
+  const res = await fetch(`${API_BASE}/auth/login`, {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify(credentials),
+  });
+
+  const json = await res.json();
+  if (!res.ok) {
+    throw new Error(json.error || 'Failed to authenticate');
+  }
+
+  setStoredAdminToken(json.token);
+  return json;
+}
+
+export async function registerAdmin(data: {
+  email: string;
+  name: string;
+  password: string;
+  role?: string;
+}): Promise<{
+  success: boolean;
+  token: string;
+  user: { id: number; email: string; name: string; role: string };
+  message: string;
+}> {
+  const res = await fetch(`${API_BASE}/auth/register`, {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify(data),
+  });
+
+  const json = await res.json();
+  if (!res.ok) {
+    throw new Error(json.error || 'Failed to register admin staff');
+  }
+
+  setStoredAdminToken(json.token);
+  return json;
+}
+
+export async function fetchCurrentAdmin(): Promise<{
+  id: number;
+  email: string;
+  name: string;
+  role: string;
+} | null> {
+  const token = getStoredAdminToken();
+  if (!token) return null;
+
+  try {
+    const res = await fetch(`${API_BASE}/auth/me`, {
+      headers: { Authorization: `Bearer ${token}` },
+    });
+
+    if (!res.ok) {
+      clearStoredAdminToken();
+      return null;
+    }
+
+    const json = await res.json();
+    return json.user;
+  } catch {
+    return null;
+  }
+}
+
+export async function logoutAdmin(): Promise<void> {
+  const token = getStoredAdminToken();
+  if (token) {
+    try {
+      await fetch(`${API_BASE}/auth/logout`, {
+        method: 'POST',
+        headers: { Authorization: `Bearer ${token}` },
+      });
+    } catch {
+      // Ignore network errors on logout
+    }
+  }
+  clearStoredAdminToken();
+}
+
+export async function fetchAdminStaff(): Promise<{
+  id: number;
+  email: string;
+  name: string;
+  role: string;
+  created_at: string;
+}[]> {
+  const token = getStoredAdminToken();
+  const res = await fetch(`${API_BASE}/auth/users`, {
+    headers: token ? { Authorization: `Bearer ${token}` } : {},
+  });
+  if (!res.ok) throw new Error('Failed to load admin staff list');
+  const json = await res.json();
+  return json.data;
+}
+

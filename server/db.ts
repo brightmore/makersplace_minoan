@@ -1,6 +1,7 @@
 import { DatabaseSync } from 'node:sqlite';
 import path from 'node:path';
 import fs from 'node:fs';
+import crypto from 'node:crypto';
 
 const dataDir = path.resolve(process.cwd(), 'server', 'data');
 if (!fs.existsSync(dataDir)) {
@@ -83,9 +84,59 @@ export function initDatabase() {
       status TEXT NOT NULL DEFAULT 'sent',
       created_at TEXT NOT NULL DEFAULT (datetime('now'))
     );
+
+    CREATE TABLE IF NOT EXISTS admin_users (
+      id INTEGER PRIMARY KEY AUTOINCREMENT,
+      email TEXT UNIQUE NOT NULL,
+      name TEXT NOT NULL,
+      password_hash TEXT NOT NULL,
+      salt TEXT NOT NULL,
+      role TEXT NOT NULL DEFAULT 'scrutineer',
+      created_at TEXT NOT NULL DEFAULT (datetime('now')),
+      updated_at TEXT NOT NULL DEFAULT (datetime('now'))
+    );
+
+    CREATE INDEX IF NOT EXISTS idx_admin_email ON admin_users(email);
+
+    CREATE TABLE IF NOT EXISTS admin_sessions (
+      id INTEGER PRIMARY KEY AUTOINCREMENT,
+      token TEXT UNIQUE NOT NULL,
+      user_id INTEGER NOT NULL REFERENCES admin_users(id) ON DELETE CASCADE,
+      created_at TEXT NOT NULL DEFAULT (datetime('now')),
+      expires_at TEXT NOT NULL
+    );
+
+    CREATE INDEX IF NOT EXISTS idx_admin_token ON admin_sessions(token);
   `);
 
+  seedAdminUser();
   seedInitialData();
+}
+
+export function hashPassword(password: string, salt = crypto.randomBytes(16).toString('hex')) {
+  const hash = crypto.scryptSync(password, salt, 64).toString('hex');
+  return { hash, salt };
+}
+
+export function verifyPassword(password: string, hash: string, salt: string): boolean {
+  try {
+    const derived = crypto.scryptSync(password, salt, 64).toString('hex');
+    return crypto.timingSafeEqual(Buffer.from(hash, 'hex'), Buffer.from(derived, 'hex'));
+  } catch {
+    return false;
+  }
+}
+
+function seedAdminUser() {
+  const count = (db.prepare('SELECT COUNT(*) as count FROM admin_users').get() as { count: number }).count;
+  if (count === 0) {
+    console.log('[DB] Seeding default admin account (admin@makersplacegh.com)...');
+    const { hash, salt } = hashPassword('AdminMakers2027!');
+    db.prepare(`
+      INSERT INTO admin_users (email, name, password_hash, salt, role)
+      VALUES (?, ?, ?, ?, 'superadmin')
+    `).run('admin@makersplacegh.com', 'MakersPlace Operations Director', hash, salt);
+  }
 }
 
 function seedInitialData() {
