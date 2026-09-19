@@ -112,7 +112,8 @@ const AppContent: React.FC = () => {
       />
 
       {/* Persistent Floating Quick-Action Button on Mobile/Tablet */}
-      {/* <div className="fixed bottom-5 left-5 z-40 lg:hidden">
+      {
+      /* <div className="fixed bottom-5 left-5 z-40 lg:hidden">
         <button
           onClick={() => handleOpenRegister()}
           className="flex items-center gap-2 px-4 py-3 rounded-full bg-cyan-400 text-slate-950 font-orbitron font-bold text-xs uppercase tracking-wider shadow-[0_0_25px_rgba(0,240,255,0.7)] active:scale-95 transition-transform"
@@ -121,7 +122,8 @@ const AppContent: React.FC = () => {
           <Sparkles className="w-4 h-4" />
           <span>Register Team</span>
         </button>
-      </div> */}
+      </div> */
+      }
     </div>
   );
 };
