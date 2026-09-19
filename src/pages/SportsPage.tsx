@@ -33,14 +33,14 @@ export const SportsPage: React.FC<SportsPageProps> = ({ onOpenRegisterWithSport 
             </div>
 
             <h1 className="font-orbitron font-black text-3xl sm:text-4xl lg:text-5xl text-white tracking-wide">
-              The Seven <br className="hidden sm:inline" />
+              Official Minoan <br className="hidden sm:inline" />
               <span className="text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 via-teal-300 to-amber-300">
-                RobotSports Challenges
+                RobotSports Disciplines
               </span>
             </h1>
 
             <p className="text-slate-300 text-sm sm:text-base leading-relaxed">
-              Engineered to test mechanical endurance, sub-millimeter precision, and autonomous code execution. Review scoring rubrics, open official PDF rulebooks, inspect allowed flight controllers and hardware envelopes, and register your team.
+              Engineered to test mechanical endurance, sub-millimeter precision, and autonomous code execution under official H.E.R.O. Minoan Global Olympiad standards. Click any discipline to explore its dedicated page, official rulebook, scoring rubric, and paddock inspection specifications.
             </p>
 
             {/* Quick Feature Badges */}

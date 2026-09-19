@@ -16,6 +16,7 @@ import { RulesPage } from './pages/RulesPage';
 import { PathwayPage } from './pages/PathwayPage';
 import { ResourcesPage } from './pages/ResourcesPage';
 import { SponsorsPage } from './pages/SponsorsPage';
+import { SportDetailPage } from './pages/SportDetailPage';
 
 export const App: React.FC = () => {
   const [isRegisterOpen, setIsRegisterOpen] = useState(false);
@@ -48,6 +49,10 @@ export const App: React.FC = () => {
             <Route 
               path="/sports" 
               element={<SportsPage onOpenRegisterWithSport={handleOpenRegister} />} 
+            />
+            <Route 
+              path="/sports/:sportId" 
+              element={<SportDetailPage onOpenRegister={handleOpenRegister} />} 
             />
             <Route 
               path="/media" 

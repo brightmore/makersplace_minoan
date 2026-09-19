@@ -100,9 +100,11 @@ export const HomePage: React.FC<HomePageProps> = ({ onOpenRegister }) => {
                       </span>
                     </div>
 
-                    <h3 className="font-orbitron font-bold text-lg text-white group-hover:text-cyan-300 transition-colors mb-2">
-                      {sport.name}
-                    </h3>
+                    <Link to={`/sports/${sport.id}`} className="block group/link">
+                      <h3 className="font-orbitron font-bold text-lg text-white group-hover/link:text-cyan-300 transition-colors mb-2">
+                        {sport.name}
+                      </h3>
+                    </Link>
 
                     <p className="text-slate-300 text-xs leading-relaxed mb-4 line-clamp-2">
                       {sport.shortTagline}
@@ -119,10 +121,10 @@ export const HomePage: React.FC<HomePageProps> = ({ onOpenRegister }) => {
 
                   <div className="pt-4 border-t border-slate-800/80 flex items-center justify-between gap-2">
                     <Link
-                      to="/sports"
-                      className="text-xs font-mono text-cyan-400 hover:text-cyan-300 flex items-center gap-1 transition-colors"
+                      to={`/sports/${sport.id}`}
+                      className="text-xs font-mono text-cyan-400 hover:text-cyan-300 flex items-center gap-1 transition-colors font-medium"
                     >
-                      <span>Rules & Specs</span>
+                      <span>Full Rules & Specs</span>
                       <ChevronRight className="w-3.5 h-3.5" />
                     </Link>
 

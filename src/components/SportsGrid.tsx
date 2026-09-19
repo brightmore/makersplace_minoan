@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { Link } from 'react-router-dom';
 import { motion, AnimatePresence } from 'framer-motion';
 import { SPORTS_DATA } from '../data/sportsData';
 import { SportChallenge, SportId } from '../types';
@@ -33,10 +34,10 @@ export const SportsGrid: React.FC<SportsGridProps> = ({ onOpenRegisterWithSport 
   const [selectedSportForDrawer, setSelectedSportForDrawer] = useState<SportChallenge | null>(null);
 
   const filterTabs: { id: FilterCategory; label: string; count: number }[] = [
-    { id: 'all', label: 'All Sports', count: 7 },
-    { id: 'junior', label: 'Junior Friendly (Ages 10-14)', count: 6 },
-    { id: 'senior', label: 'Senior Division (15-18)', count: 7 },
-    { id: 'open', label: 'University / Open Division', count: 7 },
+    { id: 'all', label: 'All Sports', count: SPORTS_DATA.length },
+    { id: 'junior', label: 'Junior Friendly (Ages 10-14)', count: SPORTS_DATA.filter(s => s.divisionSlugs.includes('junior')).length },
+    { id: 'senior', label: 'Senior Division (15-18)', count: SPORTS_DATA.filter(s => s.divisionSlugs.includes('senior')).length },
+    { id: 'open', label: 'University / Open Division', count: SPORTS_DATA.filter(s => s.divisionSlugs.includes('open')).length },
   ];
 
   const filteredSports = SPORTS_DATA.filter((sport) => {
@@ -180,9 +181,11 @@ export const SportsGrid: React.FC<SportsGridProps> = ({ onOpenRegisterWithSport 
                     </div>
 
                     {/* Sport Name & Tagline */}
-                    <h3 className="font-orbitron font-bold text-xl text-white group-hover:text-cyan-300 transition-colors mb-2">
-                      {sport.name}
-                    </h3>
+                    <Link to={`/sports/${sport.id}`} className="block group/link">
+                      <h3 className="font-orbitron font-bold text-xl text-white group-hover/link:text-cyan-300 transition-colors mb-2">
+                        {sport.name}
+                      </h3>
+                    </Link>
                     <p className="text-slate-300 text-xs leading-relaxed mb-4">
                       {sport.shortTagline}
                     </p>
@@ -247,6 +250,15 @@ export const SportsGrid: React.FC<SportsGridProps> = ({ onOpenRegisterWithSport 
                         <span>Tech Specs</span>
                       </button>
                     </div>
+
+                    {/* View Full Discipline Details & Rules Page */}
+                    <Link
+                      to={`/sports/${sport.id}`}
+                      className="w-full py-2 px-3 rounded-lg bg-slate-950 hover:bg-slate-800 text-cyan-300 hover:text-white font-mono text-xs text-center border border-cyan-500/30 hover:border-cyan-400 transition-colors flex items-center justify-center gap-1.5"
+                    >
+                      <span>View Discipline Page & Rules</span>
+                      <ArrowRight className="w-3.5 h-3.5" />
+                    </Link>
 
                   </div>
 

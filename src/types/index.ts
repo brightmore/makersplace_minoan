@@ -3,9 +3,11 @@ export type SportId =
   | 'drone-soccer' 
   | 'marathon' 
   | 'football-3x3' 
-  | 'shooting' 
+  | 'wrestling'
   | 'archery' 
-  | 'exhibition';
+  | 'relay'
+  | 'exhibition'
+  | 'shooting';
 
 export type DivisionId = 'all' | 'junior' | 'senior' | 'open';
 
@@ -63,6 +65,14 @@ export interface SportChallenge {
     lastUpdated: string;
   };
   gallery: GalleryItem[];
+  mrcCategory?: string;
+  controlBoxDimensions?: string;
+  officialHROStandard?: string;
+  ruleZeroClause?: string;
+  penaltiesAndFouls?: { violation: string; consequence: string }[];
+  matchFormatDetails?: string;
+  scrutineeringChecklist?: string[];
+  faq?: { q: string; a: string }[];
 }
 
 export interface RegistrationFormData {
