@@ -20,13 +20,13 @@ export const Navbar: React.FC<NavbarProps> = ({ onOpenRegister }) => {
 
   return (
     <header className="sticky top-0 z-50 w-full backdrop-blur-xl bg-slate-950/85 border-b border-slate-800/80 transition-all">
-      <div className="px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between gap-4">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between gap-3 sm:gap-4">
         
         {/* Brand Lockup */}
-        <div className="flex items-center gap-3">
-          <a href="#" className="flex items-center gap-3.5 group focus:outline-none">
+        <div className="flex items-center gap-2 sm:gap-3 min-w-0">
+          <a href="#" className="flex items-center gap-2.5 sm:gap-3.5 group focus:outline-none min-w-0">
             {/* Enhanced MakersPlace Cyber Emblem Bezel */}
-            <div className="relative flex items-center justify-center w-12 h-12 rounded-xl bg-gradient-to-br from-slate-900/95 via-slate-950 to-slate-900/90 border border-cyan-500/50 p-2 shadow-[0_0_18px_rgba(0,240,255,0.25)] group-hover:border-cyan-400 group-hover:shadow-[0_0_28px_rgba(0,240,255,0.55)] transition-all duration-300">
+            <div className="relative flex items-center justify-center w-10 h-10 sm:w-12 sm:h-12 rounded-xl bg-gradient-to-br from-slate-900/95 via-slate-950 to-slate-900/90 border border-cyan-500/50 p-1.5 sm:p-2 shadow-[0_0_18px_rgba(0,240,255,0.25)] group-hover:border-cyan-400 group-hover:shadow-[0_0_28px_rgba(0,240,255,0.55)] transition-all duration-300 shrink-0">
               {/* Subtle Cyber Grid & Ambient Radial Backlight */}
               <div className="absolute inset-0 bg-gradient-to-tr from-cyan-500/15 via-transparent to-amber-500/10 rounded-xl pointer-events-none" />
               
@@ -48,22 +48,22 @@ export const Navbar: React.FC<NavbarProps> = ({ onOpenRegister }) => {
               </div>
             </div>
 
-            <div className="flex flex-col">
-              <div className="flex items-center gap-2">
-                <span className="font-mono text-[10px] sm:text-[11px] tracking-[0.22em] text-amber-400 font-bold uppercase">
+            <div className="flex flex-col min-w-0">
+              <div className="flex items-center gap-1.5 sm:gap-2">
+                <span className="font-mono text-[9px] sm:text-[11px] tracking-[0.22em] text-amber-400 font-bold uppercase truncate">
                   The MakersPlace
                 </span>
-                <span className="w-1 h-1 rounded-full bg-slate-600" />
+                <span className="w-1 h-1 rounded-full bg-slate-600 hidden sm:inline" />
                 <span className="font-mono text-[9px] tracking-wider text-cyan-400/90 uppercase hidden sm:inline font-semibold">
                   Official Host
                 </span>
               </div>
-              <div className="flex items-center gap-2">
-                <span className="font-orbitron font-extrabold text-sm sm:text-base tracking-wide text-white group-hover:text-cyan-300 transition-colors">
+              <div className="flex items-center gap-1.5 sm:gap-2">
+                <span className="font-orbitron font-extrabold text-xs sm:text-base tracking-wide text-white group-hover:text-cyan-300 transition-colors truncate">
                   MINOAN ROBOTSPORTS
                 </span>
-                {/* Illuminated Pill Badge */}
-                <span className="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full text-[10px] font-mono font-bold bg-cyan-500/15 border border-cyan-400/60 text-cyan-300 shadow-[0_0_12px_rgba(0,240,255,0.3)]">
+                {/* Illuminated Pill Badge - hidden on small mobile, visible on sm and up */}
+                <span className="hidden sm:inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full text-[10px] font-mono font-bold bg-cyan-500/15 border border-cyan-400/60 text-cyan-300 shadow-[0_0_12px_rgba(0,240,255,0.3)] shrink-0">
                   <span className="w-1.5 h-1.5 rounded-full bg-cyan-400 animate-ping" />
                   MRC GHANA 2027
                 </span>
@@ -86,27 +86,30 @@ export const Navbar: React.FC<NavbarProps> = ({ onOpenRegister }) => {
         </nav>
 
         {/* Header Actions */}
-        <div className="flex items-center gap-3">
-          {/* Add to Calendar Dropdown */}
-          <CalendarDropdown />
+        <div className="flex items-center gap-2 sm:gap-3 shrink-0">
+          {/* Add to Calendar Dropdown: Hidden on mobile (< md), visible on tablet & desktop */}
+          <div className="hidden md:block">
+            <CalendarDropdown />
+          </div>
 
-          {/* Primary CTA: Register Team with Neon Pulse */}
+          {/* Primary CTA: Register Team */}
           <button
             onClick={onOpenRegister}
-            className="relative group inline-flex items-center justify-center px-4 sm:px-5 py-2 text-xs font-orbitron font-bold uppercase tracking-wider text-slate-950 bg-gradient-to-r from-cyan-400 via-cyan-300 to-teal-300 rounded-md overflow-hidden transition-all duration-300 hover:scale-[1.03] active:scale-[0.98] shadow-[0_0_20px_rgba(0,240,255,0.45)] hover:shadow-[0_0_30px_rgba(0,240,255,0.7)]"
+            className="relative group inline-flex items-center justify-center px-3 sm:px-5 py-2 text-xs font-orbitron font-bold uppercase tracking-wider text-slate-950 bg-gradient-to-r from-cyan-400 via-cyan-300 to-teal-300 rounded-md overflow-hidden transition-all duration-300 hover:scale-[1.03] active:scale-[0.98] shadow-[0_0_20px_rgba(0,240,255,0.45)] hover:shadow-[0_0_30px_rgba(0,240,255,0.7)] shrink-0"
           >
             <span className="absolute inset-0 w-full h-full bg-white/20 transform -skew-x-12 -translate-x-full group-hover:translate-x-full transition-transform duration-1000" />
-            <Sparkles className="w-3.5 h-3.5 mr-1.5 text-slate-950 animate-spin-slow" />
-            <span>Register Team</span>
+            <Sparkles className="w-3.5 h-3.5 mr-1 text-slate-950 animate-spin-slow" />
+            <span className="hidden xs:inline">Register Team</span>
+            <span className="xs:hidden">Register</span>
           </button>
 
-          {/* Mobile Menu Trigger */}
+          {/* Mobile Menu Trigger: Always visible & prominent on mobile */}
           <button
             onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-            className="lg:hidden p-2 rounded-md text-slate-300 hover:text-cyan-300 hover:bg-slate-900 border border-slate-800"
+            className="lg:hidden p-2 rounded-lg text-slate-300 hover:text-cyan-300 hover:bg-slate-900 border border-slate-800 shrink-0 flex items-center justify-center transition-colors"
             aria-label="Toggle navigation menu"
           >
-            {mobileMenuOpen ? <X className="w-5 h-5" /> : <Menu className="w-5 h-5" />}
+            {mobileMenuOpen ? <X className="w-5 h-5 text-cyan-400" /> : <Menu className="w-5 h-5" />}
           </button>
         </div>
       </div>
@@ -114,6 +117,17 @@ export const Navbar: React.FC<NavbarProps> = ({ onOpenRegister }) => {
       {/* Mobile Menu Drawer */}
       {mobileMenuOpen && (
         <div className="lg:hidden border-b border-slate-800 bg-slate-950/98 backdrop-blur-2xl px-4 pt-3 pb-6 space-y-2 animate-in slide-in-from-top-4 duration-200">
+          
+          {/* Mobile Add-To-Calendar Quick Action */}
+          <div className="md:hidden pb-2 mb-2 border-b border-slate-800/80">
+            <div className="flex items-center justify-between p-2 rounded-lg bg-slate-900/60 border border-slate-800">
+              <span className="text-[11px] font-mono text-slate-400 uppercase tracking-wider">
+                Tournament Date (Jan 30, 2027)
+              </span>
+              <CalendarDropdown />
+            </div>
+          </div>
+
           <div className="px-2 py-1 text-[11px] font-mono uppercase text-slate-400 border-b border-slate-800/80 mb-2">
             Tournament Navigation
           </div>
