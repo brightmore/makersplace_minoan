@@ -421,11 +421,29 @@ export const Hero: React.FC<HeroProps> = ({ onOpenRegister }) => {
               </div>
 
               {/* Tournament Date Callout */}
-              <div className="mb-5 text-center sm:text-left">
+              <div className="mb-4 text-center sm:text-left">
                 <p className="font-mono text-[11px] uppercase tracking-wider text-slate-400">Championship Matchday</p>
                 <h3 className="font-orbitron text-xl sm:text-2xl font-bold text-white tracking-wide">
                   Saturday, January 30, 2027
                 </h3>
+              </div>
+
+              {/* Active Discipline Live Image Preview */}
+              <div className="relative rounded-xl overflow-hidden border border-slate-800 mb-5 group aspect-[16/9] sm:aspect-[21/9] lg:aspect-[16/8]">
+                <img 
+                  src={activeSlide.bgImage} 
+                  alt={activeSlide.navLabel} 
+                  className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+                />
+                <div className="absolute inset-0 bg-slate-950/40" />
+                <div className="absolute top-2.5 left-2.5 px-2 py-0.5 rounded bg-slate-950/90 border border-cyan-400/50 text-[10px] font-mono text-cyan-300 flex items-center gap-1.5 shadow-lg">
+                  <span className="w-1.5 h-1.5 rounded-full bg-cyan-400 animate-ping" />
+                  <span>{activeSlide.navLabel}</span>
+                </div>
+                <div className="absolute bottom-2.5 left-2.5 right-2.5 flex items-center justify-between text-[10px] font-mono text-slate-200 bg-slate-950/90 px-2.5 py-1 rounded border border-slate-800 backdrop-blur-sm">
+                  <span className="truncate text-cyan-400">{activeSlide.highlightTag}</span>
+                  <span className="shrink-0 text-slate-400 ml-2 hidden sm:inline">LIVE FEED</span>
+                </div>
               </div>
 
               {/* Real-time Ticking Countdown Grid */}

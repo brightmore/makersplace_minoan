@@ -29,34 +29,72 @@ export const RulesPage: React.FC = () => {
         </div>
 
         {/* Page Hero Banner */}
-        <div className="relative rounded-2xl bg-slate-900 border border-amber-500/30 p-8 sm:p-12 mb-10 shadow-2xl overflow-hidden">
+        <div className="relative rounded-2xl bg-slate-900 border border-amber-500/30 p-6 sm:p-10 mb-10 shadow-2xl overflow-hidden">
+          {/* Subtle Ambient Background Image */}
+          <div 
+            className="absolute inset-0 bg-cover bg-center opacity-10 pointer-events-none" 
+            style={{ backgroundImage: "url('https://images.unsplash.com/photo-1581092160607-ee22621dd758?auto=format&fit=crop&w=1200&q=80')" }} 
+          />
           <div className="absolute top-0 right-0 w-96 h-96 bg-amber-500/10 rounded-full blur-[100px] pointer-events-none" />
-          <div className="relative z-10 max-w-3xl space-y-4">
-            <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-amber-500/10 border border-amber-500/30 text-amber-300 font-mono text-xs uppercase tracking-widest">
-              <ShieldCheck className="w-3.5 h-3.5 text-amber-400" />
-              <span>Safety, Fair Play & Technical Scrutineering</span>
+          
+          <div className="relative z-10 grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
+            {/* Left Content */}
+            <div className="lg:col-span-7 space-y-4">
+              <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-amber-500/10 border border-amber-500/30 text-amber-300 font-mono text-xs uppercase tracking-widest">
+                <ShieldCheck className="w-3.5 h-3.5 text-amber-400" />
+                <span>Safety, Fair Play & Technical Scrutineering</span>
+              </div>
+
+              <h1 className="font-orbitron font-black text-3xl sm:text-4xl lg:text-5xl text-white tracking-wide">
+                Rule Zero & <br className="hidden sm:inline" />
+                <span className="text-amber-400">
+                  Pre-Flight Inspection
+                </span>
+              </h1>
+
+              <p className="text-slate-300 text-sm sm:text-base leading-relaxed">
+                Every robot competing at MRC Ghana 2027 must pass rigorous paddock safety and technical scrutineering before being cleared for the arena floor. Master Rule Zero and run our interactive pre-flight compliance check before arriving at the venue.
+              </p>
+
+              <div className="flex flex-wrap gap-3 pt-2 text-xs font-mono">
+                <span className="px-3 py-1 rounded bg-slate-950 border border-slate-800 text-slate-300 flex items-center gap-1.5">
+                  <AlertTriangle className="w-3.5 h-3.5 text-amber-400" />
+                  Mandatory Paddock Clearance
+                </span>
+                <span className="px-3 py-1 rounded bg-slate-950 border border-slate-800 text-slate-300 flex items-center gap-1.5">
+                  <FileText className="w-3.5 h-3.5 text-cyan-400" />
+                  FIDA & World Minoan Standards
+                </span>
+              </div>
             </div>
 
-            <h1 className="font-orbitron font-black text-3xl sm:text-4xl lg:text-5xl text-white tracking-wide">
-              Rule Zero & <br className="hidden sm:inline" />
-              <span className="text-amber-400">
-                Pre-Flight Inspection
-              </span>
-            </h1>
+            {/* Right Featured Image */}
+            <div className="lg:col-span-5 relative">
+              <div className="relative rounded-xl overflow-hidden border border-amber-500/40 shadow-2xl bg-slate-950 group">
+                <div className="absolute top-0 left-0 w-3 h-3 border-t-2 border-l-2 border-amber-400 z-10" />
+                <div className="absolute top-0 right-0 w-3 h-3 border-t-2 border-r-2 border-amber-400 z-10" />
+                <div className="absolute bottom-0 left-0 w-3 h-3 border-b-2 border-l-2 border-amber-400 z-10" />
+                <div className="absolute bottom-0 right-0 w-3 h-3 border-b-2 border-r-2 border-amber-400 z-10" />
 
-            <p className="text-slate-300 text-sm sm:text-base leading-relaxed">
-              Every robot competing at MRC Ghana 2027 must pass rigorous paddock safety and technical scrutineering before being cleared for the arena floor. Master Rule Zero and run our interactive pre-flight compliance check before arriving at the venue.
-            </p>
+                <div className="aspect-[16/10] overflow-hidden relative">
+                  <img
+                    src="https://images.unsplash.com/photo-1581092160607-ee22621dd758?auto=format&fit=crop&w=1000&q=80"
+                    alt="Technical Scrutineering Inspection Station"
+                    className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+                  />
+                  <div className="absolute inset-0 bg-slate-950/30" />
 
-            <div className="flex flex-wrap gap-3 pt-2 text-xs font-mono">
-              <span className="px-3 py-1 rounded bg-slate-950 border border-slate-800 text-slate-300 flex items-center gap-1.5">
-                <AlertTriangle className="w-3.5 h-3.5 text-amber-400" />
-                Mandatory Paddock Clearance
-              </span>
-              <span className="px-3 py-1 rounded bg-slate-950 border border-slate-800 text-slate-300 flex items-center gap-1.5">
-                <FileText className="w-3.5 h-3.5 text-cyan-400" />
-                FIDA & World Minoan Standards
-              </span>
+                  <div className="absolute top-3 left-3 px-2.5 py-1 rounded bg-slate-950/90 border border-amber-400/60 text-[10px] font-mono text-amber-300 flex items-center gap-2">
+                    <span className="w-2 h-2 rounded-full bg-amber-400 animate-ping" />
+                    <span className="font-bold">TECHNICAL SCRUTINEERING</span>
+                  </div>
+
+                  <div className="absolute bottom-0 inset-x-0 p-3 bg-slate-950/90 border-t border-slate-800 flex items-center justify-between text-[11px] font-mono">
+                    <span className="text-white font-semibold">Paddock Inspection Pit</span>
+                    <span className="text-amber-400 font-bold">100% Pass Required</span>
+                  </div>
+                </div>
+              </div>
             </div>
           </div>
         </div>

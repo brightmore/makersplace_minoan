@@ -148,98 +148,140 @@ export const SportDetailPage: React.FC<SportDetailPageProps> = ({ onOpenRegister
 
         {/* Page Hero Header Banner */}
         <div className="relative rounded-2xl bg-slate-900 border border-cyan-500/40 p-6 sm:p-10 mb-8 shadow-2xl overflow-hidden">
+          {/* Subtle Ambient Background Image */}
+          {sport.gallery[0] && (
+            <div 
+              className="absolute inset-0 bg-cover bg-center opacity-10 pointer-events-none"
+              style={{ backgroundImage: `url(${sport.gallery[0].url})` }}
+            />
+          )}
           <div className="absolute top-0 right-0 w-96 h-96 bg-cyan-500/10 rounded-full blur-[100px] pointer-events-none" />
           
-          <div className="relative z-10 space-y-5">
-            {/* Badges Bar */}
-            <div className="flex flex-wrap items-center gap-2 sm:gap-3">
-              <span className="px-3 py-1 rounded-full bg-cyan-500/10 border border-cyan-500/30 text-cyan-300 font-mono text-xs uppercase tracking-widest flex items-center gap-1.5">
-                <IconComponent className="w-3.5 h-3.5 text-cyan-400" />
-                <span>{sport.mrcCategory || 'Official MRC Discipline'}</span>
-              </span>
+          <div className="relative z-10 grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
+            {/* Left Column: Details & Controls */}
+            <div className="lg:col-span-7 space-y-5">
+              {/* Badges Bar */}
+              <div className="flex flex-wrap items-center gap-2 sm:gap-3">
+                <span className="px-3 py-1 rounded-full bg-cyan-500/10 border border-cyan-500/30 text-cyan-300 font-mono text-xs uppercase tracking-widest flex items-center gap-1.5">
+                  <IconComponent className="w-3.5 h-3.5 text-cyan-400" />
+                  <span>{sport.mrcCategory || 'Official MRC Discipline'}</span>
+                </span>
 
-              <span className="px-3 py-1 rounded-full bg-amber-500/10 border border-amber-500/30 text-amber-300 font-mono text-xs uppercase tracking-widest font-bold">
-                {sport.code}
-              </span>
+                <span className="px-3 py-1 rounded-full bg-amber-500/10 border border-amber-500/30 text-amber-300 font-mono text-xs uppercase tracking-widest font-bold">
+                  {sport.code}
+                </span>
 
-              <span className="px-2.5 py-0.5 rounded bg-slate-900 border border-slate-800 text-[11px] font-mono text-slate-400">
-                {sport.officialHROStandard || 'H.E.R.O. Sanctioned'}
-              </span>
+                <span className="px-2.5 py-0.5 rounded bg-slate-900 border border-slate-800 text-[11px] font-mono text-slate-400">
+                  {sport.officialHROStandard || 'H.E.R.O. Sanctioned'}
+                </span>
+              </div>
+
+              {/* Main Title & Tagline */}
+              <div>
+                <h1 className="font-orbitron font-black text-2xl sm:text-4xl lg:text-5xl text-white tracking-wide">
+                  {sport.name}
+                </h1>
+                <p className="mt-2 text-slate-300 text-sm sm:text-base max-w-3xl leading-relaxed">
+                  {sport.shortTagline}
+                </p>
+              </div>
+
+              {/* Quick Metrics HUD Strip */}
+              <div className="grid grid-cols-2 sm:grid-cols-4 gap-3 pt-2">
+                <div className="p-3 rounded-lg bg-slate-950/80 border border-slate-800">
+                  <span className="text-[10px] font-mono text-slate-400 uppercase tracking-wider block">Max Target Score</span>
+                  <span className="font-orbitron font-bold text-sm sm:text-base text-cyan-400">{sport.maxPoints}</span>
+                </div>
+                <div className="p-3 rounded-lg bg-slate-950/80 border border-slate-800">
+                  <span className="text-[10px] font-mono text-slate-400 uppercase tracking-wider block">Match / Heats</span>
+                  <span className="font-orbitron font-bold text-sm sm:text-base text-white">{sport.attemptsOrDuration}</span>
+                </div>
+                <div className="p-3 rounded-lg bg-slate-950/80 border border-slate-800">
+                  <span className="text-[10px] font-mono text-slate-400 uppercase tracking-wider block">Team Capacity</span>
+                  <span className="font-orbitron font-bold text-sm sm:text-base text-amber-400">{sport.teamCapacity}</span>
+                </div>
+                <div className="p-3 rounded-lg bg-slate-950/80 border border-slate-800">
+                  <span className="text-[10px] font-mono text-slate-400 uppercase tracking-wider block">Control Mode</span>
+                  <span className="font-orbitron font-bold text-sm sm:text-base text-emerald-400">{sport.techSpecs.controlMode}</span>
+                </div>
+              </div>
+
+              {/* Primary Action Buttons */}
+              <div className="flex flex-wrap items-center gap-3 pt-3">
+                <button
+                  onClick={() => onOpenRegister(sport.id)}
+                  className="px-6 py-3 rounded-lg bg-cyan-400 hover:bg-cyan-300 text-slate-950 font-orbitron font-bold text-xs sm:text-sm uppercase tracking-wider shadow-[0_0_20px_rgba(0,240,255,0.4)] hover:shadow-[0_0_30px_rgba(0,240,255,0.6)] transition-all flex items-center gap-2 active:scale-95"
+                >
+                  <Sparkles className="w-4 h-4" />
+                  <span>Register Team for this Sport</span>
+                </button>
+
+                <button
+                  onClick={handleDownloadRulebook}
+                  className="px-5 py-3 rounded-lg bg-slate-900 hover:bg-slate-800 border border-cyan-500/40 text-cyan-300 font-mono text-xs uppercase tracking-wider transition-colors flex items-center gap-2"
+                >
+                  <Download className="w-4 h-4" />
+                  <span>Download Rulebook ({sport.pdfRulebook.fileSize})</span>
+                </button>
+
+                <button
+                  onClick={() => setIsRulebookOpen(true)}
+                  className="px-4 py-3 rounded-lg bg-slate-900 hover:bg-slate-800 border border-slate-700 text-slate-200 font-mono text-xs uppercase tracking-wider transition-colors flex items-center gap-2"
+                >
+                  <FileText className="w-4 h-4 text-amber-400" />
+                  <span>Preview Document</span>
+                </button>
+
+                <Link
+                  to="/rules"
+                  className="px-4 py-3 rounded-lg bg-slate-900 hover:bg-slate-800 border border-slate-700 text-slate-300 hover:text-cyan-300 font-mono text-xs uppercase tracking-wider transition-colors flex items-center gap-2"
+                >
+                  <ShieldCheck className="w-4 h-4 text-emerald-400" />
+                  <span>Pre-Flight Check</span>
+                </Link>
+              </div>
+
+              {/* Toast Notification */}
+              {downloadToast && (
+                <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-lg bg-emerald-950/90 border border-emerald-500/50 text-emerald-300 text-xs font-mono animate-in fade-in">
+                  <Check className="w-3.5 h-3.5" />
+                  <span>{downloadToast}</span>
+                </div>
+              )}
             </div>
 
-            {/* Main Title & Tagline */}
-            <div>
-              <h1 className="font-orbitron font-black text-2xl sm:text-4xl lg:text-5xl text-white tracking-wide">
-                {sport.name}
-              </h1>
-              <p className="mt-2 text-slate-300 text-sm sm:text-base max-w-3xl leading-relaxed">
-                {sport.shortTagline}
-              </p>
+            {/* Right Column: Featured Sport Hardware/Arena Image */}
+            <div className="lg:col-span-5 relative">
+              <div className="relative rounded-xl overflow-hidden border border-cyan-500/40 shadow-2xl bg-slate-950 group">
+                <div className="absolute top-0 left-0 w-3 h-3 border-t-2 border-l-2 border-cyan-400 z-10" />
+                <div className="absolute top-0 right-0 w-3 h-3 border-t-2 border-r-2 border-cyan-400 z-10" />
+                <div className="absolute bottom-0 left-0 w-3 h-3 border-b-2 border-l-2 border-cyan-400 z-10" />
+                <div className="absolute bottom-0 right-0 w-3 h-3 border-b-2 border-r-2 border-cyan-400 z-10" />
+
+                <div className="aspect-[16/11] overflow-hidden relative">
+                  <img
+                    src={sport.gallery[0]?.url || 'https://images.unsplash.com/photo-1518770660439-4636190af475?auto=format&fit=crop&w=1000&q=80'}
+                    alt={sport.gallery[0]?.title || sport.name}
+                    className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+                  />
+                  <div className="absolute inset-0 bg-slate-950/25" />
+
+                  <div className="absolute top-3 left-3 px-2.5 py-1 rounded bg-slate-950/90 border border-cyan-400/60 text-[10px] font-mono text-cyan-300 flex items-center gap-2">
+                    <span className="w-2 h-2 rounded-full bg-cyan-400 animate-ping" />
+                    <span className="font-bold">OFFICIAL {sport.code} PLATFORM</span>
+                  </div>
+
+                  <div className="absolute bottom-0 inset-x-0 p-3 bg-slate-950/90 border-t border-slate-800 flex items-center justify-between text-[11px] font-mono">
+                    <span className="text-white font-semibold truncate pr-2">
+                      {sport.gallery[0]?.title || 'Competition Rig'}
+                    </span>
+                    <span className="text-amber-400 shrink-0 font-bold">
+                      {sport.gallery[0]?.badge || 'OFFICIAL'}
+                    </span>
+                  </div>
+                </div>
+              </div>
             </div>
-
-            {/* Quick Metrics HUD Strip */}
-            <div className="grid grid-cols-2 sm:grid-cols-4 gap-3 pt-2">
-              <div className="p-3 rounded-lg bg-slate-950/80 border border-slate-800">
-                <span className="text-[10px] font-mono text-slate-400 uppercase tracking-wider block">Max Target Score</span>
-                <span className="font-orbitron font-bold text-sm sm:text-base text-cyan-400">{sport.maxPoints}</span>
-              </div>
-              <div className="p-3 rounded-lg bg-slate-950/80 border border-slate-800">
-                <span className="text-[10px] font-mono text-slate-400 uppercase tracking-wider block">Match / Heats</span>
-                <span className="font-orbitron font-bold text-sm sm:text-base text-white">{sport.attemptsOrDuration}</span>
-              </div>
-              <div className="p-3 rounded-lg bg-slate-950/80 border border-slate-800">
-                <span className="text-[10px] font-mono text-slate-400 uppercase tracking-wider block">Team Capacity</span>
-                <span className="font-orbitron font-bold text-sm sm:text-base text-amber-400">{sport.teamCapacity}</span>
-              </div>
-              <div className="p-3 rounded-lg bg-slate-950/80 border border-slate-800">
-                <span className="text-[10px] font-mono text-slate-400 uppercase tracking-wider block">Control Mode</span>
-                <span className="font-orbitron font-bold text-sm sm:text-base text-emerald-400">{sport.techSpecs.controlMode}</span>
-              </div>
-            </div>
-
-            {/* Primary Action Buttons */}
-            <div className="flex flex-wrap items-center gap-3 pt-3">
-              <button
-                onClick={() => onOpenRegister(sport.id)}
-                className="px-6 py-3 rounded-lg bg-cyan-400 hover:bg-cyan-300 text-slate-950 font-orbitron font-bold text-xs sm:text-sm uppercase tracking-wider shadow-[0_0_20px_rgba(0,240,255,0.4)] hover:shadow-[0_0_30px_rgba(0,240,255,0.6)] transition-all flex items-center gap-2 active:scale-95"
-              >
-                <Sparkles className="w-4 h-4" />
-                <span>Register Team for this Sport</span>
-              </button>
-
-              <button
-                onClick={handleDownloadRulebook}
-                className="px-5 py-3 rounded-lg bg-slate-900 hover:bg-slate-800 border border-cyan-500/40 text-cyan-300 font-mono text-xs uppercase tracking-wider transition-colors flex items-center gap-2"
-              >
-                <Download className="w-4 h-4" />
-                <span>Download Rulebook ({sport.pdfRulebook.fileSize})</span>
-              </button>
-
-              <button
-                onClick={() => setIsRulebookOpen(true)}
-                className="px-4 py-3 rounded-lg bg-slate-900 hover:bg-slate-800 border border-slate-700 text-slate-200 font-mono text-xs uppercase tracking-wider transition-colors flex items-center gap-2"
-              >
-                <FileText className="w-4 h-4 text-amber-400" />
-                <span>Preview Document</span>
-              </button>
-
-              <Link
-                to="/rules"
-                className="px-4 py-3 rounded-lg bg-slate-900/60 hover:bg-slate-900 border border-slate-800 text-slate-300 hover:text-cyan-300 font-mono text-xs uppercase tracking-wider transition-colors flex items-center gap-2 ml-auto"
-              >
-                <ShieldCheck className="w-4 h-4 text-emerald-400" />
-                <span>Pre-Flight Check</span>
-              </Link>
-            </div>
-
-            {/* Toast Notification */}
-            {downloadToast && (
-              <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-lg bg-emerald-950/90 border border-emerald-500/50 text-emerald-300 text-xs font-mono animate-in fade-in">
-                <Check className="w-3.5 h-3.5" />
-                <span>{downloadToast}</span>
-              </div>
-            )}
-
           </div>
         </div>
 

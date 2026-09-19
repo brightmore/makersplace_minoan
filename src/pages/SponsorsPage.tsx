@@ -51,34 +51,72 @@ export const SponsorsPage: React.FC = () => {
         </div>
 
         {/* Page Hero Banner */}
-        <div className="relative rounded-2xl bg-slate-900 border border-cyan-500/30 p-8 sm:p-12 mb-10 shadow-2xl overflow-hidden">
+        <div className="relative rounded-2xl bg-slate-900 border border-cyan-500/30 p-6 sm:p-10 mb-10 shadow-2xl overflow-hidden">
+          {/* Subtle Ambient Background Image */}
+          <div 
+            className="absolute inset-0 bg-cover bg-center opacity-10 pointer-events-none" 
+            style={{ backgroundImage: "url('https://images.unsplash.com/photo-1522071820081-009f0129c71c?auto=format&fit=crop&w=1200&q=80')" }} 
+          />
           <div className="absolute top-0 right-0 w-96 h-96 bg-cyan-500/10 rounded-full blur-[100px] pointer-events-none" />
-          <div className="relative z-10 max-w-3xl space-y-4">
-            <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-cyan-500/10 border border-cyan-500/30 text-cyan-300 font-mono text-xs uppercase tracking-widest">
-              <Users className="w-3.5 h-3.5 text-cyan-400" />
-              <span>Alliance & Ecosystem</span>
+          
+          <div className="relative z-10 grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
+            {/* Left Content */}
+            <div className="lg:col-span-7 space-y-4">
+              <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-cyan-500/10 border border-cyan-500/30 text-cyan-300 font-mono text-xs uppercase tracking-widest">
+                <Users className="w-3.5 h-3.5 text-cyan-400" />
+                <span>Alliance & Ecosystem</span>
+              </div>
+
+              <h1 className="font-orbitron font-black text-3xl sm:text-4xl lg:text-5xl text-white tracking-wide">
+                Tournament Partners & <br className="hidden sm:inline" />
+                <span className="text-cyan-400">
+                  Educational Alliances
+                </span>
+              </h1>
+
+              <p className="text-slate-300 text-sm sm:text-base leading-relaxed">
+                MINOAN RobotSports Ghana 2027 is powered by an exceptional coalition of technology companies, STEAM education foundations, governmental bodies, and international robotics organizations committed to accelerating Africa's tech workforce.
+              </p>
+
+              <div className="flex flex-wrap gap-3 pt-2 text-xs font-mono">
+                <span className="px-3 py-1 rounded bg-slate-950 border border-slate-800 text-slate-300 flex items-center gap-1.5">
+                  <Cpu className="w-3.5 h-3.5 text-amber-400" />
+                  The MakersPlace Ghana (Host Secretariat)
+                </span>
+                <span className="px-3 py-1 rounded bg-slate-950 border border-slate-800 text-slate-300 flex items-center gap-1.5">
+                  <GraduationCap className="w-3.5 h-3.5 text-emerald-400" />
+                  Academic & STEM Alliance
+                </span>
+              </div>
             </div>
 
-            <h1 className="font-orbitron font-black text-3xl sm:text-4xl lg:text-5xl text-white tracking-wide">
-              Tournament Partners & <br className="hidden sm:inline" />
-              <span className="text-cyan-400">
-                Educational Alliances
-              </span>
-            </h1>
+            {/* Right Featured Image */}
+            <div className="lg:col-span-5 relative">
+              <div className="relative rounded-xl overflow-hidden border border-cyan-500/40 shadow-2xl bg-slate-950 group">
+                <div className="absolute top-0 left-0 w-3 h-3 border-t-2 border-l-2 border-cyan-400 z-10" />
+                <div className="absolute top-0 right-0 w-3 h-3 border-t-2 border-r-2 border-cyan-400 z-10" />
+                <div className="absolute bottom-0 left-0 w-3 h-3 border-b-2 border-l-2 border-cyan-400 z-10" />
+                <div className="absolute bottom-0 right-0 w-3 h-3 border-b-2 border-r-2 border-cyan-400 z-10" />
 
-            <p className="text-slate-300 text-sm sm:text-base leading-relaxed">
-              MINOAN RobotSports Ghana 2027 is powered by an exceptional coalition of technology companies, STEAM education foundations, governmental bodies, and international robotics organizations committed to accelerating Africa's tech workforce.
-            </p>
+                <div className="aspect-[16/10] overflow-hidden relative">
+                  <img
+                    src="https://images.unsplash.com/photo-1522071820081-009f0129c71c?auto=format&fit=crop&w=1000&q=80"
+                    alt="Makerspace STEAM Collaboration"
+                    className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+                  />
+                  <div className="absolute inset-0 bg-slate-950/30" />
 
-            <div className="flex flex-wrap gap-3 pt-2 text-xs font-mono">
-              <span className="px-3 py-1 rounded bg-slate-950 border border-slate-800 text-slate-300 flex items-center gap-1.5">
-                <Cpu className="w-3.5 h-3.5 text-amber-400" />
-                The MakersPlace Ghana (Host Secretariat)
-              </span>
-              <span className="px-3 py-1 rounded bg-slate-950 border border-slate-800 text-slate-300 flex items-center gap-1.5">
-                <GraduationCap className="w-3.5 h-3.5 text-emerald-400" />
-                Academic & STEM Alliance
-              </span>
+                  <div className="absolute top-3 left-3 px-2.5 py-1 rounded bg-slate-950/90 border border-cyan-400/60 text-[10px] font-mono text-cyan-300 flex items-center gap-2">
+                    <span className="w-2 h-2 rounded-full bg-cyan-400 animate-ping" />
+                    <span className="font-bold">STEAM ECOSYSTEM ALLIANCE</span>
+                  </div>
+
+                  <div className="absolute bottom-0 inset-x-0 p-3 bg-slate-950/90 border-t border-slate-800 flex items-center justify-between text-[11px] font-mono">
+                    <span className="text-white font-semibold">The MakersPlace Coalition</span>
+                    <span className="text-amber-400 font-bold">Industry & Academia</span>
+                  </div>
+                </div>
+              </div>
             </div>
           </div>
         </div>

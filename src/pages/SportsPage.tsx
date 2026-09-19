@@ -24,35 +24,73 @@ export const SportsPage: React.FC<SportsPageProps> = ({ onOpenRegisterWithSport 
         </div>
 
         {/* Page Hero Banner */}
-        <div className="relative rounded-2xl bg-slate-900 border border-cyan-500/30 p-8 sm:p-12 mb-12 shadow-2xl overflow-hidden">
+        <div className="relative rounded-2xl bg-slate-900 border border-cyan-500/30 p-6 sm:p-10 mb-12 shadow-2xl overflow-hidden">
+          {/* Subtle Ambient Background Image */}
+          <div 
+            className="absolute inset-0 bg-cover bg-center opacity-10 pointer-events-none" 
+            style={{ backgroundImage: "url('https://images.unsplash.com/photo-1511512578047-dfb367046420?auto=format&fit=crop&w=1200&q=80')" }} 
+          />
           <div className="absolute top-0 right-0 w-96 h-96 bg-cyan-500/10 rounded-full blur-[100px] pointer-events-none" />
-          <div className="relative z-10 max-w-3xl space-y-4">
-            <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-cyan-500/10 border border-cyan-500/30 text-cyan-300 font-mono text-xs uppercase tracking-widest">
-              <Bot className="w-3.5 h-3.5 text-cyan-400" />
-              <span>Official 2027 Competition Roster</span>
+          
+          <div className="relative z-10 grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
+            {/* Left Content Column */}
+            <div className="lg:col-span-7 space-y-4">
+              <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-cyan-500/10 border border-cyan-500/30 text-cyan-300 font-mono text-xs uppercase tracking-widest">
+                <Bot className="w-3.5 h-3.5 text-cyan-400" />
+                <span>Official 2027 Competition Roster</span>
+              </div>
+
+              <h1 className="font-orbitron font-black text-3xl sm:text-4xl lg:text-5xl text-white tracking-wide">
+                Official Minoan <br className="hidden sm:inline" />
+                <span className="text-cyan-400">
+                  RobotSports Disciplines
+                </span>
+              </h1>
+
+              <p className="text-slate-300 text-sm sm:text-base leading-relaxed">
+                Engineered to test mechanical endurance, sub-millimeter precision, and autonomous code execution under official H.E.R.O. Minoan Global Olympiad standards. Click any discipline to explore its dedicated page, official rulebook, scoring rubric, and paddock inspection specifications.
+              </p>
+
+              {/* Quick Feature Badges */}
+              <div className="flex flex-wrap gap-3 pt-2 text-xs font-mono">
+                <span className="px-3 py-1 rounded bg-slate-950 border border-slate-800 text-slate-300 flex items-center gap-1.5">
+                  <Trophy className="w-3.5 h-3.5 text-amber-400" />
+                  3 Competing Divisions (Junior, Senior, Open)
+                </span>
+                <span className="px-3 py-1 rounded bg-slate-950 border border-slate-800 text-slate-300 flex items-center gap-1.5">
+                  <ShieldCheck className="w-3.5 h-3.5 text-emerald-400" />
+                  FIDA & World Minoan Standards Compliant
+                </span>
+              </div>
             </div>
 
-            <h1 className="font-orbitron font-black text-3xl sm:text-4xl lg:text-5xl text-white tracking-wide">
-              Official Minoan <br className="hidden sm:inline" />
-              <span className="text-cyan-400">
-                RobotSports Disciplines
-              </span>
-            </h1>
+            {/* Right Featured Image Column */}
+            <div className="lg:col-span-5 relative">
+              <div className="relative rounded-xl overflow-hidden border border-cyan-500/40 shadow-2xl bg-slate-950 group">
+                <div className="absolute top-0 left-0 w-3 h-3 border-t-2 border-l-2 border-cyan-400 z-10" />
+                <div className="absolute top-0 right-0 w-3 h-3 border-t-2 border-r-2 border-cyan-400 z-10" />
+                <div className="absolute bottom-0 left-0 w-3 h-3 border-b-2 border-l-2 border-cyan-400 z-10" />
+                <div className="absolute bottom-0 right-0 w-3 h-3 border-b-2 border-r-2 border-cyan-400 z-10" />
 
-            <p className="text-slate-300 text-sm sm:text-base leading-relaxed">
-              Engineered to test mechanical endurance, sub-millimeter precision, and autonomous code execution under official H.E.R.O. Minoan Global Olympiad standards. Click any discipline to explore its dedicated page, official rulebook, scoring rubric, and paddock inspection specifications.
-            </p>
+                <div className="aspect-[16/10] overflow-hidden relative">
+                  <img
+                    src="https://images.unsplash.com/photo-1511512578047-dfb367046420?auto=format&fit=crop&w=1000&q=80"
+                    alt="Minoan RobotSports Arena"
+                    className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+                  />
+                  <div className="absolute inset-0 bg-slate-950/30" />
 
-            {/* Quick Feature Badges */}
-            <div className="flex flex-wrap gap-3 pt-2 text-xs font-mono">
-              <span className="px-3 py-1 rounded bg-slate-950 border border-slate-800 text-slate-300 flex items-center gap-1.5">
-                <Trophy className="w-3.5 h-3.5 text-amber-400" />
-                3 Competing Divisions (Junior, Senior, Open)
-              </span>
-              <span className="px-3 py-1 rounded bg-slate-950 border border-slate-800 text-slate-300 flex items-center gap-1.5">
-                <ShieldCheck className="w-3.5 h-3.5 text-emerald-400" />
-                FIDA & World Minoan Standards Compliant
-              </span>
+                  <div className="absolute top-3 left-3 px-2.5 py-1 rounded bg-slate-950/90 border border-cyan-400/60 text-[10px] font-mono text-cyan-300 flex items-center gap-2">
+                    <span className="w-2 h-2 rounded-full bg-cyan-400 animate-ping" />
+                    <span className="font-bold">7 REGULATED ARENAS</span>
+                  </div>
+
+                  <div className="absolute bottom-0 inset-x-0 p-3 bg-slate-950/90 border-t border-slate-800 flex items-center justify-between text-[11px] font-mono">
+                    <span className="text-white font-semibold">Official Competition Pitches</span>
+                    <span className="text-cyan-400">HERO Sanctioned</span>
+                  </div>
+                </div>
+              </div>
             </div>
           </div>
         </div>
