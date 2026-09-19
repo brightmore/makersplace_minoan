@@ -6,7 +6,6 @@ import { Footer } from './components/Footer';
 import { RegistrationModal } from './components/RegistrationModal';
 import { ScrollToTop } from './components/ScrollToTop';
 import { SportId } from './types';
-// import { Sparkles } from 'lucide-react';
 import { AuthProvider } from './context/AuthContext';
 
 // Individual Page Components
