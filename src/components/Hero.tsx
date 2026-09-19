@@ -536,8 +536,8 @@ export const Hero: React.FC<HeroProps> = ({ onOpenRegister }) => {
 
         </div>
 
-        {/* 5-Slide Interactive Animated Progress Selector Bar */}
-        <div className="mt-8 pt-6 border-t border-slate-800/80">
+     
+        {/* <div className="mt-8 pt-6 border-t border-slate-800/80">
           <div className="grid grid-cols-2 sm:grid-cols-5 gap-2.5">
             {HERO_SLIDES.map((slide, idx) => {
               const isActive = currentSlide === idx;
@@ -553,7 +553,7 @@ export const Hero: React.FC<HeroProps> = ({ onOpenRegister }) => {
                       : 'bg-slate-900/40 border-slate-800 hover:border-slate-700 hover:bg-slate-900/70'
                   }`}
                 >
-                  {/* Active Slide Linear Progress Bar Indicator */}
+                 
                   {isActive && !isPaused && (
                     <motion.div
                       key={`progress-${currentSlide}`}
@@ -586,7 +586,7 @@ export const Hero: React.FC<HeroProps> = ({ onOpenRegister }) => {
               );
             })}
           </div>
-        </div>
+        </div> */}
 
         {/* Bottom Metrics Strip */}
         <div className="mt-8 pt-6 border-t border-slate-800/80 grid grid-cols-1 md:grid-cols-3 gap-6">
