@@ -8,21 +8,44 @@ import {
   Sparkles, 
   Check, 
   Send, 
-  ShieldCheck
+  ShieldCheck,
+  Loader2,
+  AlertCircle,
+  Lock
 } from 'lucide-react';
+import { subscribeNewsletter } from '../lib/api';
 
 export const Footer: React.FC = () => {
   const [emailInput, setEmailInput] = useState('');
-  const [subscribed, setSubscribed] = useState(false);
+  const [isSubscribing, setIsSubscribing] = useState(false);
+  const [feedback, setFeedback] = useState<{ message: string; isError: boolean } | null>(null);
 
-  const handleSubscribe = (e: React.FormEvent) => {
+  const handleSubscribe = async (e: React.FormEvent) => {
     e.preventDefault();
     if (!emailInput || !emailInput.includes('@')) return;
-    setSubscribed(true);
-    setTimeout(() => {
-      setSubscribed(false);
+
+    setIsSubscribing(true);
+    setFeedback(null);
+
+    try {
+      const res = await subscribeNewsletter(emailInput, 'footer_bulletin');
+      setFeedback({
+        message: res.message || 'Subscribed to official Accra tournament bulletins!',
+        isError: false,
+      });
       setEmailInput('');
-    }, 4000);
+      setTimeout(() => {
+        setFeedback(null);
+      }, 5000);
+    } catch (err: unknown) {
+      const msg = err instanceof Error ? err.message : 'Subscription failed. Please try again.';
+      setFeedback({
+        message: msg,
+        isError: true,
+      });
+    } finally {
+      setIsSubscribing(false);
+    }
   };
 
   const scrollToTop = () => {
@@ -141,22 +164,36 @@ export const Footer: React.FC = () => {
                   type="email"
                   placeholder="coach@institution.edu.gh"
                   value={emailInput}
+                  disabled={isSubscribing}
                   onChange={(e) => setEmailInput(e.target.value)}
-                  className="flex-1 px-3.5 py-2.5 rounded-lg bg-slate-900 border border-slate-800 text-xs text-slate-200 placeholder-slate-500 focus:outline-none focus:border-cyan-500/60 font-mono"
+                  className="flex-1 px-3.5 py-2.5 rounded-lg bg-slate-900 border border-slate-800 text-xs text-slate-200 placeholder-slate-500 focus:outline-none focus:border-cyan-500/60 font-mono disabled:opacity-60"
                   required
                 />
                 <button
                   type="submit"
-                  className="px-4 py-2.5 rounded-lg bg-cyan-400 hover:bg-cyan-300 text-slate-950 font-orbitron font-bold text-xs uppercase tracking-wider shadow-[0_0_12px_rgba(0,240,255,0.4)] transition-all shrink-0 flex items-center justify-center"
+                  disabled={isSubscribing}
+                  className="px-4 py-2.5 rounded-lg bg-cyan-400 hover:bg-cyan-300 disabled:bg-cyan-600 text-slate-950 font-orbitron font-bold text-xs uppercase tracking-wider shadow-[0_0_12px_rgba(0,240,255,0.4)] transition-all shrink-0 flex items-center justify-center"
                 >
-                  {subscribed ? <Check className="w-4 h-4 text-slate-950" /> : <Send className="w-4 h-4" />}
+                  {isSubscribing ? (
+                    <Loader2 className="w-4 h-4 animate-spin text-slate-950" />
+                  ) : feedback && !feedback.isError ? (
+                    <Check className="w-4 h-4 text-slate-950" />
+                  ) : (
+                    <Send className="w-4 h-4" />
+                  )}
                 </button>
               </div>
 
-              {subscribed && (
-                <p className="text-[11px] font-mono text-emerald-400 flex items-center gap-1.5 animate-in fade-in">
-                  <Check className="w-3.5 h-3.5" />
-                  Subscribed to official Accra tournament bulletins!
+              {feedback && (
+                <p className={`text-[11px] font-mono flex items-center gap-1.5 animate-in fade-in ${
+                  feedback.isError ? 'text-rose-400' : 'text-emerald-400'
+                }`}>
+                  {feedback.isError ? (
+                    <AlertCircle className="w-3.5 h-3.5 shrink-0" />
+                  ) : (
+                    <Check className="w-3.5 h-3.5 shrink-0" />
+                  )}
+                  <span>{feedback.message}</span>
                 </p>
               )}
             </form>
@@ -169,15 +206,24 @@ export const Footer: React.FC = () => {
 
         </div>
 
-        {/* Bottom Bar & Smooth Back-to-Top Button */}
+        {/* Bottom Bar & Organizer Admin Portal Link */}
         <div className="pt-8 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs font-mono text-slate-400">
-          <div className="flex items-center gap-2 text-center sm:text-left">
+          <div className="flex flex-wrap items-center gap-2 text-center sm:text-left">
             <span>© 2027 The MakersPlace Ghana.</span>
             <span className="hidden sm:inline">•</span>
             <span>All rights reserved. MINOAN RobotSports is an international mark.</span>
           </div>
 
-          <div className="flex items-center gap-4">
+          <div className="flex items-center gap-3">
+            <Link
+              to="/admin"
+              className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-slate-900/80 hover:bg-slate-800 text-slate-400 hover:text-cyan-300 border border-slate-800 transition-all font-mono text-xs"
+              title="Organizers Scrutineering & Registration Portal"
+            >
+              <Lock className="w-3 h-3 text-cyan-400" />
+              <span>Organizer Portal</span>
+            </Link>
+
             <button
               onClick={scrollToTop}
               className="inline-flex items-center gap-2 px-3.5 py-2 rounded-lg bg-slate-900 hover:bg-slate-800 text-slate-300 hover:text-cyan-300 border border-slate-800 hover:border-cyan-500/50 transition-all font-mono text-xs"

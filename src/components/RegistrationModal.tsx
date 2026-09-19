@@ -11,8 +11,11 @@ import {
   Download, 
   Share2, 
   CheckCircle2, 
-  Calendar
+  Calendar,
+  Loader2,
+  AlertCircle
 } from 'lucide-react';
+import { submitRegistration } from '../lib/api';
 
 interface RegistrationModalProps {
   isOpen: boolean;
@@ -28,6 +31,8 @@ export const RegistrationModal: React.FC<RegistrationModalProps> = ({
   const [currentStep, setCurrentStep] = useState<number>(1);
   const [submitted, setSubmitted] = useState<boolean>(false);
   const [confirmationCode, setConfirmationCode] = useState<string>('');
+  const [isSubmitting, setIsSubmitting] = useState<boolean>(false);
+  const [submitError, setSubmitError] = useState<string | null>(null);
 
   const [formData, setFormData] = useState<RegistrationFormData>({
     teamName: '',
@@ -124,23 +129,44 @@ export const RegistrationModal: React.FC<RegistrationModalProps> = ({
     setCurrentStep(prev => Math.max(prev - 1, 1));
   };
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     if (!validateStep(3)) {
       setCurrentStep(3);
       return;
     }
 
-    // Generate random Ghana registration reference
-    const randomCode = `MRC27-GH-${Math.floor(1000 + Math.random() * 9000)}`;
-    setConfirmationCode(randomCode);
+    setIsSubmitting(true);
+    setSubmitError(null);
 
-    // Save to LocalStorage
+    let assignedCode = `MRC27-GH-${Math.floor(1000 + Math.random() * 9000)}`;
+
+    try {
+      // Send to backend API
+      const result = await submitRegistration(formData);
+      if (result.data?.registration_code) {
+        assignedCode = result.data.registration_code;
+      }
+    } catch (err: unknown) {
+      console.warn('[Registration] Backend submission notice:', err);
+      // If error is duplicate name or validation, notify user
+      const msg = err instanceof Error ? err.message : 'Submission failed';
+      if (msg.toLowerCase().includes('already registered') || msg.toLowerCase().includes('required')) {
+        setSubmitError(msg);
+        setIsSubmitting(false);
+        return;
+      }
+      // If network unreachable, proceed with local fallback code
+    }
+
+    setConfirmationCode(assignedCode);
+
+    // Save to LocalStorage as cache / offline backup
     try {
       const existing = JSON.parse(localStorage.getItem('mrc27_registrations') || '[]');
       existing.push({
         ...formData,
-        code: randomCode,
+        code: assignedCode,
         timestamp: new Date().toISOString(),
       });
       localStorage.setItem('mrc27_registrations', JSON.stringify(existing));
@@ -177,6 +203,7 @@ export const RegistrationModal: React.FC<RegistrationModalProps> = ({
       // Confetti fallback
     }
 
+    setIsSubmitting(false);
     setSubmitted(true);
   };
 
@@ -729,13 +756,25 @@ export const RegistrationModal: React.FC<RegistrationModalProps> = ({
                 </div>
               )}
 
+              {/* Error Notification Alert */}
+              {submitError && (
+                <div className="p-3.5 rounded-lg bg-rose-500/10 border border-rose-500/30 text-rose-300 text-xs flex items-start gap-2.5 animate-in fade-in">
+                  <AlertCircle className="w-4 h-4 text-rose-400 shrink-0 mt-0.5" />
+                  <div className="flex-1">
+                    <span className="font-bold block text-rose-200 uppercase tracking-wider text-[11px] font-mono mb-0.5">Registration Issue</span>
+                    <span>{submitError}</span>
+                  </div>
+                </div>
+              )}
+
               {/* Form Navigation Buttons */}
               <div className="flex items-center justify-between pt-4 border-t border-slate-800">
                 {currentStep > 1 ? (
                   <button
                     type="button"
+                    disabled={isSubmitting}
                     onClick={handleBack}
-                    className="inline-flex items-center gap-1.5 px-4 py-2 rounded-lg bg-slate-900 hover:bg-slate-800 text-slate-300 font-mono text-xs border border-slate-800 transition-colors"
+                    className="inline-flex items-center gap-1.5 px-4 py-2 rounded-lg bg-slate-900 hover:bg-slate-800 text-slate-300 font-mono text-xs border border-slate-800 transition-colors disabled:opacity-50"
                   >
                     <ArrowLeft className="w-3.5 h-3.5" />
                     Back
@@ -756,10 +795,20 @@ export const RegistrationModal: React.FC<RegistrationModalProps> = ({
                 ) : (
                   <button
                     type="submit"
-                    className="inline-flex items-center gap-2 px-6 py-3 rounded-lg bg-cyan-400 hover:bg-cyan-300 text-slate-950 font-orbitron font-black text-xs uppercase tracking-wider shadow-[0_0_25px_rgba(0,240,255,0.6)] transition-all"
+                    disabled={isSubmitting}
+                    className="inline-flex items-center gap-2 px-6 py-3 rounded-lg bg-cyan-400 hover:bg-cyan-300 disabled:bg-cyan-600 disabled:cursor-not-allowed text-slate-950 font-orbitron font-black text-xs uppercase tracking-wider shadow-[0_0_25px_rgba(0,240,255,0.6)] transition-all"
                   >
-                    <Sparkles className="w-4 h-4" />
-                    <span>Submit Official Registration</span>
+                    {isSubmitting ? (
+                      <>
+                        <Loader2 className="w-4 h-4 animate-spin text-slate-950" />
+                        <span>Confirming Registration...</span>
+                      </>
+                    ) : (
+                      <>
+                        <Sparkles className="w-4 h-4" />
+                        <span>Submit Official Registration</span>
+                      </>
+                    )}
                   </button>
                 )}
               </div>

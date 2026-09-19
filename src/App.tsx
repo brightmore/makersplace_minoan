@@ -17,6 +17,7 @@ import { PathwayPage } from './pages/PathwayPage';
 import { ResourcesPage } from './pages/ResourcesPage';
 import { SponsorsPage } from './pages/SponsorsPage';
 import { SportDetailPage } from './pages/SportDetailPage';
+import { AdminPage } from './pages/AdminPage';
 
 export const App: React.FC = () => {
   const [isRegisterOpen, setIsRegisterOpen] = useState(false);
@@ -73,6 +74,10 @@ export const App: React.FC = () => {
             <Route 
               path="/sponsors" 
               element={<SponsorsPage />} 
+            />
+            <Route 
+              path="/admin" 
+              element={<AdminPage />} 
             />
             {/* Fallback to Home */}
             <Route 

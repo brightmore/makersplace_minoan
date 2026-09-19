@@ -11,3 +11,7 @@ dist-ssr
 *.njsproj
 *.sln
 *.sw?
+server/data/*.db*
+.env
+.env.*
+!.env.example

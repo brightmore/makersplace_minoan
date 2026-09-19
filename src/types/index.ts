@@ -122,3 +122,60 @@ export interface InspectionChecklistItem {
   importance: 'CRITICAL FAIL' | 'MANDATORY' | 'RECOMMENDED';
   details: string;
 }
+
+export interface RegistrationRecord {
+  id: number;
+  registration_code: string;
+  team_name: string;
+  organization_type: string;
+  organization_name: string;
+  division: 'junior' | 'senior' | 'open';
+  team_size: number;
+  lead_contact_name: string;
+  lead_contact_role: string;
+  lead_contact_email: string;
+  lead_contact_phone: string;
+  city_region: string;
+  experience_level: string;
+  emergency_consent: boolean;
+  status: 'pending' | 'approved' | 'scrutineering_passed' | 'waitlisted' | 'rejected';
+  scrutineering_notes: string;
+  technical_notes: string;
+  created_at: string;
+  updated_at: string;
+  sports: string[];
+}
+
+export interface NewsletterSubscriber {
+  id: number;
+  email: string;
+  status: 'active' | 'unsubscribed';
+  source: string;
+  created_at: string;
+  updated_at: string;
+}
+
+export interface NewsletterBroadcast {
+  id: number;
+  title: string;
+  subject: string;
+  category: string;
+  content: string;
+  target_audience: string;
+  sent_count: number;
+  status: string;
+  created_at: string;
+}
+
+export interface TournamentTelemetryStats {
+  totalTeams: number;
+  totalAthletes: number;
+  activeSubscribers: number;
+  totalBroadcasts: number;
+  statusBreakdown: Record<string, number>;
+  divisionBreakdown: Record<string, number>;
+  regionBreakdown: { city_region: string; count: number }[];
+  sportBreakdown: { sport_id: string; count: number }[];
+  recentRegistrations?: RegistrationRecord[];
+}
+
