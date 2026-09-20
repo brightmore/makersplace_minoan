@@ -37,7 +37,7 @@ export const PathwaySection: React.FC = () => {
       step: '03',
       title: 'International Minoan RobotSports Finals',
       location: 'Crete / Global Host City',
-      date: 'Autumn 2027',
+      date: '23-26 April, 2027',
       status: 'WORLD STAGE',
       icon: Trophy,
       color: 'emerald',

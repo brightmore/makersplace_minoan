@@ -98,7 +98,7 @@ export const Footer: React.FC = () => {
               </div>
               <div className="flex items-center gap-2.5">
                 <Phone className="w-4 h-4 text-emerald-400 shrink-0" />
-                <span>+233 (0) 24 123 4567 / +233 (0) 30 890 1234</span>
+                <span>+233 (0) 55 631 0034 / +233 (0) 24 623 7518</span>
               </div>
             </div>
           </div>
