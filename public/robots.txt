@@ -1,0 +1,8 @@
+# MINOAN RobotSports Ghana 2027 Tournament Web Platform
+User-agent: *
+Allow: /
+Disallow: /admin
+Disallow: /admin/*
+Disallow: /api/*
+
+Sitemap: https://minoan.makersplacegh.com/sitemap.xml

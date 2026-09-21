@@ -18,6 +18,9 @@ import { ResourcesPage } from './pages/ResourcesPage';
 import { SponsorsPage } from './pages/SponsorsPage';
 import { SportDetailPage } from './pages/SportDetailPage';
 import { AdminPage } from './pages/AdminPage';
+import { PrivacyPage } from './pages/PrivacyPage';
+import { TermsPage } from './pages/TermsPage';
+import { SitemapPage } from './pages/SitemapPage';
 
 const AppContent: React.FC = () => {
   const location = useLocation();
@@ -91,6 +94,18 @@ const AppContent: React.FC = () => {
           <Route 
             path="/sponsors" 
             element={<SponsorsPage />} 
+          />
+          <Route 
+            path="/privacy" 
+            element={<PrivacyPage />} 
+          />
+          <Route 
+            path="/terms" 
+            element={<TermsPage />} 
+          />
+          <Route 
+            path="/sitemap" 
+            element={<SitemapPage />} 
           />
           {/* Fallback to Home */}
           <Route 

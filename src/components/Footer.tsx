@@ -145,6 +145,12 @@ export const Footer: React.FC = () => {
                   Sponsors & Educational Partners
                 </Link>
               </li>
+              <li className="pt-1 border-t border-slate-800/60">
+                <Link to="/sitemap" className="hover:text-emerald-300 transition-colors flex items-center gap-1.5 text-slate-400">
+                  <span className="w-1.5 h-1.5 rounded-full bg-emerald-400" />
+                  Platform Sitemap & Directory
+                </Link>
+              </li>
             </ul>
           </div>
 
@@ -206,12 +212,22 @@ export const Footer: React.FC = () => {
 
         </div>
 
-        {/* Bottom Bar & Organizer Admin Portal Link */}
-        <div className="pt-8 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs font-mono text-slate-400">
-          <div className="flex flex-wrap items-center gap-2 text-center sm:text-left">
-            <span>© 2027 The MakersPlace Ghana.</span>
-            <span className="hidden sm:inline">•</span>
-            <span>All rights reserved. MINOAN RobotSports is an international mark.</span>
+        {/* Bottom Bar & Legal Links */}
+        <div className="pt-8 flex flex-col md:flex-row items-center justify-between gap-4 text-xs font-mono text-slate-400">
+          <div className="flex flex-wrap items-center justify-center md:justify-start gap-x-3 gap-y-1 text-center md:text-left">
+            <span>© 2027 The MakersPlace Ghana. All rights reserved.</span>
+            <span className="hidden sm:inline text-slate-600">•</span>
+            <Link to="/privacy" className="hover:text-cyan-300 transition-colors">
+              Privacy Policy
+            </Link>
+            <span className="text-slate-600">•</span>
+            <Link to="/terms" className="hover:text-amber-300 transition-colors">
+              Terms & Conditions
+            </Link>
+            <span className="text-slate-600">•</span>
+            <Link to="/sitemap" className="hover:text-emerald-300 transition-colors">
+              Sitemap
+            </Link>
           </div>
 
           <div className="flex items-center gap-3">
