@@ -8,7 +8,7 @@
 - Official Host & Licensee: The MakersPlace Ghana (Leading Ghanaian STEAM Education & Robotics Organization)
 - Global Governing Body: H.E.R.O. (Hellenic Educational Robotics Organization)
 - Global Event: Minoan RobotSports Competition International Finals, Heraklion, Crete, Greece
-- Official Portal: https://minoan.makersplacegh.com
+- Official Portal: https://www.mrcghana.com
 - Legal Jurisdiction: Republic of Ghana (complies with Data Protection Act, 2012, Act 843)
 
 ## Section 2: Rule Zero Doctrine (Article 0.1)
@@ -122,4 +122,4 @@
 - **Q: How does scoring arbitration work?**
   A: Decisions by the Chief Field Referee and Technical Scrutineer are final under Rule Zero. Formal video appeals must be filed by the Team Captain within 15 minutes of match completion.
 - **Q: What is the contact email for the organizers?**
-  A: Official inquiries can be directed to The MakersPlace via email at info@makersplacegh.com or through https://minoan.makersplacegh.com.
+  A: Official inquiries can be directed to The MakersPlace via email at info@makersplacegh.com or through https://www.mrcghana.com.

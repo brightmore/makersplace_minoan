@@ -33,5 +33,5 @@ User-agent: Bingbot
 Allow: /
 
 # Canonical Sitemaps & Knowledge Feeds
-Sitemap: https://minoan.makersplacegh.com/sitemap.xml
-# LLM Context: https://minoan.makersplacegh.com/llms.txt
+Sitemap: https://www.mrcghana.com/sitemap.xml
+# LLM Context: https://www.mrcghana.com/llms.txt

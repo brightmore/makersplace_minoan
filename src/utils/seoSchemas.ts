@@ -1,6 +1,6 @@
 import { SportChallenge } from '../types';
 
-const BASE_URL = 'https://minoan.makersplacegh.com';
+const BASE_URL = 'https://www.mrcghana.com';
 
 /**
  * Generate Schema.org FAQPage structured data

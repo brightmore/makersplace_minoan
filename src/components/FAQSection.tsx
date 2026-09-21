@@ -67,7 +67,7 @@ export const CHAMPIONSHIP_FAQS: FAQItem[] = [
     id: 'how-to-register',
     category: 'registration',
     question: 'How do schools and independent teams register for 2027?',
-    answer: 'Registration is open online through the official tournament portal at minoan.makersplacegh.com. Team captains or coaches create an entry profile, select their category and age division, submit student roster credentials, and download the digital scrutineering checklist. Entry confirmations are processed on a first-cleared basis.',
+    answer: 'Registration is open online through the official tournament portal at www.mrcghana.com. Team captains or coaches create an entry profile, select their category and age division, submit student roster credentials, and download the digital scrutineering checklist. Entry confirmations are processed on a first-cleared basis.',
   },
   {
     id: 'spectators-and-tickets',

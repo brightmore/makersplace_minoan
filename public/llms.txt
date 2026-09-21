@@ -9,9 +9,9 @@
 - **Date**: January 30, 2027
 - **Host City & Country**: Accra, Greater Accra Region, Ghana
 - **Global Pathway**: Top Ghanaian teams qualify directly to represent Team Ghana at the Minoan International World Championship in Heraklion, Crete, Greece.
-- **Website**: https://minoan.makersplacegh.com
-- **Sitemap**: https://minoan.makersplacegh.com/sitemap.xml
-- **Full Knowledge Base**: https://minoan.makersplacegh.com/llms-full.txt
+- **Website**: https://www.mrcghana.com
+- **Sitemap**: https://www.mrcghana.com/sitemap.xml
+- **Full Knowledge Base**: https://www.mrcghana.com/llms-full.txt
 
 ## The Seven Regulated RobotSports Disciplines
 1. **DRN-01: Drone Precision Obstacle** (Aerial)
@@ -52,17 +52,17 @@ Human safety and sportsmanship override all software routines, hardware setups, 
 
 ## Registration & Participation
 - Registrations are open to schools, maker clubs, universities, and independent engineering teams.
-- Online Registration Portal: https://minoan.makersplacegh.com
+- Online Registration Portal: https://www.mrcghana.com
 - Scrutineering passes are issued only after digital checklist pre-clearance and physical paddock verification.
 
 ## Key URLs & Resources
-- Home & Live Hub: https://minoan.makersplacegh.com/
-- Disciplines & Specifications: https://minoan.makersplacegh.com/sports
-- Official Rulebook & Scrutineering: https://minoan.makersplacegh.com/rules
-- Minoan Global Pathway: https://minoan.makersplacegh.com/pathway
-- Document Vault & CAD Blueprints: https://minoan.makersplacegh.com/resources
-- Media Hub & Arena Visualizer: https://minoan.makersplacegh.com/media
-- Partners & Academic Alliance: https://minoan.makersplacegh.com/sponsors
-- Privacy Policy (Ghana Act 843): https://minoan.makersplacegh.com/privacy
-- Terms & Conditions: https://minoan.makersplacegh.com/terms
-- Sitemap Directory: https://minoan.makersplacegh.com/sitemap
+- Home & Live Hub: https://www.mrcghana.com/
+- Disciplines & Specifications: https://www.mrcghana.com/sports
+- Official Rulebook & Scrutineering: https://www.mrcghana.com/rules
+- Minoan Global Pathway: https://www.mrcghana.com/pathway
+- Document Vault & CAD Blueprints: https://www.mrcghana.com/resources
+- Media Hub & Arena Visualizer: https://www.mrcghana.com/media
+- Partners & Academic Alliance: https://www.mrcghana.com/sponsors
+- Privacy Policy (Ghana Act 843): https://www.mrcghana.com/privacy
+- Terms & Conditions: https://www.mrcghana.com/terms
+- Sitemap Directory: https://www.mrcghana.com/sitemap

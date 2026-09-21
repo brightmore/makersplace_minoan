@@ -10,8 +10,8 @@ export interface SEOHeadProps {
   jsonLd?: Record<string, unknown> | Array<Record<string, unknown>>;
 }
 
-const BASE_URL = 'https://minoan.makersplacegh.com';
-const DEFAULT_IMAGE = 'https://minoan.makersplacegh.com/images/logo.png';
+const BASE_URL = 'https://www.mrcghana.com';
+const DEFAULT_IMAGE = 'https://www.mrcghana.com/images/logo.png';
 
 /**
  * SEOHead - Dynamic Client-Side Meta & AEO Structured Data Manager
