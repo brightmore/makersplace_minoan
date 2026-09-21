@@ -1,0 +1,125 @@
+# MINOAN RobotSports Ghana 2027 (MRC Ghana 2027) - Comprehensive Knowledge Base
+
+## Section 1: Tournament Identity & Governance
+- Official Event Name: MINOAN RobotSports Ghana 2027
+- Acronym: MRC Ghana 2027
+- Tournament Date: January 30, 2027
+- Host Venue: Multi-Discipline Arena Complex, Accra, Greater Accra Region, Ghana
+- Official Host & Licensee: The MakersPlace Ghana (Leading Ghanaian STEAM Education & Robotics Organization)
+- Global Governing Body: H.E.R.O. (Hellenic Educational Robotics Organization)
+- Global Event: Minoan RobotSports Competition International Finals, Heraklion, Crete, Greece
+- Official Portal: https://minoan.makersplacegh.com
+- Legal Jurisdiction: Republic of Ghana (complies with Data Protection Act, 2012, Act 843)
+
+## Section 2: Rule Zero Doctrine (Article 0.1)
+"Human physical safety and the integrity of human life, venue facilities, and sportsmanship supersede any algorithmic instruction, hardware configuration, score advantage, or written regulation in this rulebook. If an action or robot behaviour presents an imminent or potential safety hazard, tournament officials, scrutineers, and referees are vested with supreme, non-negotiable authority to remotely disarm, manually halt, or immediately disqualify the offending unit and team from the round or entire tournament."
+
+## Section 3: The 7 Regulated Disciplines & Technical Specifications
+
+### 1. Drone Precision Obstacle (DRN-01)
+- Category: Aerial Robotics
+- Standard: H.E.R.O. Minoan RobotSports & FIDA Class 1 UAV Standard
+- Arena Dimensions: 12.0m (Length) x 8.0m (Width) x 4.0m (Height)
+- Safety: Enclosed Kevlar safety netting, 500 Lux anti-glare sports LED array
+- Maximum Robot Weight: 350 grams (including LiPo battery and propeller guards)
+- Wheelbase Dimensions: 140mm diagonal maximum
+- Propeller Protection: Continuous 360-degree duct or propeller guards mandatory
+- Battery Voltage Limit: Max 3S (11.1V nominal, 13.05V LiHv maximum)
+- Microcontrollers Supported: Betaflight F4/F7/H7, STM32G4, Arduino RP2040 Aero, Pixhawk/PX4
+- Control Mode: RC + Autonomous hybrid / Fully Autonomous
+- Match Format: 2 official timed attempts per team. 180 seconds maximum per attempt. Best single round score counts.
+- Maximum Score: 230 PTS
+- Scoring Rubric:
+  * Gate 1-4 Slalom Traversal: 40 pts (10 pts per gate passed cleanly)
+  * Variable Altitude Keyhole Ring: 50 pts (precision pitch control)
+  * Dynamic Hover Window (3s count): 60 pts (ultrasonic/optical station keeping)
+  * Precision Pad Touchdown: 50 pts (concentric bullseye landing)
+  * Time Bonus: Sub-90s completion yields 0.5 pts per second saved (up to 30 pts)
+- Penalties:
+  * Displacing/touching obstacle ring: -5 pts per occurrence
+  * Propeller guard detachment: Immediate run abort for safety
+  * Exceeding 180s stage timer: Scoring freezes at current station mark
+
+### 2. 3v3 Autonomous Drone Soccer (SOC-02)
+- Category: Aerial Team Sport
+- Standard: FIDA (Federation of International Drone Soccer) Class 20
+- Arena Dimensions: 10.0m (Length) x 6.0m (Width) x 3.5m (Height) enclosed netting
+- Goal Post: Suspended circular hoop target at 1.8m elevation
+- Robot Form Factor: 20cm enclosed spherical exoshell drone ball
+- Team Setup: 3 drones per side (1 Striker/Striking Ace + 2 Defenders/Sweepers)
+- Match Duration: Three 3-minute sets with 2-minute tactical pit stops
+- Allowed Frequencies: 2.4 GHz digital spread spectrum transmitter with dynamic frequency assignment
+
+### 3. Autonomous Robot Marathon (RUN-03)
+- Category: Terrestrial Robotics & Endurance
+- Standard: Minoan Endurance Standard 2027
+- Track Length: 150 meters multi-lap circuit with chicanes, elevated ramps, and texture shifts
+- Control Mode: 100% Fully Autonomous (no human remote controls permitted during the run)
+- Navigation: Dual infrared array, line tracking camera, optical odometry, IMU sensor fusion
+- Constraints: 25cm x 25cm x 25cm chassis footprint; 2.5 kg maximum weight
+- Battery Limit: Max 4S (14.8V nominal) LiPo or LiFePO4
+- Scoring: Fastest cumulative multi-lap time; bonus points for zero track derailments
+
+### 4. 3v3 Autonomous Robot Football (FBT-04)
+- Category: Terrestrial Tactical Robotics
+- Pitch Dimensions: 6.0m x 4.0m with electronic boundary markings and goals
+- Ball: Standard infrared pulsing ball (frequency modulated)
+- Team Size: 3 autonomous robots per squad (Goalkeeper + 2 Field Players)
+- Autonomy: 100% autonomous. Inter-robot wireless communication permitted via local Zigbee / 5GHz Wi-Fi
+- Collision Rules: Intentional ramming of static robots penalized; tactical shielding permitted within 50cm of ball
+
+### 5. Robotic Precision Archery (ARC-05)
+- Category: Ballistic Robotics
+- Distances: 3.0m, 5.0m, and 7.0m target distances
+- Targets: Concentric circular targets with optical target centering
+- Mechanism: Servo-driven tension bow or compressed pneumatic launcher firing foam/rubber safety arrows
+- Scoring: Ring scores 1 to 10 points per shot; sub-millimeter bullseye cameras record hits
+- Calibration Time: 120 seconds setup; 3 shots per distance stage
+
+### 6. STEAM Innovation Exhibition (EXH-06)
+- Category: Applied Engineering & Innovation
+- Focus: Solving critical African developmental challenges (Agriculture, Healthcare, Renewable Energy, Mining Safety)
+- Evaluation Criteria:
+  * Technical Rigor & Code Architecture (30%)
+  * Societal Relevance & Ghanaian Impact (25%)
+  * Hardware Craftsmanship & 3D Prototyping (20%)
+  * Live Team Defense & Q&A Mastery (15%)
+  * Market Feasibility & Scalability (10%)
+- Deliverables: Functional prototype, engineering logbook, system architectural block diagram, 3-minute pitch
+
+### 7. Precision Target Shooting (SHT-09)
+- Category: Optical Acquisition & Ballistic Action
+- Targets: 10 pop-up electromechanical targets appearing at random 2-to-4 second intervals
+- Detection: Real-time computer vision (OpenCV / TensorFlow Lite / Edge TPU)
+- Scoring: Speed of target acquisition, hit accuracy, zero collateral hits on penalty decoy targets
+
+## Section 4: Age Divisions & Eligibility
+- **Junior Division (Ages 8-12)**: Designed for primary and early junior high learners. Emphasizes foundational block/C++ programming, motor control, and teamwork.
+- **Senior Division (Ages 13-17)**: Designed for high school and vocational technical students. Emphasizes advanced kinematics, PID loops, sensor fusion, and autonomous flight.
+- **University & Open Division (Ages 18+)**: Open to tertiary institutions, makerspaces, engineers, and independent builders. Unrestricted advanced algorithm implementations.
+
+## Section 5: The Minoan Global Pathway to Greece
+1. **Stage 1: Regional Preparation & Digital Scrutineering**: Teams submit design logs and qualify through regional clinics hosted by The MakersPlace.
+2. **Stage 2: National Championship (Accra, January 30, 2027)**: Podium finishers in each discipline earn official National Champion designation and qualify for the National RobotSports Team Ghana squad.
+3. **Stage 3: Minoan International Olympiad (Heraklion, Crete, Greece)**: Qualified Team Ghana representatives travel to compete against elite national teams from 30+ nations under the global H.E.R.O. auspices.
+
+## Section 6: Scrutineering and Paddock Regulations
+- Every robot must pass a 4-station scrutineering inspection before entering the competition arena:
+  1. Dimensional Box Test: Physical verification of length, width, and height constraints.
+  2. Electronic Voltage & Scale Test: Precision digital scale and voltmeter verification.
+  3. Failsafe Remote Kill Verification: Remote cutoff switches must halt all motors within 500 milliseconds of signal drop.
+  4. Paddock Safety & Propeller Enclosure Audit: Inspecting 360-degree prop guards, wire harnesses, and LiPo fire safety containment.
+- Batteries must only be charged inside fireproof LiPo bags in designated paddock electrical bays.
+- Unregistered frequency transmissions or 2.4/5.8 GHz signal jamming result in immediate team expulsion.
+
+## Section 7: Frequently Asked Questions & Answers
+- **Q: Who can participate?**
+  A: Any school, robotic academy, maker club, university, or independent team located in Ghana or across the West African region.
+- **Q: Do teams need to buy pre-made kits or can they custom build?**
+  A: Both custom-fabricated robots (using 3D printing, CNC aluminum, custom PCBs) and standardized educational robotics platforms (Arduino, Raspberry Pi, Betaflight, LEGO Spike Prime, VEX) are welcomed, provided they satisfy category specifications.
+- **Q: What is the official language of the tournament?**
+  A: English is the official language for rulebooks, referee announcements, and technical documentation.
+- **Q: How does scoring arbitration work?**
+  A: Decisions by the Chief Field Referee and Technical Scrutineer are final under Rule Zero. Formal video appeals must be filed by the Team Captain within 15 minutes of match completion.
+- **Q: What is the contact email for the organizers?**
+  A: Official inquiries can be directed to The MakersPlace via email at info@makersplacegh.com or through https://minoan.makersplacegh.com.

@@ -3,6 +3,8 @@ import { SportsGrid } from '../components/SportsGrid';
 import { SportId } from '../types';
 import { Bot, Trophy, ArrowLeft, ArrowRight, ShieldCheck } from 'lucide-react';
 import { Link } from 'react-router-dom';
+import { SEOHead } from '../components/SEOHead';
+import { createBreadcrumbSchema } from '../utils/seoSchemas';
 
 interface SportsPageProps {
   onOpenRegisterWithSport: (sportId: SportId) => void;
@@ -11,6 +13,16 @@ interface SportsPageProps {
 export const SportsPage: React.FC<SportsPageProps> = ({ onOpenRegisterWithSport }) => {
   return (
     <div className="pt-6 pb-20 relative z-10">
+      <SEOHead
+        title="7 Official RobotSports Disciplines & Technical Specs | MINOAN 2027"
+        description="Explore all 7 regulated RobotSports disciplines for MINOAN Ghana 2027: Drone Obstacle, Drone Soccer, Robot Marathon, 3v3 Football, Archery, Innovation, and Target Shooting."
+        keywords="MINOAN disciplines, drone racing Ghana, drone soccer Africa, robot marathon, 3v3 autonomous football, robotic archery, robotics rules"
+        canonicalPath="/sports"
+        jsonLd={createBreadcrumbSchema([
+          { name: 'Home', path: '/' },
+          { name: 'RobotSports Disciplines', path: '/sports' },
+        ])}
+      />
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         
         {/* Breadcrumb & Navigation */}

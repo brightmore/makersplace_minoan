@@ -4,6 +4,8 @@ import { SPORTS_DATA } from '../data/sportsData';
 import { SportId, GalleryItem } from '../types';
 import { RulebookModal } from '../components/RulebookModal';
 import { ImageLightboxModal } from '../components/ImageLightboxModal';
+import { SEOHead } from '../components/SEOHead';
+import { createSportSchema, createBreadcrumbSchema, createFAQSchema } from '../utils/seoSchemas';
 import { 
   Bot, 
   Trophy, 
@@ -54,6 +56,11 @@ export const SportDetailPage: React.FC<SportDetailPageProps> = ({ onOpenRegister
   if (!sport) {
     return (
       <div className="pt-16 pb-24 relative z-10 max-w-4xl mx-auto px-4 text-center">
+        <SEOHead
+          title="Discipline Not Found | MINOAN RobotSports Ghana 2027"
+          description="The requested RobotSports discipline could not be found in the official registry."
+          canonicalPath="/sports"
+        />
         <div className="p-8 sm:p-12 rounded-2xl bg-slate-900/80 border border-red-500/40 shadow-2xl space-y-4">
           <AlertTriangle className="w-12 h-12 text-amber-400 mx-auto animate-bounce" />
           <h2 className="font-orbitron font-bold text-2xl text-white">Discipline Not Found</h2>
@@ -130,6 +137,23 @@ export const SportDetailPage: React.FC<SportDetailPageProps> = ({ onOpenRegister
 
   return (
     <div className="pt-6 pb-24 relative z-10">
+      {/* Dynamic SEO & AEO Structured Data */}
+      <SEOHead
+        title={`${sport.name} (${sport.code}) Rules & Specifications | MINOAN 2027`}
+        description={sport.fullDescription.slice(0, 155)}
+        keywords={`${sport.name}, ${sport.code}, MINOAN RobotSports Ghana, ${sport.mrcCategory}, ${sport.divisions.join(', ')}, ${sport.techSpecs.microcontrollers.join(', ')}`}
+        canonicalPath={`/sports/${sport.id}`}
+        jsonLd={[
+          createSportSchema(sport),
+          createBreadcrumbSchema([
+            { name: 'Home', path: '/' },
+            { name: 'RobotSports', path: '/sports' },
+            { name: sport.name, path: `/sports/${sport.id}` },
+          ]),
+          createFAQSchema((sport.faq || []).map((f) => ({ question: f.q, answer: f.a }))),
+        ]}
+      />
+
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         
         {/* Breadcrumb Navigation */}

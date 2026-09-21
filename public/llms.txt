@@ -1,0 +1,68 @@
+# MINOAN RobotSports Ghana 2027 (MRC Ghana 2027)
+
+> Ghana's Premier National Robotics Championship where robotics becomes sport. Organized by The MakersPlace Ghana under official sanction of the H.E.R.O. Minoan RobotSports Global Olympiad (Heraklion, Greece).
+
+## Executive Tournament Snapshot
+- **Event Name**: MINOAN RobotSports Ghana 2027 (MRC Ghana 2027)
+- **Official Host & Organizer**: The MakersPlace Ghana (Leading Ghanaian STEAM Education & Robotics Hub)
+- **International Sanctioning Body**: H.E.R.O. (Hellenic Educational Robotics Organization) / Minoan RobotSports Competition
+- **Date**: January 30, 2027
+- **Host City & Country**: Accra, Greater Accra Region, Ghana
+- **Global Pathway**: Top Ghanaian teams qualify directly to represent Team Ghana at the Minoan International World Championship in Heraklion, Crete, Greece.
+- **Website**: https://minoan.makersplacegh.com
+- **Sitemap**: https://minoan.makersplacegh.com/sitemap.xml
+- **Full Knowledge Base**: https://minoan.makersplacegh.com/llms-full.txt
+
+## The Seven Regulated RobotSports Disciplines
+1. **DRN-01: Drone Precision Obstacle** (Aerial)
+   - Max Points: 230 PTS | Team: 2-3 Pilots/Techs | Enclosed Kevlar flight arena (12m x 8m x 4m)
+   - Continuous 360-degree prop guards mandatory. 350g max weight. 3S LiPo voltage limit.
+2. **SOC-02: 3v3 Autonomous Drone Soccer** (Aerial / Team Sport)
+   - Official FIDA 20cm enclosed spherical drone soccer orbs. 3 attackers/strikers + defenders per team.
+   - Dynamic 3-minute set format inside netted arena with circular aerial goal hoops.
+3. **RUN-03: Autonomous Robot Marathon** (Terrestrial / Endurance)
+   - Multi-lap endurance race on custom indoor/outdoor track with optical line guidance and terrain bumps.
+   - Closed-loop PID navigation, telemetry feedback, and thermal battery dissipation scrutiny.
+4. **FBT-04: 3v3 Autonomous Robot Football** (Terrestrial / Tactical)
+   - High-speed omnidirectional wheeled robots competing 3-on-3 with infrared pulse ball.
+   - Real-time computer vision, tactical coordination, sub-30ms decision loops, zero human intervention.
+5. **ARC-05: Robotic Precision Archery** (Ballistic / Precision)
+   - Electro-mechanical launcher robots firing standardized projectiles at calibrated concentric targets.
+   - Multi-distance target recognition, trajectory ballistics calculation, laser calibration.
+6. **EXH-06: STEAM Innovation Exhibition** (Innovation & Engineering)
+   - Open-format engineering showcase presenting indigenous technological solutions for African infrastructure, agriculture, and healthcare.
+   - Judged on originality, societal impact, technical rigor, and industrial viability.
+7. **SHT-09: Precision Target Shooting** (Ballistic / High-Speed)
+   - High-velocity optical target acquisition shooting gallery with timed pop-up targets.
+   - Real-time CV target classification, servo actuation, and millisecond trigger release.
+
+## Competition Divisions
+- **Junior Division**: Ages 8 to 12 (Primary & Junior High School)
+- **Senior Division**: Ages 13 to 17 (Senior High School / Technical Institutes)
+- **University & Open Division**: Ages 18+ (Undergraduates, Engineering Colleges, Independent Makers)
+
+## Rule Zero: The Absolute Safety Supremacy Doctrine
+Human safety and sportsmanship override all software routines, hardware setups, and competition scores. In any conflict between written rules, custom mechanics, and physical paddock safety, Rule Zero takes absolute precedence. Referees and Technical Scrutineers possess unilateral disarm authority.
+
+## Hardware & Engineering Guidelines
+- **Microcontrollers Supported**: Betaflight F4/F7/H7, STM32, Arduino RP2040 Aero, Raspberry Pi Pico / Pi 4/5, ESP32, Teensy, Pixhawk / PX4.
+- **RF Spectrum**: Strictly 2.4 GHz and 5.8 GHz channels. Dynamic frequency allocation assigned at paddock scrutineering. RF jamming or unassigned transmission causes immediate disqualification.
+- **Battery Safety**: All LiPo / LiFe / Li-Ion batteries must be inspected, stored, and charged exclusively inside fireproof LiPo safety bags within designated paddock charging bays.
+- **Intellectual Property**: Competitor teams retain 100% intellectual property rights over their robot designs, algorithms, codebases, and CAD models.
+
+## Registration & Participation
+- Registrations are open to schools, maker clubs, universities, and independent engineering teams.
+- Online Registration Portal: https://minoan.makersplacegh.com
+- Scrutineering passes are issued only after digital checklist pre-clearance and physical paddock verification.
+
+## Key URLs & Resources
+- Home & Live Hub: https://minoan.makersplacegh.com/
+- Disciplines & Specifications: https://minoan.makersplacegh.com/sports
+- Official Rulebook & Scrutineering: https://minoan.makersplacegh.com/rules
+- Minoan Global Pathway: https://minoan.makersplacegh.com/pathway
+- Document Vault & CAD Blueprints: https://minoan.makersplacegh.com/resources
+- Media Hub & Arena Visualizer: https://minoan.makersplacegh.com/media
+- Partners & Academic Alliance: https://minoan.makersplacegh.com/sponsors
+- Privacy Policy (Ghana Act 843): https://minoan.makersplacegh.com/privacy
+- Terms & Conditions: https://minoan.makersplacegh.com/terms
+- Sitemap Directory: https://minoan.makersplacegh.com/sitemap

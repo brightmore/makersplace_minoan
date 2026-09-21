@@ -1,6 +1,8 @@
 import React from 'react';
 import { InspectionChecklist } from '../components/InspectionChecklist';
 import { Link } from 'react-router-dom';
+import { SEOHead } from '../components/SEOHead';
+import { createBreadcrumbSchema } from '../utils/seoSchemas';
 import { 
   ShieldCheck, 
   AlertTriangle, 
@@ -16,6 +18,16 @@ import {
 export const RulesPage: React.FC = () => {
   return (
     <div className="pt-6 pb-20 relative z-10">
+      <SEOHead
+        title="Rule Zero & Technical Scrutineering Inspection | MINOAN 2027"
+        description="Master Rule Zero and technical scrutineering criteria for MINOAN Ghana 2027. Paddock safety audits, 360-degree prop guards, failsafe kill switches, and battery regulations."
+        keywords="Rule Zero, MINOAN scrutineering, robot safety inspection, failsafe cutoff, battery safety bag, drone paddock rules Ghana"
+        canonicalPath="/rules"
+        jsonLd={createBreadcrumbSchema([
+          { name: 'Home', path: '/' },
+          { name: 'Rule Zero & Inspection', path: '/rules' },
+        ])}
+      />
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         
         {/* Breadcrumb Navigation */}

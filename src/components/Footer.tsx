@@ -228,6 +228,16 @@ export const Footer: React.FC = () => {
             <Link to="/sitemap" className="hover:text-emerald-300 transition-colors">
               Sitemap
             </Link>
+            <span className="text-slate-600">•</span>
+            <a 
+              href="/llms.txt" 
+              target="_blank" 
+              rel="noopener noreferrer" 
+              className="hover:text-cyan-300 transition-colors"
+              title="LLM & AI Answer Engine Directives"
+            >
+              llms.txt
+            </a>
           </div>
 
           <div className="flex items-center gap-3">

@@ -16,9 +16,12 @@ import {
   Trophy,
   Video,
   FileText,
-  Handshake
+  Handshake,
+  Cpu
 } from 'lucide-react';
 import { SPORTS_DATA } from '../data/sportsData';
+import { SEOHead } from '../components/SEOHead';
+import { createBreadcrumbSchema } from '../utils/seoSchemas';
 
 export const SitemapPage: React.FC = () => {
   const [searchQuery, setSearchQuery] = useState('');
@@ -151,6 +154,16 @@ export const SitemapPage: React.FC = () => {
 
   return (
     <div className="pt-6 pb-20 relative z-10">
+      <SEOHead
+        title="Tournament Sitemap & System Directory | MINOAN 2027"
+        description="Complete navigational directory indexing all MINOAN RobotSports Ghana 2027 categories, technical specifications, legal frameworks, and crawler feeds."
+        keywords="MINOAN sitemap, robotics directory Ghana, XML sitemap, llms.txt, robotics API endpoints"
+        canonicalPath="/sitemap"
+        jsonLd={createBreadcrumbSchema([
+          { name: 'Home', path: '/' },
+          { name: 'Sitemap', path: '/sitemap' },
+        ])}
+      />
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-10">
         
         {/* Breadcrumb Navigation */}
@@ -165,7 +178,7 @@ export const SitemapPage: React.FC = () => {
 
         {/* Hero Section */}
         <div className="relative rounded-2xl bg-slate-900 border border-cyan-500/30 p-6 sm:p-10 shadow-2xl overflow-hidden">
-          <div className="relative z-10 flex flex-col md:flex-row md:items-center justify-between gap-6">
+          <div className="relative z-10 flex flex-col lg:flex-row lg:items-center justify-between gap-6">
             <div className="space-y-3 max-w-2xl">
               <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-cyan-500/10 border border-cyan-500/30 text-cyan-300 font-mono text-xs uppercase tracking-widest">
                 <Network className="w-3.5 h-3.5 text-cyan-400" />
@@ -182,21 +195,32 @@ export const SitemapPage: React.FC = () => {
               </p>
             </div>
 
-            {/* XML Sitemap Quick Link Button */}
-            <div className="flex flex-col gap-2 shrink-0">
+            {/* XML Sitemap & AEO Crawler Feeds */}
+            <div className="flex flex-col sm:flex-row lg:flex-col gap-2 shrink-0">
               <a
                 href="/sitemap.xml"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="inline-flex items-center justify-center gap-2 px-4 py-3 rounded-lg bg-cyan-400 hover:bg-cyan-300 text-slate-950 font-orbitron font-bold text-xs uppercase tracking-wider shadow-[0_0_15px_rgba(0,240,255,0.4)] transition-all"
+                className="inline-flex items-center justify-center gap-2 px-4 py-2.5 rounded-lg bg-cyan-400 hover:bg-cyan-300 text-slate-950 font-orbitron font-bold text-xs uppercase tracking-wider shadow-[0_0_15px_rgba(0,240,255,0.4)] transition-all"
               >
                 <FileCode2 className="w-4 h-4" />
                 <span>View Search Engine XML</span>
                 <ExternalLink className="w-3.5 h-3.5" />
               </a>
 
-              <span className="text-[11px] font-mono text-slate-400 text-center">
-                W3C XML Standard • UTF-8 Compliant
+              <a
+                href="/llms.txt"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center justify-center gap-2 px-4 py-2.5 rounded-lg bg-slate-950 hover:bg-slate-850 text-cyan-400 border border-cyan-500/40 font-mono text-xs uppercase tracking-wider transition-all"
+              >
+                <Cpu className="w-3.5 h-3.5" />
+                <span>AI Engine Context (llms.txt)</span>
+                <ExternalLink className="w-3.5 h-3.5" />
+              </a>
+
+              <span className="text-[10px] font-mono text-slate-400 text-center">
+                W3C XML & LLMs.txt Standards • UTF-8 Compliant
               </span>
             </div>
           </div>

@@ -2,6 +2,10 @@ import React from 'react';
 import { Hero } from '../components/Hero';
 import { TickerBar } from '../components/TickerBar';
 import { PillarsSection } from '../components/PillarsSection';
+import { AEOQuickFacts } from '../components/AEOQuickFacts';
+import { FAQSection, CHAMPIONSHIP_FAQS } from '../components/FAQSection';
+import { SEOHead } from '../components/SEOHead';
+import { createFAQSchema } from '../utils/seoSchemas';
 import { SPORTS_DATA } from '../data/sportsData';
 import { SportId } from '../types';
 import { Link } from 'react-router-dom';
@@ -43,11 +47,23 @@ export const HomePage: React.FC<HomePageProps> = ({ onOpenRegister }) => {
 
   return (
     <div className="relative z-10">
+      {/* Dynamic SEO & AEO Structured Data */}
+      <SEOHead
+        title="MINOAN ROBOTSPORTS GHANA 2027 | The MakersPlace Official Championship"
+        description="Official national platform for MINOAN RobotSports Ghana 2027 (MRC Ghana 2027) on January 30, 2027 in Accra. 7 regulated challenges, 3 divisions, 1 global pathway to Greece."
+        keywords="MINOAN RobotSports Ghana 2027, The MakersPlace, drone racing Ghana, drone soccer Africa, robot marathon, robotics competition Accra, STEAM education Ghana"
+        canonicalPath="/"
+        jsonLd={createFAQSchema(CHAMPIONSHIP_FAQS.map(f => ({ question: f.question, answer: f.answer })))}
+      />
+
       {/* 5-Slide Animated Hero Section with Live Countdown Clock */}
       <Hero onOpenRegister={() => onOpenRegister()} />
 
       {/* Infinite Ticker Bar & Rule Zero HUD Warning Banner */}
       <TickerBar />
+
+      {/* Authoritative AEO Fast Facts & Grounding Sheet */}
+      <AEOQuickFacts />
 
       {/* 4 Pillars of RobotSports Section */}
       <PillarsSection />
@@ -309,6 +325,9 @@ export const HomePage: React.FC<HomePageProps> = ({ onOpenRegister }) => {
 
         </div>
       </section>
+
+      {/* Official Championship FAQ & Answer Engine Optimization Knowledge Base */}
+      <FAQSection />
     </div>
   );
 };

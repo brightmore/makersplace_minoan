@@ -1,6 +1,8 @@
 import React from 'react';
 import { PathwaySection } from '../components/PathwaySection';
 import { Link } from 'react-router-dom';
+import { SEOHead } from '../components/SEOHead';
+import { createBreadcrumbSchema } from '../utils/seoSchemas';
 import { 
   Award, 
   ArrowLeft, 
@@ -14,6 +16,16 @@ import {
 export const PathwayPage: React.FC = () => {
   return (
     <div className="pt-6 pb-20 relative z-10">
+      <SEOHead
+        title="Minoan Global Pathway to World Finals in Greece | MINOAN 2027"
+        description="Discover how Ghanaian student and maker robotics teams qualify from the National Championship in Accra to the Minoan International World Finals in Heraklion, Greece."
+        keywords="Minoan global pathway, Ghana to Greece robotics, HERO Olympiad, Team Ghana robotics, STEM scholarships Africa"
+        canonicalPath="/pathway"
+        jsonLd={createBreadcrumbSchema([
+          { name: 'Home', path: '/' },
+          { name: 'Global Pathway', path: '/pathway' },
+        ])}
+      />
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         
         {/* Breadcrumb Navigation */}

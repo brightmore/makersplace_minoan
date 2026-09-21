@@ -1,8 +1,37 @@
 # MINOAN RobotSports Ghana 2027 Tournament Web Platform
+# Search Engine & Answer Engine Optimization Directives
+
 User-agent: *
 Allow: /
+Allow: /llms.txt
+Allow: /llms-full.txt
+Allow: /sitemap.xml
 Disallow: /admin
 Disallow: /admin/*
 Disallow: /api/*
 
+# Explicitly Allow Legitimate AI Search & Answer Engine Crawlers
+User-agent: GPTBot
+Allow: /
+
+User-agent: ChatGPT-User
+Allow: /
+
+User-agent: PerplexityBot
+Allow: /
+
+User-agent: ClaudeBot
+Allow: /
+
+User-agent: Google-Extended
+Allow: /
+
+User-agent: Applebot-Extended
+Allow: /
+
+User-agent: Bingbot
+Allow: /
+
+# Canonical Sitemaps & Knowledge Feeds
 Sitemap: https://minoan.makersplacegh.com/sitemap.xml
+# LLM Context: https://minoan.makersplacegh.com/llms.txt

@@ -44,6 +44,7 @@ import { SPORTS_DATA } from '../data/sportsData';
 import { useAuth } from '../context/AuthContext';
 import { AdminAuthView } from '../components/admin/AdminAuthView';
 import { AdminLayout } from '../layouts/AdminLayout';
+import { SEOHead } from '../components/SEOHead';
 
 export const AdminPage: React.FC = () => {
   const { isAuthenticated, loading: authLoading } = useAuth();
@@ -303,7 +304,16 @@ export const AdminPage: React.FC = () => {
 
   // If unauthenticated, display the dedicated Admin Auth Screen
   if (!isAuthenticated) {
-    return <AdminAuthView />;
+    return (
+      <>
+        <SEOHead
+          title="Admin Authentication Vault"
+          description="Restricted administrative access for tournament scrutineers and organizers."
+          canonicalPath="/admin"
+        />
+        <AdminAuthView />
+      </>
+    );
   }
 
   // Authenticated - render the dedicated AdminLayout
@@ -316,6 +326,11 @@ export const AdminPage: React.FC = () => {
       broadcastCount={broadcasts.length}
       staffCount={staffList.length}
     >
+      <SEOHead
+        title="Admin SCADA Command Vault"
+        description="Restricted administrative access for tournament scrutineers and organizers."
+        canonicalPath="/admin"
+      />
       {/* Toast Notification */}
       {toastMessage && (
         <div className={`fixed top-20 right-5 z-50 px-4 py-3 rounded-lg border shadow-xl flex items-center gap-2.5 font-mono text-xs animate-in slide-in-from-top-3 ${

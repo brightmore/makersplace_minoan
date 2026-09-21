@@ -1,6 +1,8 @@
 import React from 'react';
 import { ResourcesSection } from '../components/ResourcesSection';
 import { Link } from 'react-router-dom';
+import { SEOHead } from '../components/SEOHead';
+import { createBreadcrumbSchema } from '../utils/seoSchemas';
 import { 
   Download, 
   ArrowLeft, 
@@ -13,6 +15,16 @@ import {
 export const ResourcesPage: React.FC = () => {
   return (
     <div className="pt-6 pb-20 relative z-10">
+      <SEOHead
+        title="Official Document Vault, CAD Blueprints & Rulebooks | MINOAN 2027"
+        description="Download official rulebooks, 2D/3D arena CAD DXF files, referee scoring sheets, and paddock compliance guidelines for MINOAN RobotSports Ghana 2027."
+        keywords="MINOAN downloads, robotics rulebook PDF, CAD DXF arena layout, referee scoring sheet Ghana"
+        canonicalPath="/resources"
+        jsonLd={createBreadcrumbSchema([
+          { name: 'Home', path: '/' },
+          { name: 'Downloads & Resources', path: '/resources' },
+        ])}
+      />
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         
         {/* Breadcrumb Navigation */}

@@ -1,5 +1,7 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
+import { SEOHead } from '../components/SEOHead';
+import { createBreadcrumbSchema } from '../utils/seoSchemas';
 import { 
   Scale, 
   ShieldCheck, 
@@ -44,6 +46,16 @@ export const TermsPage: React.FC = () => {
 
   return (
     <div className="pt-6 pb-20 relative z-10">
+      <SEOHead
+        title="Official Tournament Terms & Conditions | MINOAN 2027"
+        description="Official tournament bylaws, competitor eligibility, Rule Zero supremacy, RF spectrum anti-jamming ethics, and IP ownership for MINOAN Ghana 2027."
+        keywords="MINOAN terms, tournament bylaws, robotics rules Ghana, RF anti-jamming, Rule Zero supremacy"
+        canonicalPath="/terms"
+        jsonLd={createBreadcrumbSchema([
+          { name: 'Home', path: '/' },
+          { name: 'Terms & Conditions', path: '/terms' },
+        ])}
+      />
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         
         {/* Breadcrumb Navigation */}

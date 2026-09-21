@@ -1,5 +1,7 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
+import { SEOHead } from '../components/SEOHead';
+import { createBreadcrumbSchema } from '../utils/seoSchemas';
 import { 
   ShieldCheck, 
   Lock, 
@@ -48,6 +50,16 @@ export const PrivacyPage: React.FC = () => {
 
   return (
     <div className="pt-6 pb-20 relative z-10">
+      <SEOHead
+        title="Privacy Policy & Ghana Act 843 Compliance | MINOAN 2027"
+        description="Official tournament privacy policy for MINOAN RobotSports Ghana 2027. Compliant with Ghana Data Protection Act, 2012 (Act 843), athlete telemetry safeguards, and minor protection."
+        keywords="MINOAN privacy policy, Ghana Act 843, student data protection, robotics telemetry privacy Accra"
+        canonicalPath="/privacy"
+        jsonLd={createBreadcrumbSchema([
+          { name: 'Home', path: '/' },
+          { name: 'Privacy Policy', path: '/privacy' },
+        ])}
+      />
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         
         {/* Breadcrumb Navigation */}

@@ -2,10 +2,22 @@ import React from 'react';
 import { MediaHub } from '../components/MediaHub';
 import { Link } from 'react-router-dom';
 import { Layers, ArrowLeft, ArrowRight, Video, Radar, Download } from 'lucide-react';
+import { SEOHead } from '../components/SEOHead';
+import { createBreadcrumbSchema } from '../utils/seoSchemas';
 
 export const MediaHubPage: React.FC = () => {
   return (
     <div className="pt-6 pb-20 relative z-10">
+      <SEOHead
+        title="Media Hub & Interactive Arena Visualizer | MINOAN 2027"
+        description="Experience interactive 360-degree radar tracking grids, telemetry stations, match preview videos, and arena geometries for all 7 MINOAN Ghana 2027 disciplines."
+        keywords="MINOAN media hub, robotics arena visualizer, drone tracking radar, tournament broadcast Ghana"
+        canonicalPath="/media"
+        jsonLd={createBreadcrumbSchema([
+          { name: 'Home', path: '/' },
+          { name: 'Media Hub', path: '/media' },
+        ])}
+      />
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         
         {/* Breadcrumb & Navigation */}

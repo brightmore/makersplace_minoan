@@ -1,6 +1,8 @@
 import React from 'react';
 import { SponsorsSection } from '../components/SponsorsSection';
 import { Link } from 'react-router-dom';
+import { SEOHead } from '../components/SEOHead';
+import { createBreadcrumbSchema } from '../utils/seoSchemas';
 import { 
   Users, 
   ArrowLeft, 
@@ -38,6 +40,16 @@ export const SponsorsPage: React.FC = () => {
 
   return (
     <div className="pt-6 pb-20 relative z-10">
+      <SEOHead
+        title="Partners, Sponsors & STEAM Ecosystem Alliance | MINOAN 2027"
+        description="Join leading Ghanaian tech companies, universities, and global robotics consortiums in partnering with MINOAN RobotSports Ghana 2027."
+        keywords="MINOAN sponsors, robotics sponsorship Ghana, STEAM CSR, tech partnerships Accra, STEM bursary"
+        canonicalPath="/sponsors"
+        jsonLd={createBreadcrumbSchema([
+          { name: 'Home', path: '/' },
+          { name: 'Partners & Sponsors', path: '/sponsors' },
+        ])}
+      />
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         
         {/* Breadcrumb Navigation */}
